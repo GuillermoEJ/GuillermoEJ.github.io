@@ -4,6 +4,6 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://SoundIsOff.github.io",
+  site: "https://GuillermoEJ.github.io",
   integrations: [mdx(), sitemap(), tailwind()],
 });
