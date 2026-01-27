@@ -1,76 +1,73 @@
 ---
-title: "Astro Sphere"
-description: "Portfolio and blog build with astro."
-date: "Mar 18 2024"
-demoURL: "https://astro-sphere-demo.vercel.app"
-repoURL: "https://github.com/markhorn-dev/astro-sphere"
+title: "Spotify-YouTube Playlist Downloader"
+description: "A robust automation tool to download your Spotify and YouTube playlists localy."
+date: "Dec 1 2025"
+demoURL: ""
+repoURL: "https://github.com/GuillermoEJ/Spotify-Youtube-playlist-downloader"
 ---
 
-![Astro Sphere Lighthouse Score](/astro-sphere.jpg)
+# Spotify/YouTube to Local MP3
 
-Astro Sphere is a static, minimalist, lightweight, lightning fast portfolio and blog theme based on my personal website.
+**Spotify-YouTube Playlist Downloader** is a python automation tool I developed to back up my streaming libraries. I wanted a  streamlined way to download high-quality audio files locally, preserving the playlist functionality Spotify and YouTube offer.
 
-It is primarily Astro, Tailwind and Typescript, with a very small amount of SolidJS for stateful components.
+This project leverages a three-step automated pipeline:
+1. **Metadata Extraction**: Connects to the **Spotify API** to fetch track names, artists, and album details.
+2. **Intelligent Search**: Utilizes advanced search queries to find the most accurate official audio or high quality match on YouTube.
+3. **Optimized Download**: Uses **yt-dlp** to extract the audio stream and convert it into a standardized format (MP3/M4A).
 
-## 🚀 Deploy your own
+---
 
-<div class="flex gap-2">
-  <a target="_blank" aria-label="Deploy with Vercel" href="https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-sphere">
-    <img src="/deploy_vercel.svg" />
-  </a>
-  <a target="_blank" aria-label="Deploy with Netlify" href="https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-sphere">
-    <img src="/deploy_netlify.svg" />
-  </a>
-</div>
+## Key Features
 
-## 📋 Features
+- **Full Library Sync**: Effortlessly reads all tracks from your private or public playlists.
+- **Smart Matching**: Filtering logic to avoid live recordings, covers, or low-quality uploads.
+- **Automated Metadata**: Automatically tags files with the correct artist and title information.
+- **Batch Processing**: Handles hundreds of songs in a single session without manual intervention.
+- **File Sanitization**: Automatically cleans invalid characters from filenames for OS compatibility.
 
-- ✅ 100/100 Lighthouse performance
-- ✅ Responsive
-- ✅ Accessible
-- ✅ SEO-friendly
-- ✅ Typesafe
-- ✅ Minimal style
-- ✅ Light/Dark Theme
-- ✅ Animated UI
-- ✅ Tailwind styling
-- ✅ Auto generated sitemap
-- ✅ Auto generated RSS Feed
-- ✅ Markdown support
-- ✅ MDX Support (components in your markdown)
-- ✅ Searchable content (posts and projects)
+---
 
-## 💯 Lighthouse score
-![Astro Sphere Lighthouse Score](/lighthouse.png)
+## Setup and Usage Guide
 
-## 🕊️ Lightweight
-All pages under 100kb (including fonts)
+### 1. Prerequisites
+Ensure you have Python 3.8+ and [FFmpeg](https://www.ffmpeg.org/) installed on your system.
 
-## ⚡︎ Fast
-Rendered in ~40ms on localhost
+### 2. Installation
+Clone the repository and install the required dependencies:
 
-## 📄 Configuration
+```bash
+git clone [https://github.com/GuillermoEJ/Spotify-Youtube-playlist-downloader](https://github.com/GuillermoEJ/Spotify-Youtube-playlist-downloader)
+cd Spotify-Youtube-playlist-downloader
+pip install -r requirements.txt
+```
 
-The blog posts on the demo serve as the documentation and configuration.
+## API Configuration
+You will need credentials from the Spotify for Developers dashboard. 
+Create a **.env** file in the root directory:
 
-## 💻 Commands
+```bash
+SPOTIPY_CLIENT_ID='your_client_id_here'
+SPOTIPY_CLIENT_SECRET='your_client_secret_here'
+```
 
-All commands are run from the root of the project, from a terminal:
+## Running the Script
+Start the downloader with the following command:
 
-Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, etc
+```Bash
+python main.py
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run sync`            | Generates TypeScript types for all Astro modules.|
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run lint`            | Run ESLint                                       |
-| `npm run lint:fix`        | Auto-fix ESLint issues                           |
+---
 
-## 🏛️ License
+# Tech Stack
 
-MIT
+| Component | Technology |
+| :--- | :--- |
+| **Language** | Python 3.8+ |
+| **Spotify Integration** | Spotipy Library |
+| **YouTube Engine** | yt-dlp |
+| **Media Processing** | FFmpeg |
+| **Authentication** | OAuth 2.0 |
+| **Environment Management** | python-dotenv |
+
+---
