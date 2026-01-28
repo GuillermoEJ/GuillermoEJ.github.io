@@ -9,8 +9,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
-        serif: ["Roboto", ...defaultTheme.fontFamily.serif],
+        sans: ["Cascadia code", ...defaultTheme.fontFamily.sans],
+        serif: ["Cascadia code", ...defaultTheme.fontFamily.serif],
       },
     },
   },
