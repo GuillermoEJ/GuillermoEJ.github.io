@@ -55,7 +55,7 @@ Patterns that translate themselves across the grid:
 - **Puffers**: Spaceships that leave trails as they move
 - **Rakes**: Patterns that emit periodic objects
 
-## Why Does It Matter?
+## What I find fascinating
 
 ### Computational Universality
 The Game of Life is **Turing complete**, meaning it can simulate any computation. This was proven by constructing logical gates and memory structures within the game. A universal computer can theoretically be built using only Game of Life patterns.
@@ -103,4 +103,4 @@ Over 50 years later, researchers still discover new patterns in the Game of Life
 
 ## Conclusion
 
-Conway's Game of Life transcends being merely a mathematical curiosity. It's a window into understanding how complexity arises from simplicity, how local interactions generate global behavior, and how the universe itself might be fundamentally computational. Whether you're interested in mathematics, artificial life, physics, or philosophy, the Game of Life offers endless fascination and discovery.
+Conway's Game of Life is a window into understanding how complexity arises from simplicity, how local interactions generate global behavior, and how the universe itself might be fundamentally computational. Whether you're interested in mathematics, artificial life, physics, or philosophy, the Game of Life offers endless fascination and discovery.

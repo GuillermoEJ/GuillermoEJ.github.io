@@ -57,7 +57,7 @@ Based on how biological immune systems detect and respond to threats.
 - **Drug Discovery**: Simulating protein folding and molecular interactions
 - **Traffic Management**: Optimizing traffic flow using ant colony principles
 
-## Advantages and Challenges
+## My evaluation
 
 ### Advantages
 - Can find good solutions to complex problems that are hard to solve analytically

@@ -25,15 +25,15 @@ This project leverages a three-step automated pipeline:
 - **Batch Processing**: Handles hundreds of songs in a single session without manual intervention.
 - **File Sanitization**: Automatically cleans invalid characters from filenames for OS compatibility.
 
+(I also included a basic mp3 player functinality to organize and listen to your tracks)
+
 ---
 
 ## Setup and Usage Guide
 
-### 1. Prerequisites
-Ensure you have Python 3.8+ and [FFmpeg](https://www.ffmpeg.org/) installed on your system.
+1. Ensure you have Python 3.8+ and [FFmpeg](https://www.ffmpeg.org/) installed on your system.
 
-### 2. Installation
-Clone the repository and install the required dependencies:
+2. Clone the repository and install the required dependencies:
 
 ```bash
 git clone [https://github.com/GuillermoEJ/Spotify-Youtube-playlist-downloader](https://github.com/GuillermoEJ/Spotify-Youtube-playlist-downloader)
@@ -48,13 +48,6 @@ Create a **.env** file in the root directory:
 ```bash
 SPOTIPY_CLIENT_ID='your_client_id_here'
 SPOTIPY_CLIENT_SECRET='your_client_secret_here'
-```
-
-## Running the Script
-Start the downloader with the following command:
-
-```Bash
-python main.py
 ```
 
 ---
