@@ -3,6 +3,7 @@ title: "The Logic of Giving and Receiving: あげる, くれる, もらう"
 description: "Understanding the 'Donation Verbs' and how they change based on the speaker's social circle."
 date: "May 27 2025"
 draft: false
+tags: ["japanese"]
 ---
 
 Japanese uses different verbs for "giving" depending on who is giving to whom. This reflects the cultural concept of *Uchi-Soto* (Inside-Outside).

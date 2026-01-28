@@ -3,6 +3,7 @@ title: "Kanji Strategy: Understanding the N4 Radicals"
 description: "Breaking down the 300 characters of N4 into logical building blocks and my current inventory."
 date: "Dec 18 2025"
 draft: false
+tags: ["japanese"]
 ---
 
 By the N4 level, memorizing characters by rote becomes inefficient. The key is to study **Radicals (部首)**.

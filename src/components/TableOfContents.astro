@@ -1,0 +1,32 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+// Filter para solo mostrar h2 y h3
+const toc = headings.filter(heading => heading.depth >= 2 && heading.depth <= 3);
+---
+
+{toc.length > 0 && (
+  <div class="text-sm">
+    <div class="font-semibold text-black dark:text-white mb-3">
+      Contenido
+    </div>
+    <ul class="space-y-1.5">
+      {toc.map(heading => (
+        <li style={{ marginLeft: `${(heading.depth - 2) * 0.75}rem` }}>
+          <a
+            href={`#${heading.slug}`}
+            class="text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors underline underline-offset-2 decoration-black/15 dark:decoration-white/30"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}

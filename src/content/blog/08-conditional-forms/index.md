@@ -3,6 +3,7 @@ title: "Conditional Structures: ～たら and ～ば"
 description: "Mastering the 'if' and 'when' of Japanese grammar."
 date: "Oct 27 2025"
 draft: false
+tags: ["japanese"]
 ---
 
 N4 introduces several ways to say "if." Each has a slightly different logic.

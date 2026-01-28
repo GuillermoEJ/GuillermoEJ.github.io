@@ -3,6 +3,7 @@ title: "Transitive vs. Intransitive: The Pairs You Need to Know"
 description: "Identifying the difference between an action performed on an object and an action that happens on its own."
 date: "Feb 20 2025"
 draft: false
+tags: ["japanese"]
 ---
 
 Japanese distinguishes heavily between **Transitive (他動詞)** and **Intransitive (自動詞)** verbs. This is a common pain point for N4 students because the verbs often look very similar.

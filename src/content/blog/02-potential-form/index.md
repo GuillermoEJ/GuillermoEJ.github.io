@@ -3,6 +3,7 @@ title: "Expressing Ability: The Nuances of the Potential Form"
 description: "Moving beyond basic structures to conjugate verbs that express what you can and cannot do."
 date: "Dec 17 2024"
 draft: false
+tags: ["japanese"]
 ---
 
 In N5, we learn *koto ga dekiru*. In N4, we streamline this by changing the verb itself into the **Potential Form (可能形)**.

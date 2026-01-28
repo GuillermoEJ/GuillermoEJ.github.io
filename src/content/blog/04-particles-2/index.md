@@ -3,6 +3,7 @@ title: "Particles II: Navigating に, で, and へ"
 description: "A stricter look at directional and locational particles required for intermediate-beginner Japanese."
 date: "Apr 19 2025"
 draft: false
+tags: ["japanese"]
 ---
 
 At the N4 level, the ambiguity between particles starts to fade as we learn specific rules for location and direction.

@@ -3,6 +3,7 @@ title: "The Logic of Relative Clauses: Modifying Nouns with Verbs"
 description: "Building complex sentences by placing verbs directly in front of nouns."
 date: "Sep 30 2025"
 draft: false
+tags: ["japanese"]
 ---
 
 Japanese does not have relative pronouns like "who," "which," or "that." Instead, we place a verb in the plain form directly before a noun.
