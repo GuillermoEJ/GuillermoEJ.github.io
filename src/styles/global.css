@@ -4,6 +4,76 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fondo animado sutil */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(120, 119, 198, 0.3);
+  border-radius: 50%;
+  animation: twinkle 8s ease-in-out infinite;
+  opacity: 0;
+}
+
+.dark .star {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Posiciones aleatorias para las estrellas */
+.star:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; }
+.star:nth-child(2) { top: 25%; left: 70%; animation-delay: 2s; }
+.star:nth-child(3) { top: 35%; left: 45%; animation-delay: 5s; }
+.star:nth-child(4) { top: 50%; left: 15%; animation-delay: 1s; }
+.star:nth-child(5) { top: 65%; left: 80%; animation-delay: 4s; }
+.star:nth-child(6) { top: 75%; left: 35%; animation-delay: 3s; }
+.star:nth-child(7) { top: 20%; left: 85%; animation-delay: 6s; }
+.star:nth-child(8) { top: 40%; left: 60%; animation-delay: 2.5s; }
+.star:nth-child(9) { top: 55%; left: 25%; animation-delay: 4.5s; }
+.star:nth-child(10) { top: 70%; left: 50%; animation-delay: 1.5s; }
+.star:nth-child(11) { top: 30%; left: 10%; animation-delay: 7s; }
+.star:nth-child(12) { top: 45%; left: 75%; animation-delay: 3.5s; }
+.star:nth-child(13) { top: 60%; left: 40%; animation-delay: 5.5s; }
+.star:nth-child(14) { top: 80%; left: 65%; animation-delay: 2.2s; }
+.star:nth-child(15) { top: 10%; left: 55%; animation-delay: 6.5s; }
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  20% {
+    opacity: 0.2;
+    transform: scale(0.5);
+  }
+  40% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+  90% {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+}
+
 html {
   overflow-y: scroll;
   color-scheme: light;

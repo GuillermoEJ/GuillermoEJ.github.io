@@ -38,12 +38,17 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
           Blog entries
         </div>
         {allTags.length > 0 && (
-          <div class="animate flex flex-wrap gap-3">
-            <span class="text-sm text-black/50 dark:text-white/75">Tags:</span>
-            {allTags.map(tag => (
-              <Link href={`/blog/tags/${tag}`} underline={true}>
-                {tag}
-              </Link>
+          <div class="animate flex flex-wrap gap-1">
+            <span class="text text-black/50 dark:text-white/75">Tags:</span>
+            {allTags.map((tag, index) => (
+              <>
+                <Link href={`/blog/tags/${tag}`} underline={true}>
+                  {tag}
+                </Link>
+                {index < allTags.length - 1 && (
+                  <span class="text-black/50 dark:text-white/50">/</span>
+                )}
+              </>
             ))}
           </div>
         )}
