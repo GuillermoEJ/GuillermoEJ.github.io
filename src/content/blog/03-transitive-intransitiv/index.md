@@ -1,7 +1,7 @@
 ---
 title: "Transitive vs. Intransitive: The Pairs You Need to Know"
 description: "Identifying the difference between an action performed on an object and an action that happens on its own."
-date: "Feb 20 2025"
+date: "Feb 20 2024"
 draft: false
 tags: ["japanese"]
 ---

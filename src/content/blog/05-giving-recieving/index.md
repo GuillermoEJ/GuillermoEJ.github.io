@@ -1,7 +1,7 @@
 ---
 title: "The Logic of Giving and Receiving: あげる, くれる, もらう"
 description: "Understanding the 'Donation Verbs' and how they change based on the speaker's social circle."
-date: "May 27 2025"
+date: "May 27 2024"
 draft: false
 tags: ["japanese"]
 ---

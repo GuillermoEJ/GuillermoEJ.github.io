@@ -1,7 +1,7 @@
 ---
 title: "Kanji Strategy: Understanding the N4 Radicals"
 description: "Breaking down the 300 characters of N4 into logical building blocks and my current inventory."
-date: "Dec 18 2025"
+date: "Dec 18 2024"
 draft: false
 tags: ["japanese"]
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Spotify-YouTube Playlist Downloader"
 description: "A robust automation tool to download your Spotify and YouTube playlists localy."
-date: "Dec 1 2025"
+date: "Jul 1 2025"
 demoURL: ""
 repoURL: "https://github.com/GuillermoEJ/Spotify-Youtube-playlist-downloader"
 ---

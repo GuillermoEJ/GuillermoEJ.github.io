@@ -1,7 +1,7 @@
 ---
 title: "Welcome to My Blog"
 description: "Starting a new journey of sharing thoughts, learning experiences, and technical insights through writing."
-date: "Aug 15 2024"
+date: "Aug 15 2023"
 draft: false
 tags: ["life"]
 ---

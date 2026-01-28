@@ -1,7 +1,7 @@
 ---
 title: "Expressing Thoughts: Using と思う and と言いました"
 description: "How to use the plain form to report speech and share personal opinions."
-date: "Jun 20 2025"
+date: "Jun 20 2024"
 draft: false
 tags: ["japanese"]
 ---

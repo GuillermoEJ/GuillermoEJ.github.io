@@ -1,7 +1,7 @@
 ---
 title: "Particles II: Navigating に, で, and へ"
 description: "A stricter look at directional and locational particles required for intermediate-beginner Japanese."
-date: "Apr 19 2025"
+date: "Apr 19 2024"
 draft: false
 tags: ["japanese"]
 ---
