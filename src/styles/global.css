@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@latest/index.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
