@@ -9,7 +9,7 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
+  TITLE: "Guillermo España",
   DESCRIPTION: "A personal website where I write about my interests.",
 };
 
