@@ -1,6 +1,6 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 
-const font = "Cascadia Code"
+const font = "Monospace"
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [font, ...defaultTheme.fontFamily.sans],
-        serif: [font, ...defaultTheme.fontFamily.serif],
+        sans: [font, ...defaultTheme.fontFamily.mono],
+        serif: [font, ...defaultTheme.fontFamily.mono],
         mono: [font, ...defaultTheme.fontFamily.mono],
       }
     },

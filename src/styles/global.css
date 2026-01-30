@@ -18,10 +18,9 @@
 
 .star {
   position: absolute;
-  width: 2px;
-  height: 2px;
+  width: 3px;
+  height: 3px;
   background: rgba(120, 119, 198, 0.3);
-  border-radius: 50%;
   animation: twinkle 8s ease-in-out infinite;
   opacity: 0;
 }
