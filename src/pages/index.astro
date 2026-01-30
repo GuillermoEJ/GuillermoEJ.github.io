@@ -28,13 +28,27 @@ const work = await Promise.all(
   })
 );
 
+const time = new Date()
+const fullTime = time.toLocaleTimeString('es-ES', {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false // Cambia a true si prefieres formato AM/PM
+});
+
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <h4 class="animate font-semibold subpixel-antialiased text-xl text-black dark:text-white">
-      Hi, I'm Guillermo ;)<span class="text-xl"></span> 
+    
+      <div class="container">
+      <span class="box text-black dark:text-white">
+        <h2>[{fullTime}]:\> cat Guillermo_España.txt</h2>
+      </span>
+    </div>
     </h4>
+    
     <div class="h-5"></div>
     <div class="space-y-16">
       <section>
@@ -48,7 +62,7 @@ const work = await Promise.all(
           </div>
           <article class="space-y-4 flex-1">
             <p class="animate">
-              I'm a final-year Software Engineering student at the 
+              Hi I'm Guillermo, a final-year Software Engineering student at the 
               Polytechnic University of Madrid
               (<Link href="https://www.upm.es/internacional" aria-label="UPM's international website" external>
                 UPM
