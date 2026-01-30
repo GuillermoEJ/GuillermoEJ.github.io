@@ -10,8 +10,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [font, ...defaultTheme.fontFamily.mono],
-        serif: [font, ...defaultTheme.fontFamily.mono],
+        sans: [font, ...defaultTheme.fontFamily.sans],
+        serif: [font, ...defaultTheme.fontFamily.serif],
+        mono: [font, ...defaultTheme.fontFamily.mono],
       }
     },
   },
