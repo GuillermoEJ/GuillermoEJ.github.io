@@ -43,14 +43,12 @@ const { Content, headings } = await post.render();
         {post.data.title}
       </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
-      <article class="animate lg:col-span-3">
+    <div class="grid grid-cols-1 gap-12">
+      <article class="animate">
         <Content />
       </article>
-      <aside class="animate lg:col-start-4">
-        <div class="sticky top-32">
-          <TableOfContents headings={headings} />
-        </div>
+      <aside class="hidden lg:block fixed right-8 top-64 w-56">
+        <TableOfContents headings={headings} />
       </aside>
     </div>
   </Container>
