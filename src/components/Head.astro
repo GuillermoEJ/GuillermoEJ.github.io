@@ -26,9 +26,9 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/x-icon" href="/favicon-light.svg">
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
@@ -87,31 +87,16 @@ const { title, description, image = "/nano.png" } = Astro.props;
     const backToPrev = document.getElementById("back-to-prev");
     backToPrev?.addEventListener("click", () => window.history.back());
 
-    const lightThemeButton = document.getElementById("light-theme-button");
-    lightThemeButton?.addEventListener("click", () => {
-      localStorage.setItem("theme", "light");
-      toggleTheme(false);
-    });
-
     const darkThemeButton = document.getElementById("dark-theme-button");
     darkThemeButton?.addEventListener("click", () => {
       localStorage.setItem("theme", "dark");
       toggleTheme(true);
     });
 
-    const systemThemeButton = document.getElementById("system-theme-button");
-    systemThemeButton?.addEventListener("click", () => {
-      localStorage.setItem("theme", "system");
-      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const crtToggleButton = document.getElementById("crt-toggle-button");
+    crtToggleButton?.addEventListener("click", () => {
+      toggleCRTEffect();
     });
-
-    window.matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", event => {
-        if (localStorage.theme === "system" || !localStorage.theme) {
-          toggleTheme(event.matches);
-        }
-      }
-    );
 
     document.addEventListener("scroll", onScroll);
   }
@@ -180,7 +165,37 @@ function toggleTheme(dark) {
     }
   }
 
-  document.addEventListener("DOMContentLoaded", () => init());
-  document.addEventListener("astro:after-swap", () => init());
+  function toggleCRTEffect() {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      if (overlay.style.display === "none") {
+        overlay.style.display = "";
+        localStorage.setItem("crtEnabled", "true");
+      } else {
+        overlay.style.display = "none";
+        localStorage.setItem("crtEnabled", "false");
+      }
+    }
+  }
+
+  // Load CRT effect state on page load
+  function loadCRTState() {
+    const crtEnabled = localStorage.getItem("crtEnabled");
+    if (crtEnabled === "false") {
+      const overlay = document.querySelector(".overlay");
+      if (overlay) {
+        overlay.style.display = "none";
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    init();
+    loadCRTState();
+  });
+  document.addEventListener("astro:after-swap", () => {
+    init();
+    loadCRTState();
+  });
   preloadTheme();
 </script>

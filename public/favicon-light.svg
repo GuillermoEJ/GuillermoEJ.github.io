@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- CRT Monitor icon for light mode -->
+  <!-- Monitor frame -->
+  <rect x="4" y="3" width="24" height="16" rx="1.5" fill="black" stroke="black" stroke-width="1.5"/>
+  <!-- Screen -->
+  <rect x="6" y="5" width="20" height="12" fill="rgba(0, 0, 0, 0.15)"/>
+  <!-- Stand -->
+  <path d="M 9 19 L 8 28 L 24 28 L 23 19" fill="black"/>
+  <!-- Center bar -->
+  <rect x="14" y="19" width="4" height="4" fill="black"/>
+</svg>

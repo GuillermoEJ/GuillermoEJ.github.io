@@ -6,7 +6,7 @@ draft: false
 tags: ["life"]
 ---
 
-After months of planning and development, I'm excited to launch my personal blog! This space will be a collection of my thoughts, learnings, and experiences as I navigate through my journey as a software engineering student.
+It's time to launch my personal blog! This space will be a collection of my thoughts, learnings, and experiences as I navigate through my journey as a software engineer.
 
 ## What to Expect
 
