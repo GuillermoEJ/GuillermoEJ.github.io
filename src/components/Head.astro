@@ -98,6 +98,22 @@ const { title, description, image = "/nano.png" } = Astro.props;
       toggleCRTEffect();
     });
 
+    const tocToggleButton = document.getElementById("toc-toggle-button");
+    const tocList = document.getElementById("toc-list");
+    const tocIcon = document.getElementById("toc-icon");
+    
+    tocToggleButton?.addEventListener("click", () => {
+      if (tocList && tocIcon) {
+        if (tocList.classList.contains("hidden")) {
+          tocList.classList.remove("hidden");
+          tocIcon.style.transform = "rotate(180deg)";
+        } else {
+          tocList.classList.add("hidden");
+          tocIcon.style.transform = "rotate(0deg)";
+        }
+      }
+    });
+
     document.addEventListener("scroll", onScroll);
   }
 

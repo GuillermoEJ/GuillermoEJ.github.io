@@ -12,11 +12,30 @@ const toc = headings.filter(heading => heading.depth >= 2 && heading.depth <= 3)
 ---
 
 {toc.length > 0 && (
-  <div class="text-sm sticky top-20">
-    <div class="font-semibold text-black dark:text-white mb-3 text-right">
+  <div class="text-sm fixed top-24 right-8 w-40 z-40">
+    <button 
+      id="toc-toggle-button"
+      aria-label="Toggle table of contents"
+      class="group w-full flex items-center justify-end gap-2 text-right text-black dark:text-white hover:opacity-70 transition-opacity duration-300 ease-in-out mb-3"
+    >
       Content
-    </div>
-    <ul class="space-y-1.5">
+      <svg 
+        id="toc-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="transition-transform duration-300 ease-in-out"
+      >
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+    <ul id="toc-list" class="space-y-1.5 hidden">
       {toc.map(heading => (
         <li style={{ marginLeft: `${(heading.depth - 2) * 0.75}rem` }} class="text-right">
           <a
