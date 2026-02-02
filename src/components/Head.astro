@@ -114,6 +114,20 @@ const { title, description, image = "/nano.png" } = Astro.props;
       }
     });
 
+    // Alinear TableOfContents con BackToPrev
+    function alignTocWithBackToPrev() {
+      const backToPrevContainer = document.querySelector(".flex.items-center.justify-between.relative");
+      if (backToPrevContainer) {
+        const rect = backToPrevContainer.getBoundingClientRect();
+        const topOffset = window.scrollY + rect.top;
+        document.documentElement.style.setProperty("--back-to-prev-top", topOffset + "px");
+      }
+    }
+
+    alignTocWithBackToPrev();
+    window.addEventListener("resize", alignTocWithBackToPrev);
+    window.addEventListener("scroll", alignTocWithBackToPrev);
+
     document.addEventListener("scroll", onScroll);
   }
 

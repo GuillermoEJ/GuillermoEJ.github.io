@@ -24,10 +24,15 @@ const { Content, headings } = await post.render();
 
 <PageLayout title={post.data.title} description={post.data.description}>
   <Container>
-    <div class="animate">
-      <BackToPrev href="/blog">
-        cd ..
-      </BackToPrev>
+    <div class="flex items-center justify-between relative">
+      <div class="animate">
+        <BackToPrev href="/blog">
+          cd ..
+        </BackToPrev>
+      </div>
+      <aside class="hidden lg:block fixed right-8 w-40 z-40" style="top: var(--back-to-prev-top)">
+        <TableOfContents headings={headings} />
+      </aside>
     </div>
     <div class="space-y-1 my-10">
       <div class="animate flex items-center gap-1.5">
@@ -47,9 +52,6 @@ const { Content, headings } = await post.render();
       <article class="animate">
         <Content />
       </article>
-      <aside class="hidden lg:block fixed right-8 top-64 w-56">
-        <TableOfContents headings={headings} />
-      </aside>
     </div>
   </Container>
 </PageLayout>
