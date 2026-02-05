@@ -1,5 +1,5 @@
 ---
-title: "Spotify-YouTube Playlist Downloader"
+title: "Back to Mp3"
 description: "A robust automation tool to download your Spotify and YouTube playlists localy."
 date: "Jul 1 2025"
 demoURL: ""
