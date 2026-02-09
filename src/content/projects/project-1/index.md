@@ -1,6 +1,6 @@
 ---
 title: "Back to Mp3"
-description: "A robust automation tool to download your Spotify and YouTube playlists localy."
+description: "Simple automation tool to download your Spotify and YouTube playlists localy."
 date: "Jul 1 2025"
 demoURL: ""
 repoURL: "https://github.com/GuillermoEJ/Spotify-Youtube-playlist-downloader"
@@ -24,33 +24,7 @@ This project leverages a three-step automated pipeline:
 - **Automated Metadata**: Automatically tags files with the correct artist and title information.
 - **Batch Processing**: Handles hundreds of songs in a single session without manual intervention.
 - **File Sanitization**: Automatically cleans invalid characters from filenames for OS compatibility.
-
-(I also included a basic mp3 player functinality to organize and listen to your tracks)
-
----
-
-## Setup and Usage Guide
-
-1. Ensure you have Python 3.8+ and [FFmpeg](https://www.ffmpeg.org/) installed on your system.
-
-2. Clone the repository and install the required dependencies:
-
-```bash
-git clone [https://github.com/GuillermoEJ/Spotify-Youtube-playlist-downloader](https://github.com/GuillermoEJ/Spotify-Youtube-playlist-downloader)
-cd Spotify-Youtube-playlist-downloader
-pip install -r requirements.txt
-```
-
-## API Configuration
-You will need credentials from the Spotify for Developers dashboard. 
-Create a **.env** file in the root directory:
-
-```bash
-SPOTIPY_CLIENT_ID='your_client_id_here'
-SPOTIPY_CLIENT_SECRET='your_client_secret_here'
-```
-
----
+- **MP3 Player**: Built-in mp3 player functionality to oorganize and play tracks.
 
 # Tech Stack
 
