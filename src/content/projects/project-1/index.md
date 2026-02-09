@@ -15,8 +15,6 @@ This project leverages a three-step automated pipeline:
 2. **Intelligent Search**: Utilizes advanced search queries to find the most accurate official audio or high quality match on YouTube.
 3. **Optimized Download**: Uses **yt-dlp** to extract the audio stream and convert it into a standardized format (MP3/M4A).
 
----
-
 ## Key Features
 
 - **Full Library Sync**: Effortlessly reads all tracks from your private or public playlists.
@@ -26,7 +24,7 @@ This project leverages a three-step automated pipeline:
 - **File Sanitization**: Automatically cleans invalid characters from filenames for OS compatibility.
 - **MP3 Player**: Built-in mp3 player functionality to oorganize and play tracks.
 
-# Tech Stack
+## Tech Stack
 
 | Component | Technology |
 | :--- | :--- |
