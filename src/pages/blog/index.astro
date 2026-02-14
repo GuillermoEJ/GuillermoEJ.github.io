@@ -63,7 +63,7 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
               <ul class="flex flex-col gap-6">
                 {
                   posts[year].map((post) => (
-                    <li>
+                    <li class="animate">
                       <ArrowCard entry={post}/>
                     </li>
                   ))
