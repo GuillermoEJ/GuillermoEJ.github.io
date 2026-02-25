@@ -3,7 +3,7 @@ title: "Back to Mp3"
 description: "Simple automation tool to download your Spotify and YouTube playlists localy."
 date: "Jul 1 2025"
 demoURL: ""
-repoURL: "https://github.com/GuillermoEJ/Spotify-Youtube-playlist-downloader"
+repoURL: "https://github.com/GuillermoEJ/StreamToMP3"
 ---
 
 # Spotify/YouTube to Local MP3
