@@ -10,27 +10,35 @@ export const SITE: Site = {
 
 export const HOME: Metadata = {
   TITLE: "Home",
-  DESCRIPTION: "A personal website where I write about my interests.",
+  DESCRIPTION: "Software engineer passionate about building scalable systems and learning new technologies.",
 };
 
 export const BLOG: Metadata = {
   TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
+  DESCRIPTION: "Technical articles, engineering insights, and learning experiences.",
 };
 
 export const WORK: Metadata = {
   TITLE: "Work",
-  DESCRIPTION: "Where I have worked and what I have done.",
+  DESCRIPTION: "Professional experience and internships.",
 };
 
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
-  DESCRIPTION: "A collection of my projects, with links to repositories.",
+  DESCRIPTION: "Featured projects demonstrating technical skills and problem-solving.",
 };
 
 export const SOCIALS: Socials = [
   { 
     NAME: "linkedin",
     HREF: "https://www.linkedin.com/in/guillermoej",
+  },
+  {
+    NAME: "github",
+    HREF: "https://github.com/GuillermoEJ",
+  },
+  {
+    NAME: "email",
+    HREF: "mailto:guillermo.esp.jim@gmail.com",
   }
 ];

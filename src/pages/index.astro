@@ -4,7 +4,6 @@ import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
-import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
 const blog = (await getCollection("blog"))
@@ -17,78 +16,36 @@ const projects = (await getCollection("projects"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
-const allwork = (await getCollection("work"))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-  .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
-
-const work = await Promise.all(
-  allwork.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
-);
-
-const time = new Date()
-const fullTime = time.toLocaleTimeString('es-ES', {
-  hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',
-  hour12: false
-});
-
 ---
+
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h4 class="animate font-semibold subpixel-antialiased text-xl text-black dark:text-white">
-      <div class="container">
-        <span class="box text-black dark:text-white">
-          <h2>~$ ./Guillermo_España.sh</h2>
-        </span>
-      </div>
-    </h4>
-    
-    <div class="h-5"></div>
     <div class="space-y-16">
       <section>
-        <div class="flex flex-col lg:flex-row gap-8 lg:items-start">
-          <div class="flex-shrink-0 lg:w-1/3">
-            <img 
-              src="/retroComputer.jpg" 
-              alt="Retro computer" 
-              class="animate space-y-6"
-            />
-          </div>
-          <article class="space-y-4 flex-1">
-            <p class="animate">
-              Hi I'm Guillermo. I'm a final-year Software Engineering student at the 
-              Technical University of Madrid
-              (<Link href="https://www.upm.es/internacional" aria-label="UPM's international website" external>
-                UPM
-              </Link>).
-              
-            </p>
-            <p class="animate">
-             I'm 23 and currently based in Madrid, Spain. On this website, 
-             I write about technical and life-related topics. You can also find some of my personal projects 
-             and my Japanese learning roadmap.
-            </p>
-            <span class="font-bold text-lg">
-              <p class="animate">
-                Currently Learning:
+        <div class="flex flex-col gap-8">
+          <article class="space-y-6">
+            <div class="space-y-3">
+              <h2 class="text-2xl font-bold animate text-black dark:text-white">
+                Guillermo España
+              </h2>
+              <p class="text-sm opacity-75 animate">
+                Software Engineer | Madrid, Spain
               </p>
-            </span>
+            </div>
+            
             <p class="animate">
-              * force push and pray
+              Software Engineering student at the 
+              <Link href="https://www.upm.es/internacional" aria-label="UPM's international website" external>
+                Technical University of Madrid
+              </Link> (UPM), currently interning at 
+              <Link href="https://www.mobility.siemens.com" aria-label="Siemens Mobility" external>
+                Siemens Mobility
+              </Link>.
             </p>
+            
             <p class="animate">
-              * LIQUID
-            </p>
-            <p class="animate">
-             * make clean
-            </p>
-            <p class="animate">
-             * Denormalization
+              I specialize in backend development and automation, with a focus on building scalable systems and clean code practices. Passionate about learning emerging technologies and solving complex engineering challenges.
             </p>
           </article>
         </div>
@@ -97,13 +54,11 @@ const fullTime = time.toLocaleTimeString('es-ES', {
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            ~$ ls -t Blog | head -n 3
+            Recent Articles
           </h5>
-          <!--
           <Link href="/blog">
-            See all posts
+            View all
           </Link>
-          -->
         </div>
         <ul class="flex flex-col gap-4">
           {blog.map(post => (
@@ -114,81 +69,42 @@ const fullTime = time.toLocaleTimeString('es-ES', {
         </ul>
       </section>
 
-      <!--
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            Work Experience
-          </h5>
-          <Link href="/work">
-            See all work eddit esto jasjasj
-          </Link>
-        </div>
-        <ul class="flex flex-col space-y-4">
-          {work.map(entry => (
-            <li>
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
-              <div class="font-semibold text-black dark:text-white">
-                {entry.data.company}
-              </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
-              </div>
-              <article>
-                <entry.Content />
-              </article>
-            </li>
-          ))}
-        </ul>
-      </section>
-      -->
-
-      <!--
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
+            Featured Projects
           </h5>
           <Link href="/projects">
-            See all projects
+            View all
           </Link>
         </div>
-        <ul class="flex flex-col gap-4">
-          {projects.map(project => (
-            <li>
-              <ArrowCard entry={project} />
+        <ul class="animate flex flex-col gap-4">
+          {projects.map((project) => (
+            <li class="animate">
+              <ArrowCard entry={project}/>
             </li>
           ))}
         </ul>
       </section>
-      -->
 
       <section class="animate space-y-4">
         <h5 class="font-semibold text-black dark:text-white">
-          ~$ cat Contact_Me.txt
+          Get in Touch
         </h5>
         <article>
           <p>
-            If you want to get in touch or just to say hi, follow me on social media
-            or send me an email.
+            I'm open to opportunities, collaborations, and conversations about software engineering, 
+            technology, or whatever interests you. Feel free to reach out!
           </p>
         </article>
-        <ul class="flex flex-wrap gap-2">
+        <ul class="flex flex-wrap gap-3">
           {SOCIALS.map(SOCIAL => (
-            <li class="flex gap-x-2 text-nowrap">
+            <li>
               <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
+                {SOCIAL.NAME === 'email' ? SITE.EMAIL : SOCIAL.NAME}
               </Link>
-              {"/"}
             </li>
           ))}
-          <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              {SITE.EMAIL}
-            </Link>
-          </li>
         </ul>
       </section>
     </div>

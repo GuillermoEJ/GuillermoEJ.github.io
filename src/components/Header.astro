@@ -6,43 +6,34 @@ import { SITE } from "@consts";
 
 <header>
   <Container>
-    <div class="flex flex-wrap gap-y-2 justify-between">
+    <div class="flex flex-wrap gap-y-2 justify-between items-center">
       <Link href="/" underline={false}>
-        <div class="font-semibold">
-          About Me
+        <div class="text-black dark:text-white">
+          Home
         </div>
       </Link>
-      <nav class="flex gap-1">
+      <nav class="flex gap-3">
+        <Link href="/work">
+          work
+        </Link>
+        <span>
+          {`/`}
+        </span>
+        <Link href="/projects">
+          projects
+        </Link>
+        <span>
+          {`/`}
+        </span>
         <Link href="/blog">
           blog
         </Link>
         <span>
           {`/`}
         </span>
-        <Link href="/work">
-          work
-        </Link>
-       
-        {/* <span>
-          {`/`}
-        </span>
-        <Link href="/projects">
-          projects
-        </Link> */}
-
-        <span>
-          {`/`}
-        </span>
-        <a href="https://github.com/GuillermoEJ" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 decoration-black/15 dark:decoration-white/30 hover:text-black dark:hover:text-white transition-colors duration-300">
-          github
-        </a>
-        <span>
-          {`/`}
-        </span>
         <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 decoration-black/15 dark:decoration-white/30 hover:text-black dark:hover:text-white transition-colors duration-300">
           cv
         </a>
-        
       </nav>
     </div>
   </Container>
