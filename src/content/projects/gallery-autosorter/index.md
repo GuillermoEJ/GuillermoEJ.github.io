@@ -1,7 +1,7 @@
 ---
-title: "Gallery Autosorter"
+title: "Gallery Autosorter Tool"
 description: "Automatic photo organization tool that sorts images by date using EXIF metadata."
-date: "Feb 2026"
+date: "December 9 2025"
 demoURL: ""
 repoURL: "https://github.com/GuillermoEJ/gallery-autosorter"
 ---
@@ -52,18 +52,6 @@ The application will guide you through:
 3. Optionally specify a date range to filter photos
 4. Confirm and start the copy process
 
-### Debug Tools
-
-**Inspect a Single Image**
-```bash
-python debug_exif.py
-```
-
-**Analyze a Folder**
-```bash
-python debug_folder.py
-```
-
 ## How It Works
 
 1. **Date Detection**: Tries multiple EXIF methods, then falls back to file timestamp
@@ -75,4 +63,4 @@ python debug_folder.py
 - **Pillow**: Image processing and EXIF extraction
 - **piexif**: Additional EXIF metadata support
 
----
+

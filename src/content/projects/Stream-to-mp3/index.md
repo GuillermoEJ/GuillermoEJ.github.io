@@ -1,6 +1,6 @@
 ---
-title: "Back to Mp3"
-description: "Simple automation tool to download your Spotify and YouTube playlists localy."
+title: "Stream To Mp3 Tool"
+description: "Automation tool to download and listen to your Spotify and YouTube playlists localy."
 date: "Jul 1 2025"
 demoURL: ""
 repoURL: "https://github.com/GuillermoEJ/StreamToMP3"
@@ -8,7 +8,7 @@ repoURL: "https://github.com/GuillermoEJ/StreamToMP3"
 
 # Spotify/YouTube to Local MP3
 
-**Spotify-YouTube Playlist Downloader** is a python automation tool I developed to back up my streaming libraries. I wanted a  streamlined way to download high-quality audio files locally, preserving the playlist functionality Spotify and YouTube offer.
+**StreamToMP3** is a python automation tool I developed to back up my streaming libraries. I wanted a  streamlined way to download high-quality audio files locally, preserving the playlist functionality Spotify and YouTube offer.
 
 This project leverages a three-step automated pipeline:
 1. **Metadata Extraction**: Connects to the **Spotify API** to fetch track names, artists, and album details.

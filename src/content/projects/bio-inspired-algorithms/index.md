@@ -1,14 +1,14 @@
 ---
-title: "Bio-Inspired Algorithms"
+title: "Bio-Inspired Algorithm Optimization"
 description: "Game of Life optimization using Genetic Algorithms and Ant Colony Optimization."
-date: "Feb 2026"
+date: "July 28 2025"
 demoURL: ""
 repoURL: "https://github.com/GuillermoEJ/Conway-s-Game-Of-Life-bio-inspired-algorithm-optimizations"
 ---
 
 # Game of Life - Optimization with Bio-Inspired Algorithms
 
-This project implements and compares two bio-inspired optimization algorithms to find optimal initial configurations for **Conway's Game of Life** that exhibit interesting evolutionary behavior.
+In this project I implement and compare two bio-inspired optimization algorithms to find optimal initial configurations for **Conway's Game of Life** that exhibit interesting evolutionary behavior.
 
 ## Optimization Algorithms
 

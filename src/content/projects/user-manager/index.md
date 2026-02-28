@@ -1,7 +1,7 @@
 ---
-title: "User Manager"
+title: "User Manager App"
 description: "Full-stack MERN application with complete CRUD operations and RESTful API."
-date: "Feb 2026"
+date: "November 14 2025"
 demoURL: ""
 repoURL: "https://github.com/GuillermoEJ/UserManager"
 ---
@@ -10,9 +10,7 @@ repoURL: "https://github.com/GuillermoEJ/UserManager"
 
 A comprehensive full-stack web application built with the **MERN stack** (MongoDB, Express, React, Node.js) that demonstrates complete CRUD operations with a modern, component-based architecture.
 
-## Project Architecture
-
-This is a production-ready template showcasing best practices in full-stack JavaScript development with separation of concerns between client and server.
+This is a production-ready PoC showcasing full-stack JavaScript development with separation of concerns between client and server.
 
 ## Features
 
