@@ -1,6 +1,6 @@
 ---
-title: "Gallery Autosorter Tool"
-description: "Automatic photo organization tool that sorts images by date using EXIF metadata."
+title: "Gallery Manager Tool"
+description: "Gallery organization tool that sorts images."
 date: "December 9 2025"
 demoURL: ""
 repoURL: "https://github.com/GuillermoEJ/gallery-autosorter"
@@ -8,7 +8,7 @@ repoURL: "https://github.com/GuillermoEJ/gallery-autosorter"
 
 # Gallery Autosorter
 
-A Python application that automatically organizes photos into a year/month folder structure based on EXIF metadata or file timestamps. Perfect for managing large photo libraries with minimal effort.
+A Python application that automatically organizes photos into a year/month folder structure based on EXIF metadata or file timestamps. 
 
 ## Features
 
