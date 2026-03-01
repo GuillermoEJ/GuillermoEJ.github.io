@@ -40,27 +40,5 @@ A Python application that automatically organizes photos into a year/month folde
 | **EXIF Handling** | piexif, PIL |
 | **UI** | Tkinter (standard dialogs) |
 
-## Usage
-
-### Main Application
-```bash
-python src/main.py
-```
-The application will guide you through:
-1. Select source folder (where your photos are)
-2. Select destination folder (where organized photos will be copied)
-3. Optionally specify a date range to filter photos
-4. Confirm and start the copy process
-
-## How It Works
-
-1. **Date Detection**: Tries multiple EXIF methods, then falls back to file timestamp
-2. **Organization**: Copies photos to `destination/YYYY/MM/filename`
-3. **Safety**: Skips files that already exist to prevent overwrites
-
-## Dependencies
-
-- **Pillow**: Image processing and EXIF extraction
-- **piexif**: Additional EXIF metadata support
 
 

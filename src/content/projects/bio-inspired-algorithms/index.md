@@ -36,15 +36,6 @@ Metaheuristic inspired by ant foraging behavior, using pheromone trails to guide
 | **Scientific Computing** | NumPy, SciPy |
 | **Graph Analysis** | NetworkX |
 
-## Core Modules
-
-- **src/gameoflife.py**: Interactive Game of Life simulator
-- **src/GA.py**: Genetic Algorithm implementation
-- **src/ACO.py**: Ant Colony Optimization implementation
-- **analysis/analisis.py**: Statistical analysis and visualization
-- **tests/tests.py**: Performance comparison tests
-
-
 ## Results
 
 The project generates and saves:

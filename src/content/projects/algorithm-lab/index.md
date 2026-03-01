@@ -38,17 +38,6 @@ Divides problems into smaller subproblems, solves them recursively, and combines
 ### Module 3: Backtracking
 Explores all possible combinations recursively, pruning useless branches to optimize search.
 
-**Algorithms:**
-- Subset Sum - Find subset with exact sum
-- Knight's Tour - Complete tour on board without repetition
-- N-Queens Problem - Place N queens without threatening each other
-- Optimal Knapsack - Maximize value with weight limit
-- Optimal Change - Minimum number of coins
-- Exact Cost Path - Route with specific length
-- Graph Coloring - Color vertices with minimum colors
-
-**Use Case:** For combinatorial problems and exhaustive search patterns.
-
 ## Tech Stack
 
 | Component | Technology |

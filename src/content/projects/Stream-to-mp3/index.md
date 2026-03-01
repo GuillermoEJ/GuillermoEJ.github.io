@@ -35,4 +35,3 @@ This project leverages a three-step automated pipeline:
 | **Authentication** | OAuth 2.0 |
 | **Environment Management** | python-dotenv |
 
----

@@ -34,21 +34,6 @@ This is a production-ready PoC showcasing full-stack JavaScript development with
 | **Data Modeling** | Mongoose ODM |
 | **Runtime** | Node.js |
 
-## Key Capabilities
-
-### Backend (Express.js)
-- RESTful endpoints for user management
-- MongoDB integration with Mongoose schemas
-- Modular route organization
-- Error handling and validation
-
-### Frontend (React)
-- Reusable React components
-- Hook-based state management
-- Modal dialogs for user interactions
-- Form handling and validation
-- Dynamic list rendering
-
 ## Technologies Demonstrated
 
 - **MERN Stack**: Industry-standard full-stack JavaScript framework
@@ -58,4 +43,3 @@ This is a production-ready PoC showcasing full-stack JavaScript development with
 - **Frontend Patterns**: React Hooks, component composition
 - **Routing**: SPA navigation with React Router
 
----
