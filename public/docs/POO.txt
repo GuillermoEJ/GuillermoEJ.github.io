@@ -1,0 +1,58 @@
+Introducción. Patrones, Conocimiento y complejidad. 
+Modelo del Dominio. UML. Software 
+Paradigmas de la Programación. 
+Imperativa vs Declarativa. 
+Orientada a Procesos vs Objetos 
+Crisis del Software. 
+Diseño del Software. 
+Principio de Ocultación de Información. 
+Abstracción, 
+Encapsulación, 
+Modularidad y Jerarquía. 
+Lenguaje de Programación Java 
+Programación Imperativa 
+Comentarios. Palabras Reservadas, Identificadores y Signos de Puntuación 
+Tipos Primitivos. Literales 
+Declaración de Variables y Constantes. final 
+Expresiones. Operadores, precedencia y asociatividad 
+Sentencia de Asignación 
+Entrada y Salida 
+Programación Estructurada 
+Sentencia Secuencial 
+Sentencias Alternativas. If y switch 
+Sentencias Iterativas. while, do/while y for 
+Vectores de Tipos Primitivos. arrays unidimensionales 
+Matrices de Tipos Primitivos. arrays n-dimensionales 
+Programación estructurada y código limpio 
+Programación Orientada a Objetos 
+Vista Pública de las Clases. Constructores y Métodos 
+Vista Pública de los Objetos. Instanciación y paso de mensajes 
+Vista Privada de las Clases. Atributos y constructores y métodos 
+Vista Privada de los Objetos. Desencadenamiento de objetos y mensajes 
+Miembros de Clase. Atributos, métodos y código estático 
+Cadenas de Caracteres 
+Clases de Recubrimiento 
+Enumerados 
+Comprobar clases 
+Fundamentos de Diseño 
+Modelo del Dominio. Estrategias de Clasificación 
+Relaciones entre Clases. Composición/Agregación, Asociación y Dependencia 
+Código Autoexplicativo. Formato, Comentarios y Nombrado 
+Código Consistente. Estándares y Alertas 
+Código Mínimo. Código Muerto, YAGNI y DRY 
+Diseño Modular 
+Cohesión, Acoplamiento y Tamaño 
+Modularidad. Número de módulos, Distribución de Responsabilidades y Jerarquización  
+Interfaz: 
+Código Sucio por Clases Alternativas con Interfaces Diferentes, 
+Principios del Menor Compromiso y la Menor Sorpresa, 
+Interfaz Suficiente, Completa y Primitiva 
+Diseño por Contrato. Precondiciones, postcondiciones e invariantes. Aserciones 
+Implementación. Cohesión (Principio de Única Responsabilidad), Acoplamiento y 
+Tamaño 
+Patrón de Indirección e Invención Pura. Vista, Controlador y Creador 
+Programación Orientada a Objetos /T2 
+Relación de Herencia. Jerarquías de Clasificación 
+Herencia por Extensión. Clases Abstractas. Limitaciones 
+Herencia por Implementación. Interfaces 
+Polimorfismo vs Sobrecarga. Conversión de Tipos 
