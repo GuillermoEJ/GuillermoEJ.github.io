@@ -1,63 +1,108 @@
 ---
-import Head from "@components/Head.astro";
-import Footer from "@components/Footer.astro";
+import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
-import { HOME, SITE } from "@consts";
+import { SITE, HOME, SOCIALS } from "@consts";
+
+const blog = (await getCollection("blog"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection("projects"))
+  .filter(project => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <Head title={`${HOME.TITLE} | ${SITE.NAME}`} description={HOME.DESCRIPTION} />
-  </head>
-  <body>
-    <div class="noise"></div>
-    <div class="overlay"></div>
-    <div class="animated-background">
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-    </div>
-    <header>
-      <Container>
-        <div class="flex flex-wrap gap-y-2 justify-between items-center">
-          <Link href="/" underline={false}>
-            <div class="text-black dark:text-white">
-              Home
+
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <div class="space-y-16">
+      <section>
+        <div class="flex flex-col gap-8">
+          <article class="space-y-6">
+            <div class="space-y-3">
+              <h2 class="text-2xl font-bold animate text-black dark:text-white">
+                Guillermo España
+              </h2>
+              <p class="opacity-50 animate">
+                Software Engineer | Madrid, Spain
+              </p>
             </div>
-          </Link>
-          <nav class="flex gap-3">
-          </nav>
-        </div>
-      </Container>
-    </header>
-    <main>
-      <Container>
-        <div class="flex items-center justify-center min-h-[70vh]">
-          <div class="space-y-6 text-center">
-            <h1 class="text-4xl font-bold animate text-black dark:text-white">
-              Sorry, changes in progress! 🔧
-            </h1>
-            <p class="text-lg opacity-75 animate">
-              We'll be back soon with awesome updates.
+            <p class="animate">
+              Currently studing the at the 
+              <Link href="https://www.upm.es/internacional" aria-label="UPM's international website" external>
+                Technical University of Madrid
+              </Link> (UPM) and interning at 
+              <Link href="https://www.mobility.siemens.com" aria-label="Siemens Mobility" external>
+                Siemens Mobility
+              </Link>.
+              I am a software engineer passionate about computer architecture, operating systems and machine learning.
             </p>
-          </div>
+          </article>
         </div>
-      </Container>
-    </main>
-    <Footer />
-  </body>
-</html>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Recent Articles
+          </h5>
+          <Link href="/blog">
+            View all
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {blog.map(post => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Recent Projects
+          </h5>
+          <Link href="/projects">
+            View all
+          </Link>
+        </div>
+        <ul class="animate flex flex-col gap-4">
+          {projects.map((project) => (
+            <li class="animate">
+              <ArrowCard entry={project}/>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Get in Touch
+        </h5>
+        <article>
+          <p>
+            I'm open to opportunities, collaborations and conversations about software engineering
+            and open source projects. Feel free to reach out!
+          </p>
+        </article>
+        <ul class="flex flex-wrap gap-3">
+          {SOCIALS.map(SOCIAL => (
+            <li>
+              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                {SOCIAL.NAME === 'email' ? SITE.EMAIL : SOCIAL.NAME}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </Container>
+</PageLayout>

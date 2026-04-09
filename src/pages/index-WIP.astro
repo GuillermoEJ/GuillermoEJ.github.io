@@ -1,0 +1,63 @@
+---
+import Head from "@components/Head.astro";
+import Footer from "@components/Footer.astro";
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+import { HOME, SITE } from "@consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head title={`${HOME.TITLE} | ${SITE.NAME}`} description={HOME.DESCRIPTION} />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <div class="overlay"></div>
+    <div class="animated-background">
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+    <header>
+      <Container>
+        <div class="flex flex-wrap gap-y-2 justify-between items-center">
+          <Link href="/" underline={false}>
+            <div class="text-black dark:text-white">
+              Home
+            </div>
+          </Link>
+          <nav class="flex gap-3">
+          </nav>
+        </div>
+      </Container>
+    </header>
+    <main>
+      <Container>
+        <div class="flex items-center justify-center min-h-[70vh]">
+          <div class="space-y-6 text-center">
+            <h1 class="text-4xl font-bold animate text-black dark:text-white">
+              Sorry, changes in progress! 🔧
+            </h1>
+            <p class="text-lg opacity-75 animate">
+              We'll be back soon with awesome updates.
+            </p>
+          </div>
+        </div>
+      </Container>
+    </main>
+    <Footer />
+  </body>
+</html>
