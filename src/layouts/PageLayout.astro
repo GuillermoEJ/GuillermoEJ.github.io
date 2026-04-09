@@ -20,6 +20,7 @@ const { title, description } = Astro.props;
   <body>
     <div class="noise"></div>
     <div class="overlay"></div>
+    <div class="sphere-projection"></div>
     <div class="animated-background">
       <!-- 15 estrellas que titilan como en un cielo nocturno -->
       <div class="star"></div>
@@ -43,5 +44,60 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <script>
+      function initSphereTracking() {
+        const projection = document.querySelector('.sphere-projection');
+        if (!projection) return;
+        
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        
+        function updateProjection() {
+          const x = (mouseX / window.innerWidth) * 100;
+          const y = (mouseY / window.innerHeight) * 100;
+          projection.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 30%, transparent 70%)`;
+        }
+        
+        // Tracking del ratón - siempre activo con capture phase
+        const handleMouseMove = (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          updateProjection();
+        };
+        
+        // Reiniciar tracking después de cada click
+        const handleClick = () => {
+          updateProjection();
+        };
+        
+        // Actualizar si cambia el tamaño de la ventana
+        const handleResize = () => {
+          updateProjection();
+        };
+        
+        document.addEventListener('mousemove', handleMouseMove, true);
+        document.addEventListener('click', handleClick, true);
+        window.addEventListener('resize', handleResize);
+        
+        // Inicializar
+        updateProjection();
+        
+        // Limpiar listeners anteriores antes de reinicializar
+        return () => {
+          document.removeEventListener('mousemove', handleMouseMove, true);
+          document.removeEventListener('click', handleClick, true);
+          window.removeEventListener('resize', handleResize);
+        };
+      }
+      
+      // Inicializar en carga
+      let cleanup = initSphereTracking();
+      
+      // Reinicializar después de cambios de página (Astro View Transitions)
+      document.addEventListener('astro:after-swap', () => {
+        if (cleanup) cleanup();
+        cleanup = initSphereTracking();
+      });
+    </script>
   </body>
 </html>
