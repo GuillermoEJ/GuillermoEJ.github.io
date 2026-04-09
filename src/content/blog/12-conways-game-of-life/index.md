@@ -2,7 +2,7 @@
 title: "Conway's Game of Life"
 description: "Discovering how simple rules can create complex emergent behavior through cellular automata and John Conway's legendary Game of Life."
 date: "Jan 28 2026"
-draft: false
+draft: true
 tags: ["technical"]
 ---
 

@@ -2,7 +2,7 @@
 title: "The Logic of Relative Clauses: Modifying Nouns with Verbs"
 description: "Building complex sentences by placing verbs directly in front of nouns."
 date: "Sep 30 2024"
-draft: false
+draft: true
 tags: ["japanese"]
 ---
 

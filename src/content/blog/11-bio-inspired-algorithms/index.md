@@ -2,7 +2,7 @@
 title: "Bio-Inspired Algorithms: \"trust me bro\" Problem-Solving"
 description: "Exploring how algorithms inspired by natural processes like evolution, swarms, and neural networks can solve complex computational problems."
 date: "Jan 28 2025"
-draft: false
+draft: true
 tags: ["technical"]
 ---
 

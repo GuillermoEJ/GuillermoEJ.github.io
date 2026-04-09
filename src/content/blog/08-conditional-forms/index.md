@@ -2,7 +2,7 @@
 title: "Conditional Structures: ～たら and ～ば"
 description: "Mastering the 'if' and 'when' of Japanese grammar."
 date: "Oct 27 2024"
-draft: false
+draft: true
 tags: ["japanese"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Mastering the Te-form (て形): The Universal Connector"
 description: "A deep dive into the conjugation rules for Group I, II, and III verbs and how they unlock complex Japanese sentences."
 date: "Sep 10 2023"
-draft: false
+draft: true
 tags: ["japanese"]
 ---
 

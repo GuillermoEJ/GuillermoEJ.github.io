@@ -3,6 +3,7 @@ title: "Gallery Manager Tool"
 description: "Gallery organization tool that sorts images."
 date: "December 9 2025"
 demoURL: ""
+draft: true
 repoURL: "https://github.com/GuillermoEJ/gallery-autosorter"
 ---
 

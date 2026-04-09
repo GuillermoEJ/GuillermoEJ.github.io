@@ -2,7 +2,7 @@
 title: "Expressing Ability: The Nuances of the Potential Form"
 description: "Moving beyond basic structures to conjugate verbs that express what you can and cannot do."
 date: "Dec 17 2023"
-draft: false
+draft: true
 tags: ["japanese"]
 ---
 

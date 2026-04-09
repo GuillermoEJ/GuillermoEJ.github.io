@@ -3,6 +3,7 @@ title: "User Manager App"
 description: "Full-stack MERN application with complete CRUD operations and RESTful API."
 date: "November 14 2025"
 demoURL: ""
+draft: true
 repoURL: "https://github.com/GuillermoEJ/UserManager"
 ---
 
