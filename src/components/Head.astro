@@ -259,14 +259,22 @@ function toggleTheme(dark) {
     
     if (!button || !countSpan) return;
     
-    // Load visitor count from localStorage
-    let visitorCount = parseInt(localStorage.getItem("visitorCount") || "0", 10);
+    // Load visitor count from localStorage, default to 42 (simulated global counter)
+    let visitorCount = parseInt(localStorage.getItem("visitorCount") || "42", 10);
+    const hasClickedInSession = localStorage.getItem("hasClickedInSession") === "true";
+    
     updateCountDisplay(visitorCount);
+    
+    // Disable button if already clicked in this session
+    if (hasClickedInSession) {
+      button.disabled = true;
+      button.style.opacity = "0.5";
+    }
     
     const heartIcon = button.querySelector("svg");
     
     button.addEventListener("mouseenter", () => {
-      if (heartIcon) {
+      if (!hasClickedInSession && heartIcon) {
         heartIcon.classList.add("heart-icon");
       }
     });
@@ -278,19 +286,20 @@ function toggleTheme(dark) {
     });
     
     button.addEventListener("click", () => {
-      visitorCount++;
-      localStorage.setItem("visitorCount", visitorCount.toString());
-      updateCountDisplay(visitorCount);
+      if (!hasClickedInSession) {
+        visitorCount++;
+        localStorage.setItem("visitorCount", visitorCount.toString());
+        localStorage.setItem("hasClickedInSession", "true");
+        updateCountDisplay(visitorCount);
+        
+        // Disable button after first click
+        button.disabled = true;
+        button.style.opacity = "0.5";
+      }
     });
     
     function updateCountDisplay(count) {
-      if (count === 0) {
-        countSpan.textContent = "";
-      } else if (count === 1) {
-        countSpan.textContent = "1";
-      } else {
-        countSpan.textContent = `${count}`;
-      }
+      countSpan.textContent = `${count}`;
     }
   }
 
