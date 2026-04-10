@@ -18,33 +18,122 @@
 
 .star {
   position: absolute;
-  width: 3px;
-  height: 3px;
-  background: rgba(120, 119, 198, 0.3);
-  animation: twinkle 8s ease-in-out infinite;
-  opacity: 0;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  animation: twinkle 6s ease-in-out infinite;
+  opacity: 0.3;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.9);
 }
 
 .dark .star {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.85);
 }
 
-/* Posiciones aleatorias para las estrellas */
-.star:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; }
-.star:nth-child(2) { top: 25%; left: 70%; animation-delay: 2s; }
-.star:nth-child(3) { top: 35%; left: 45%; animation-delay: 5s; }
-.star:nth-child(4) { top: 50%; left: 15%; animation-delay: 1s; }
-.star:nth-child(5) { top: 65%; left: 80%; animation-delay: 4s; }
-.star:nth-child(6) { top: 75%; left: 35%; animation-delay: 3s; }
-.star:nth-child(7) { top: 20%; left: 85%; animation-delay: 6s; }
-.star:nth-child(8) { top: 40%; left: 60%; animation-delay: 2.5s; }
-.star:nth-child(9) { top: 55%; left: 25%; animation-delay: 4.5s; }
-.star:nth-child(10) { top: 70%; left: 50%; animation-delay: 1.5s; }
-.star:nth-child(11) { top: 30%; left: 10%; animation-delay: 7s; }
-.star:nth-child(12) { top: 45%; left: 75%; animation-delay: 3.5s; }
-.star:nth-child(13) { top: 60%; left: 40%; animation-delay: 5.5s; }
-.star:nth-child(14) { top: 80%; left: 65%; animation-delay: 2.2s; }
-.star:nth-child(15) { top: 10%; left: 55%; animation-delay: 6.5s; }
+/* Posiciones detalladas de 100 estrellas distribuidas realísticamente */
+.star:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.star:nth-child(2) { top: 15%; left: 12%; animation-delay: 0.5s; }
+.star:nth-child(3) { top: 8%; left: 25%; animation-delay: 1s; }
+.star:nth-child(4) { top: 20%; left: 18%; animation-delay: 1.5s; }
+.star:nth-child(5) { top: 12%; left: 35%; animation-delay: 2s; }
+.star:nth-child(6) { top: 18%; left: 42%; animation-delay: 2.5s; }
+.star:nth-child(7) { top: 5%; left: 55%; animation-delay: 3s; }
+.star:nth-child(8) { top: 22%; left: 68%; animation-delay: 3.5s; }
+.star:nth-child(9) { top: 10%; left: 78%; animation-delay: 4s; }
+.star:nth-child(10) { top: 16%; left: 88%; animation-delay: 4.5s; }
+.star:nth-child(11) { top: 30%; left: 8%; animation-delay: 5s; }
+.star:nth-child(12) { top: 35%; left: 22%; animation-delay: 5.5s; }
+.star:nth-child(13) { top: 28%; left: 38%; animation-delay: 0.8s; }
+.star:nth-child(14) { top: 32%; left: 48%; animation-delay: 1.3s; }
+.star:nth-child(15) { top: 25%; left: 65%; animation-delay: 1.8s; }
+.star:nth-child(16) { top: 38%; left: 82%; animation-delay: 2.3s; }
+.star:nth-child(17) { top: 42%; left: 15%; animation-delay: 2.8s; }
+.star:nth-child(18) { top: 45%; left: 28%; animation-delay: 3.3s; }
+.star:nth-child(19) { top: 40%; left: 52%; animation-delay: 3.8s; }
+.star:nth-child(20) { top: 48%; left: 72%; animation-delay: 4.3s; }
+.star:nth-child(21) { top: 55%; left: 10%; animation-delay: 4.8s; }
+.star:nth-child(22) { top: 58%; left: 32%; animation-delay: 0.6s; }
+.star:nth-child(23) { top: 52%; left: 45%; animation-delay: 1.1s; }
+.star:nth-child(24) { top: 60%; left: 62%; animation-delay: 1.6s; }
+.star:nth-child(25) { top: 65%; left: 85%; animation-delay: 2.1s; }
+.star:nth-child(26) { top: 68%; left: 20%; animation-delay: 2.6s; }
+.star:nth-child(27) { top: 70%; left: 40%; animation-delay: 3.1s; }
+.star:nth-child(28) { top: 62%; left: 75%; animation-delay: 3.6s; }
+.star:nth-child(29) { top: 75%; left: 15%; animation-delay: 4.1s; }
+.star:nth-child(30) { top: 78%; left: 55%; animation-delay: 4.6s; }
+.star:nth-child(31) { top: 82%; left: 35%; animation-delay: 5.1s; }
+.star:nth-child(32) { top: 85%; left: 70%; animation-delay: 5.6s; }
+.star:nth-child(33) { top: 88%; left: 25%; animation-delay: 0.4s; }
+.star:nth-child(34) { top: 90%; left: 80%; animation-delay: 0.9s; }
+.star:nth-child(35) { top: 92%; left: 50%; animation-delay: 1.4s; }
+.star:nth-child(36) { top: 95%; left: 12%; animation-delay: 1.9s; }
+.star:nth-child(37) { top: 3%; left: 42%; animation-delay: 2.4s; }
+.star:nth-child(38) { top: 7%; left: 68%; animation-delay: 2.9s; }
+.star:nth-child(39) { top: 14%; left: 92%; animation-delay: 3.4s; }
+.star:nth-child(40) { top: 24%; left: 5%; animation-delay: 3.9s; }
+/* Vía Láctea - cluster concentrado en esquina superior derecha */
+.star:nth-child(41) { top: 8%; left: 80%; animation-delay: 0.2s; }
+.star:nth-child(42) { top: 11%; left: 83%; animation-delay: 0.7s; }
+.star:nth-child(43) { top: 6%; left: 78%; animation-delay: 1.2s; }
+.star:nth-child(44) { top: 13%; left: 85%; animation-delay: 1.7s; }
+.star:nth-child(45) { top: 9%; left: 81%; animation-delay: 2.2s; }
+.star:nth-child(46) { top: 15%; left: 87%; animation-delay: 2.7s; }
+.star:nth-child(47) { top: 7%; left: 82%; animation-delay: 3.2s; }
+.star:nth-child(48) { top: 14%; left: 84%; animation-delay: 3.7s; }
+.star:nth-child(49) { top: 10%; left: 79%; animation-delay: 4.2s; }
+.star:nth-child(50) { top: 12%; left: 86%; animation-delay: 4.7s; }
+.star:nth-child(51) { top: 18%; left: 75%; animation-delay: 0.3s; }
+.star:nth-child(52) { top: 21%; left: 78%; animation-delay: 0.8s; }
+.star:nth-child(53) { top: 23%; left: 81%; animation-delay: 1.3s; }
+.star:nth-child(54) { top: 20%; left: 84%; animation-delay: 1.8s; }
+.star:nth-child(55) { top: 25%; left: 77%; animation-delay: 2.3s; }
+.star:nth-child(56) { top: 22%; left: 82%; animation-delay: 2.8s; }
+.star:nth-child(57) { top: 24%; left: 79%; animation-delay: 3.3s; }
+.star:nth-child(58) { top: 19%; left: 83%; animation-delay: 3.8s; }
+.star:nth-child(59) { top: 26%; left: 76%; animation-delay: 4.3s; }
+.star:nth-child(60) { top: 23%; left: 85%; animation-delay: 4.8s; }
+/* Estrellas esparcidas adicionales */
+.star:nth-child(61) { top: 11%; left: 48%; animation-delay: 0.1s; }
+.star:nth-child(62) { top: 19%; left: 72%; animation-delay: 0.6s; }
+.star:nth-child(63) { top: 27%; left: 92%; animation-delay: 1.1s; }
+.star:nth-child(64) { top: 33%; left: 12%; animation-delay: 1.6s; }
+.star:nth-child(65) { top: 44%; left: 35%; animation-delay: 2.1s; }
+.star:nth-child(66) { top: 56%; left: 78%; animation-delay: 2.6s; }
+.star:nth-child(67) { top: 64%; left: 22%; animation-delay: 3.1s; }
+.star:nth-child(68) { top: 72%; left: 48%; animation-delay: 3.6s; }
+.star:nth-child(69) { top: 81%; left: 8%; animation-delay: 4.1s; }
+.star:nth-child(70) { top: 89%; left: 68%; animation-delay: 4.6s; }
+.star:nth-child(71) { top: 6%; left: 18%; animation-delay: 5.1s; }
+.star:nth-child(72) { top: 17%; left: 55%; animation-delay: 5.6s; }
+.star:nth-child(73) { top: 29%; left: 75%; animation-delay: 0.5s; }
+.star:nth-child(74) { top: 39%; left: 8%; animation-delay: 1.0s; }
+.star:nth-child(75) { top: 54%; left: 38%; animation-delay: 1.5s; }
+.star:nth-child(76) { top: 67%; left: 65%; animation-delay: 2.0s; }
+.star:nth-child(77) { top: 76%; left: 42%; animation-delay: 2.5s; }
+.star:nth-child(78) { top: 86%; left: 90%; animation-delay: 3.0s; }
+.star:nth-child(79) { top: 4%; left: 75%; animation-delay: 3.5s; }
+.star:nth-child(80) { top: 21%; left: 32%; animation-delay: 4.0s; }
+.star:nth-child(81) { top: 31%; left: 82%; animation-delay: 4.5s; }
+.star:nth-child(82) { top: 43%; left: 28%; animation-delay: 5.0s; }
+.star:nth-child(83) { top: 57%; left: 68%; animation-delay: 5.5s; }
+.star:nth-child(84) { top: 69%; left: 12%; animation-delay: 0.2s; }
+.star:nth-child(85) { top: 79%; left: 58%; animation-delay: 0.7s; }
+.star:nth-child(86) { top: 9%; left: 88%; animation-delay: 1.2s; }
+.star:nth-child(87) { top: 23%; left: 15%; animation-delay: 1.7s; }
+.star:nth-child(88) { top: 47%; left: 75%; animation-delay: 2.2s; }
+.star:nth-child(89) { top: 59%; left: 18%; animation-delay: 2.7s; }
+.star:nth-child(90) { top: 73%; left: 72%; animation-delay: 3.2s; }
+.star:nth-child(91) { top: 84%; left: 32%; animation-delay: 3.7s; }
+.star:nth-child(92) { top: 2%; left: 65%; animation-delay: 4.2s; }
+.star:nth-child(93) { top: 26%; left: 58%; animation-delay: 4.7s; }
+.star:nth-child(94) { top: 63%; left: 95%; animation-delay: 5.2s; }
+.star:nth-child(95) { top: 77%; left: 28%; animation-delay: 5.7s; }
+.star:nth-child(96) { top: 13%; left: 38%; animation-delay: 0.3s; }
+.star:nth-child(97) { top: 51%; left: 8%; animation-delay: 0.8s; }
+.star:nth-child(98) { top: 71%; left: 95%; animation-delay: 1.3s; }
+.star:nth-child(99) { top: 87%; left: 45%; animation-delay: 1.8s; }
+.star:nth-child(100) { top: 98%; left: 75%; animation-delay: 2.3s; }
 
 @keyframes twinkle {
   0%, 100% {
