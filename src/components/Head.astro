@@ -244,10 +244,54 @@ function toggleTheme(dark) {
   document.addEventListener("DOMContentLoaded", () => {
     init();
     loadCRTState();
+    initVisitorCounter();
   });
   document.addEventListener("astro:after-swap", () => {
     init();
     loadCRTState();
+    initVisitorCounter();
   });
   preloadTheme();
+
+  function initVisitorCounter() {
+    const button = document.getElementById("i-was-here-button");
+    const countSpan = document.getElementById("visitor-count");
+    
+    if (!button || !countSpan) return;
+    
+    // Load visitor count from localStorage
+    let visitorCount = parseInt(localStorage.getItem("visitorCount") || "0", 10);
+    updateCountDisplay(visitorCount);
+    
+    const heartIcon = button.querySelector("svg");
+    
+    button.addEventListener("mouseenter", () => {
+      if (heartIcon) {
+        heartIcon.classList.add("heart-icon");
+      }
+    });
+    
+    button.addEventListener("mouseleave", () => {
+      if (heartIcon) {
+        heartIcon.classList.remove("heart-icon");
+      }
+    });
+    
+    button.addEventListener("click", () => {
+      visitorCount++;
+      localStorage.setItem("visitorCount", visitorCount.toString());
+      updateCountDisplay(visitorCount);
+    });
+    
+    function updateCountDisplay(count) {
+      if (count === 0) {
+        countSpan.textContent = "";
+      } else if (count === 1) {
+        countSpan.textContent = "1";
+      } else {
+        countSpan.textContent = `${count}`;
+      }
+    }
+  }
+
 </script>

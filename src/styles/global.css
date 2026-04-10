@@ -162,6 +162,15 @@
   }
 }
 
+@keyframes heartSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 html {
   overflow-y: scroll;
   color-scheme: light;
@@ -245,6 +254,10 @@ article {
   @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
   @apply prose-headings:font-semibold prose-p:font-serif;
   @apply prose-headings:text-black prose-headings:dark:text-white;
+}
+
+.heart-icon {
+  animation: heartSpin 0.6s ease-in-out;
 }
 
 @layer utilities {
