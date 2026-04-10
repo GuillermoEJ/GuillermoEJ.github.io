@@ -10,10 +10,6 @@ repoURL: "https://github.com/GuillermoEJ/bibliomania"
 
 I built Bibliomania because I needed a practical solution to one of the most tedious aspects of university study guides: manually searching, locating, and downloading the recommended reading materials. Bibliomania automates this entire process by combining PDF text extraction, intelligent LLM analysis, and smart search capabilities.
 
-## The Problem
-
-Every semester at university, study guides come with extensive bibliography lists. Manually finding, searching, and downloading dozens of books is time-consuming and error-prone. I built Bibliomania to eliminate this friction entirely.
-
 ## How It Works
 
 The tool follows a multi-step intelligent pipeline:
@@ -45,6 +41,3 @@ Building Bibliomania taught me valuable lessons about:
 - Fuzzy string matching for robust book matching
 - Zlib compression for efficient data storage
 
-## Why This Matters
-
-This project represents practical developer empathy: identifying a real pain point and building a tool that saves countless hours for students across the university. It demonstrates full-stack thinking from requirements gathering (understanding the study guide structure) through production (maintaining an indexed database of books).
