@@ -18,13 +18,13 @@ The most powerful leadership principle I've learned is deceptively simple: words
 
 This is the essence of leadership by example. When people see you arriving first, staying late, admitting mistakes, and solving problems rather than complaining about them, they understand that your commitment is genuine. Moral authority, what the Romans called *auctoritas*, cannot be granted by a title. It must be earned through consistency, integrity, and genuine service to others.
 
-Leadership is also deeply situational. There's no one-size-fits-all approach. I've realized that the best leaders are chameleons in the noblest sense—they adapt their style to the context while maintaining unwavering core values. When facing difficulties, they don't cry out in despair; they influence both their team's attitudes and their own, searching for solutions that move everyone forward. This quality, the ability to navigate volatility, uncertainty, complexity, and ambiguity (what we call VICA environments), is what separates ordinary managers from transformational leaders.
+Leadership is also deeply situational. There's no one-size-fits-all approach. I've realized that the best leaders are chameleons in the noblest sense, they adapt their style to the context while maintaining unwavering core values. When facing difficulties, they don't cry out in despair; they influence both their team's attitudes and their own, searching for solutions that move everyone forward. This quality, the ability to navigate volatility, uncertainty, complexity, and ambiguity (what we call VICA environments), is what separates ordinary managers from transformational leaders.
 
-## Day 1: The Foundation—Understanding Motivation and Authority
+## Day 1: The Foundation, Understanding Motivation and Authority
 
 ### The Two Types of Authority
 
-I once was confused about the difference between power and authority. Now I understand this distinction is crucial. **Potestas** is the formal position given to you from above—your title, your formal authority. But **auctoritas**—real authority—is granted by your team. It's the respect they give you because they've seen your character, your competence, and your commitment to their well-being.
+I once was confused about the difference between power and authority. Now I understand this distinction is crucial. **Potestas** is the formal position given to you from above, your title, your formal authority. But **auctoritas**, real authority, is granted by your team. It's the respect they give you because they've seen your character, your competence, and your commitment to their well-being.
 
 Every leader has potestas. Few ever achieve true auctoritas. The path to auctoritas requires understanding the fundamental framework of human motivation and needs.
 
@@ -32,7 +32,7 @@ Every leader has potestas. Few ever achieve true auctoritas. The path to auctori
 
 When I began studying leadership, I realized that beneath every complaint, every resistance to change, every motivation problem, lies an unmet need. The psychologist Maslow outlined this hierarchy perfectly: biological needs, security, belonging, recognition, and self-actualization. But in the workplace, this becomes more nuanced.
 
-People work for much more than a paycheck. Yes, they need security—knowing their job is stable and they can provide for themselves and their families. But they also desperately crave belonging. They want to feel part of something meaningful, to contribute to goals larger than themselves. Recognition matters profoundly; we all want our efforts acknowledged. And above all, many people seek growth—the opportunity to develop their capabilities and move toward becoming their best selves.
+People work for much more than a paycheck. Yes, they need security, knowing their job is stable and they can provide for themselves and their families. But they also desperately crave belonging. They want to feel part of something meaningful, to contribute to goals larger than themselves. Recognition matters profoundly; we all want our efforts acknowledged. And above all, many people seek growth, the opportunity to develop their capabilities and move toward becoming their best selves.
 
 ### Motivating Different Team Members
 
@@ -52,7 +52,7 @@ The equation I learned captures this beautifully: **Motivation = Emotion × Reas
 
 ### The Trust Foundation
 
-I've come to believe that trust is the cornerstone upon which everything else in a team rests. But what is trust, really? It's not simply liking someone or agreeing with them. Trust is the safety that allows people to be vulnerable—to ask stupid questions, to disagree respectfully, to admit mistakes without fearing political consequences. In trustworthy teams, people share information freely, engage in healthy disagreement, and commit to collective decisions even when their initial preference wasn't chosen.
+I've come to believe that trust is the cornerstone upon which everything else in a team rests. But what is trust, really? It's not simply liking someone or agreeing with them. Trust is the safety that allows people to be vulnerable, to ask stupid questions, to disagree respectfully, to admit mistakes without fearing political consequences. In trustworthy teams, people share information freely, engage in healthy disagreement, and commit to collective decisions even when their initial preference wasn't chosen.
 
 The irony is that the leader must model this vulnerability first. The leader is, paradoxically, the most vulnerable person in the room. They must be willing to admit what they don't know, to ask for input genuinely, and to change their mind when presented with better ideas. Only when team members see this vulnerability do they feel safe being vulnerable themselves.
 
@@ -76,7 +76,7 @@ The brilliant insight is that fixing the top of this pyramid without fixing the 
 
 I've come to understand that the leader is essentially the trust architect. They pilot the group's decision-making processes, foster equal information sharing, and surface conflicts that would otherwise fester beneath surface politeness. They ask the difficult questions: Are team members genuinely comfortable voicing disagreement? Do people share their opinions freely, or are certain voices silenced? Does the team have a shared sense of identity and purpose?
 
-Teams thrive when these conditions exist. Before this course, I would have said this was "soft" leadership—nice-to-have but not essential. Now I understand it's the very foundation that determines whether a team succeeds or fails, regardless of resources or talent.
+Teams thrive when these conditions exist. Before this course, I would have said this was "soft" leadership, nice-to-have but not essential. Now I understand it's the very foundation that determines whether a team succeeds or fails, regardless of resources or talent.
 
 ### Building the Ideal Team Player
 
@@ -96,7 +96,7 @@ People are often strong in one or two of these areas but weak in the third. This
 
 One of the most profound realizations during this course came when I learned about the difference between conscious and unconscious beliefs. Only about 5% of our beliefs are consciously held. The other 95% operate below our awareness, silently limiting what we think is possible. I spent years accepting constraints I had unconsciously internalized about what I could achieve, never realizing they weren't facts, they were merely deeply embedded stories I believed about myself.
 
-To change any result, you must first change your thinking. This sounds simple until you try it. When fear arises—fear of rejection, failure, or inadequacy—the most powerful tool is to list those fears explicitly and then methodically invert them. What's the worst that could happen? Often, when you examine it rationally, the worst case isn't nearly as catastrophic as your fear suggested. Even more often, you realize that not trying guarantees the negative outcome you feared.
+To change any result, you must first change your thinking. This sounds simple until you try it. When fear arises, fear of rejection, failure, or inadequacy, the most powerful tool is to list those fears explicitly and then methodically invert them. What's the worst that could happen? Often, when you examine it rationally, the worst case isn't nearly as catastrophic as your fear suggested. Even more often, you realize that not trying guarantees the negative outcome you feared.
 
 Self-image work became for me a gateway to understanding that professional success isn't primarily about what you know or how smart you are. It's about the stories you tell yourself about what's possible, and the courage to test whether those stories are true.
 
@@ -108,7 +108,7 @@ The hidden job market operates on a simple principle: companies would much rathe
 
 **Step One: Define Your Target**
 
-Rather than passively scrolling job listings, take active control of your career path. Choose your target sector—are you drawn to tech startups' energy or large corporations' stability? Identify 10-15 specific companies where you'd actually want to work. Create a matrix evaluating them by values alignment, growth opportunities, and your network strength in each organization. Rank them strategically. This intentional approach transforms your job search from random to systematic.
+Rather than passively scrolling job listings, take active control of your career path. Choose your target sector, are you drawn to tech startups' energy or large corporations' stability? Identify 10-15 specific companies where you'd actually want to work. Create a matrix evaluating them by values alignment, growth opportunities, and your network strength in each organization. Rank them strategically. This intentional approach transforms your job search from random to systematic.
 
 **Step Two: Map the Key Contacts**
 
@@ -118,7 +118,7 @@ In each target organization, there are three types of valuable contacts:
 
 **The Provider** gives information, introductions, and opportunities. They're generous but perhaps less personally invested.
 
-**The Informant** explains how the organization actually works—the unwritten rules, culture, and where you might fit best.
+**The Informant** explains how the organization actually works, the unwritten rules, culture, and where you might fit best.
 
 All three are valuable. Your goal is finding at least one of each in your target companies.
 
@@ -128,7 +128,7 @@ Most people approach informational interviews wrong. They either act like desper
 
 Before the meeting, research sector trends. What major changes are reshaping this industry? How do these trends impact business models? What skills will matter increasingly? What projects are currently capturing everyone's attention? This groundwork demonstrates respect for their time and expertise.
 
-During the conversation, thank them genuinely, introduce yourself briefly and authentically, then ask thoughtful questions about their work and experience. Listen actively. Ask for advice—not "Do you have a job for me?" but "How would you recommend someone like me prepare for this sector?" and "Where do the interesting people in this field congregate?"
+During the conversation, thank them genuinely, introduce yourself briefly and authentically, then ask thoughtful questions about their work and experience. Listen actively. Ask for advice, not "Do you have a job for me?" but "How would you recommend someone like me prepare for this sector?" and "Where do the interesting people in this field congregate?"
 
 Most importantly, offer value. Share relevant contacts, university resources, or interesting articles. This shifts the dynamic from transaction to genuine relationship-building. People love helping people who help them.
 
@@ -150,7 +150,7 @@ This isn't replacing human mentorship, but it's an accessible way to test ideas,
 
 ### Public Presence and LinkedIn Strategy
 
-Your professional identity increasingly lives on LinkedIn. This isn't vanity—it's how people discover you, how your work becomes visible, how opportunities find you. Write thoughtfully about your interests and learning. Share projects you're proud of. Engage genuinely with others' posts. Your LinkedIn presence should be an extension of your authentic self, not a marketing brochure.
+Your professional identity increasingly lives on LinkedIn. This isn't vanity, it's how people discover you, how your work becomes visible, how opportunities find you. Write thoughtfully about your interests and learning. Share projects you're proud of. Engage genuinely with others' posts. Your LinkedIn presence should be an extension of your authentic self, not a marketing brochure.
 
 I once saw LinkedIn as an obligation. Now I see it as a conversation with my professional community. That shift changed everything.
 
@@ -158,7 +158,7 @@ I once saw LinkedIn as an obligation. Now I see it as a conversation with my pro
 
 ### Learning Retention and Engagement
 
-I've noticed something crucial about how people learn and internalize ideas. When information is passively delivered—lectures, presentations, articles—people retain about 70% of what they hear and see. But when they participate actively, when they do things, when they wrestle with ideas and each other, retention climbs to 90%. This is why leadership development requires more than reading books. It demands practice, conversation, and application.
+I've noticed something crucial about how people learn and internalize ideas. When information is passively delivered, lectures, presentations, articles, people retain about 70% of what they hear and see. But when they participate actively, when they do things, when they wrestle with ideas and each other, retention climbs to 90%. This is why leadership development requires more than reading books. It demands practice, conversation, and application.
 
 This principle extends to negotiation and conflict resolution. You can understand the theory, but truly mastering these skills requires doing them, failing, reflecting, and improving.
 
@@ -189,7 +189,7 @@ Healthy conflict means people trust each other enough to disagree. They surface 
 The leader's role is creating conditions where disagreement feels safe. This means:
 
 - Establishing clear norms for how conflict is handled professionally
-- Modeling the behavior yourself—disagreeing with people while respecting them deeply
+- Modeling the behavior yourself, disagreeing with people while respecting them deeply
 - Immediately and firmly preventing personal attacks or characterizations
 - Focusing discussions on the problem, not the person
 - Rewarding people who respectfully raise difficult issues

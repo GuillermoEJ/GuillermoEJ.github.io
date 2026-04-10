@@ -10,9 +10,9 @@ tags: ["programming", "design", "oop"]
 
 There was a moment in computing history when everything nearly broke. In the 1960s and 1970s, as software projects grew larger and more ambitious, something became clear: the traditional ways of programming weren't scaling. Projects went wildly over budget. Code became unmaintainable. Systems that worked in the lab fell apart in production. The software industry faced what people called the "Software Crisis," and for a while, it seemed genuinely uncertain whether we could ever build truly complex systems reliably.
 
-Looking back, I realize that crisis was fundamentally a crisis of thinking. We had developed techniques for organizing small programs—procedural programming, structured programming—but these techniques didn't translate well to large systems. It's like trying to organize a city using the principles you'd use to organize a small house. The techniques break down at scale.
+Looking back, I realize that crisis was fundamentally a crisis of thinking. We had developed techniques for organizing small programs, procedural programming, structured programming, but these techniques didn't translate well to large systems. It's like trying to organize a city using the principles you'd use to organize a small house. The techniques break down at scale.
 
-Object-oriented programming emerged not as just another set of syntax rules or language features. It represented a fundamental shift in how we thought about problems. Instead of thinking in terms of functions operating on data, we started thinking in terms of objects—discrete entities with their own behavior and internal state. It was a paradigm shift as significant as the move from assembly language to high-level languages.
+Object-oriented programming emerged not as just another set of syntax rules or language features. It represented a fundamental shift in how we thought about problems. Instead of thinking in terms of functions operating on data, we started thinking in terms of objects, discrete entities with their own behavior and internal state. It was a paradigm shift as significant as the move from assembly language to high-level languages.
 
 ## The Paradigm Shift
 
@@ -38,7 +38,7 @@ I used to see encapsulation as tedious. "Why do I need private? My code is small
 
 **Modularization** is the organization principle. It says that a system should be composed of cohesive modules, each with clear responsibilities, with minimal dependencies between them. A well-modularized system is easier to understand because each module tells a focused story. It's easier to test because you can test modules independently. It's easier to modify because changes in one module are less likely to ripple through the entire system.
 
-What struck me about modularity is that it's not unique to OOP. But OOP makes modularity natural. Classes provide natural module boundaries. The principle of single responsibility—one class, one reason to change—gives you guidance for where to draw those boundaries.
+What struck me about modularity is that it's not unique to OOP. But OOP makes modularity natural. Classes provide natural module boundaries. The principle of single responsibility, one class, one reason to change, gives you guidance for where to draw those boundaries.
 
 ## From Theory to Implementation
 
@@ -94,21 +94,21 @@ I want to be honest about OOP's limitations. Object-oriented programming is powe
 
 But OOP isn't universal. Some problems are naturally functional in character. Data transformation pipelines, mathematical computations, these sometimes feel awkward when forced into an object-oriented model. And OOP can encourage over-engineering. Developers sometimes create elaborate hierarchies and design patterns for simple problems that could be solved more directly.
 
-There's also the learning curve. OOP forces you to think about things—abstractions, hierarchies, responsibilities—before you code. This is good for large systems but sometimes feels like friction for small scripts or simple algorithms.
+There's also the learning curve. OOP forces you to think about things, abstractions, hierarchies, responsibilities, before you code. This is good for large systems but sometimes feels like friction for small scripts or simple algorithms.
 
 ## What OOP Taught Me About Thinking
 
-Working extensively with object-oriented programming changed how I think about problems in general, not just programming. When I face a complex system—an organization, an ecosystem, a social structure—I find myself asking OOP questions. What are the natural entities? What are their responsibilities? How do they interact? What contracts govern those interactions?
+Working extensively with object-oriented programming changed how I think about problems in general, not just programming. When I face a complex system, an organization, an ecosystem, a social structure, I find myself asking OOP questions. What are the natural entities? What are their responsibilities? How do they interact? What contracts govern those interactions?
 
 This isn't because OOP is inherently superior. Rather, OOP forced me to become conscious of how I organize complexity. I learned that when you face a complicated problem, the first step is usually not to solve it. The first step is to understand its structure. What are the entities? What are the relationships? Once you've understood the structure, the solution often becomes obvious.
 
 I also learned that design is about managing constraints and making tradeoffs. Perfect abstraction is impossible. Perfect modularity is impossible. Every design decision involves compromising on something. Good design is recognizing which compromises matter and making conscious choices about them rather than stumbling into them.
 
-Object-oriented programming taught me that thoughtful organization, clear interfaces, and careful separation of concerns are not just technical requirements. They're expressions of respect for the future—respect for whoever will need to understand this code, enhance it, or debug it. That future person might be me, reacquainted with code I wrote years ago. It might be a colleague joining the team. It might be someone I'll never meet. Either way, clear design is an act of solidarity with them.
+Object-oriented programming taught me that thoughtful organization, clear interfaces, and careful separation of concerns are not just technical requirements. They're expressions of respect for the future, respect for whoever will need to understand this code, enhance it, or debug it. That future person might be me, reacquainted with code I wrote years ago. It might be a colleague joining the team. It might be someone I'll never meet. Either way, clear design is an act of solidarity with them.
 
 ## Conclusion
 
-Object-oriented programming is one of the most influential ideas in computer science. It emerged from a crisis—the realization that traditional techniques couldn't scale to the complexity of modern software. Instead of giving up, the field invented a new way of thinking. We started modeling software after real-world entities. We emphasized hiding complexity, organizing into modules, and creating clear interfaces.
+Object-oriented programming is one of the most influential ideas in computer science. It emerged from a crisis, the realization that traditional techniques couldn't scale to the complexity of modern software. Instead of giving up, the field invented a new way of thinking. We started modeling software after real-world entities. We emphasized hiding complexity, organizing into modules, and creating clear interfaces.
 
 What strikes me now is that these weren't arbitrary choices. They emerged from deep insights about human cognition and system organization. We think in terms of entities. We manage complexity through abstraction. We organize large systems into coherent modules. OOP codified these insights into concrete practices.
 
