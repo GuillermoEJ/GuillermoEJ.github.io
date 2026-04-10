@@ -1,6 +1,6 @@
 ---
 title: "DOME - Data Obfuscation & Management Engine"
-description: "A secure, lightweight password manager written in Rus."
+description: "A secure, lightweight password manager written in Rust."
 date: "Apr 2 2026"
 demoURL: ""
 repoURL: "https://github.com/GuillermoEJ/dome"
