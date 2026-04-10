@@ -259,11 +259,29 @@ function toggleTheme(dark) {
     
     if (!button || !countSpan) return;
     
-    // Load visitor count from localStorage, default to 42
-    let visitorCount = parseInt(sessionStorage.getItem("visitorCount") || "42", 10);
     const hasClickedInSession = sessionStorage.getItem("hasClickedInSession") === "true";
     
-    updateCountDisplay(visitorCount);
+    // Dynamic import para Supabase
+    import("@supabase/supabase-js").then(({ createClient }) => {
+      const supabaseUrl = "https://okaoizmmxsxymjqsnxha.supabase.co";
+      const supabaseKey = "sb_publishable_j9DzBRp8qa55YP7xW2OY_g_nT24ndO3";
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      
+      // Cargar contador actual
+      supabase
+        .from("visitor_counter")
+        .select("count")
+        .eq("id", 1)
+        .single()
+        .then(({ data, error }) => {
+          if (data) {
+            updateCountDisplay(data.count);
+          } else {
+            updateCountDisplay(1);
+          }
+        })
+        .catch(() => updateCountDisplay(1));
+    });
     
     // Disable button if already clicked in this session
     if (hasClickedInSession) {
@@ -285,16 +303,39 @@ function toggleTheme(dark) {
       }
     });
     
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
       if (!hasClickedInSession) {
-        visitorCount++;
-        sessionStorage.setItem("visitorCount", visitorCount.toString());
-        sessionStorage.setItem("hasClickedInSession", "true");
-        updateCountDisplay(visitorCount);
-        
-        // Disable button after first click
-        button.disabled = true;
-        button.style.opacity = "0.5";
+        try {
+          const { createClient } = await import("@supabase/supabase-js");
+          const supabaseUrl = "https://okaoizmmxsxymjqsnxha.supabase.co";
+          const supabaseKey = "sb_publishable_j9DzBRp8qa55YP7xW2OY_g_nT24ndO3";
+          const supabase = createClient(supabaseUrl, supabaseKey);
+          
+          // Obtener valor actual
+          const { data } = await supabase
+            .from("visitor_counter")
+            .select("count")
+            .eq("id", 1)
+            .single();
+          
+          if (data) {
+            const newCount = data.count + 1;
+            
+            // Actualizar en Supabase
+            await supabase
+              .from("visitor_counter")
+              .update({ count: newCount })
+              .eq("id", 1);
+            
+            updateCountDisplay(newCount);
+          }
+          
+          sessionStorage.setItem("hasClickedInSession", "true");
+          button.disabled = true;
+          button.style.opacity = "0.5";
+        } catch (error) {
+          console.error("Error:", error);
+        }
       }
     });
     
