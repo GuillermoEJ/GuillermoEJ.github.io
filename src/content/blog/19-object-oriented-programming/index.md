@@ -3,7 +3,7 @@ title: "Object-Oriented Programming: Thinking About Systems"
 description: "How object-oriented design  changed the way I program."
 date: "May 20 2023"
 draft: false
-tags: ["programming", "design", "oop"]
+tags: ["programming", "design"]
 ---
 
 ## A Crisis of Complexity

@@ -3,7 +3,7 @@ title: "The Art of Leadership: To know thyself is the beginning of wisdom "
 description: "Leadership Development course @ UPM."
 date: "May 15 2024"
 draft: false
-tags: ["leadership", "professional-development", "teamwork"]
+tags: ["leadership", "philosophy"]
 ---
 
 **Acknowledgment**: I'm deeply grateful to the [UPM Leadership and Technology Center](https://clytupm.es/) for this transformative course. The insights, frameworks, and human connections forged through this program have fundamentally changed how I understand leadership and my role in building better teams and organizations.

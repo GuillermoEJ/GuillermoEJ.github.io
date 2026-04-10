@@ -220,11 +220,9 @@ function toggleTheme(dark) {
       if (overlay.style.display === "none") {
         overlay.style.display = "";
         localStorage.setItem("crtEnabled", "true");
-        updateCRTIcon(true);
       } else {
         overlay.style.display = "none";
         localStorage.setItem("crtEnabled", "false");
-        updateCRTIcon(false);
       }
     }
   }
@@ -237,10 +235,8 @@ function toggleTheme(dark) {
       // Por defecto desactivado
       if (crtEnabled) {
         overlay.style.display = "";
-        updateCRTIcon(true);
       } else {
         overlay.style.display = "none";
-        updateCRTIcon(false);
       }
     }
   }

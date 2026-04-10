@@ -3,7 +3,7 @@ title: "Pixels and Stolen Brushes: The Struggle for Creativity"
 description: "How generative AI challenges intellectual property and the future of human creativity."
 date: "Nov 05 2024"
 draft: false
-tags: ["ai", "copyright", "creativity", "ethics"]
+tags: ["ai","ethics"]
 ---
 
 ## Introduction

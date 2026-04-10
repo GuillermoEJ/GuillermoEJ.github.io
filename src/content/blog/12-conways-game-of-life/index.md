@@ -3,7 +3,7 @@ title: "Conway's Game of Life: When Four Rules Create Infinite Worlds"
 description: "Cellular automata and John Conway's Game of Life."
 date: "Mar 28 2025"
 draft: false
-tags: ["computation", "emergence", "philosophy"]
+tags: ["computation","philosophy"]
 ---
 
 ## The Moment Everything Changed

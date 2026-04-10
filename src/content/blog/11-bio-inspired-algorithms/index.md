@@ -3,7 +3,7 @@ title: "Bio-Inspired Algorithms: When Nature Teaches Us How to Think"
 description: "Maybe nature has already solved many of our hardest problems."
 date: "Jan 28 2025"
 draft: false
-tags: ["algorithms", "bioinspiration", "problem-solving"]
+tags: ["algorithms"]
 ---
 
 ## Introduction

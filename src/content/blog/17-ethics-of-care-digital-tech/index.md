@@ -3,7 +3,7 @@ title: "Ethics of Care and Digital Technologies: Toward Responsible Innovation"
 description: "Ethics of care framework in the digital age."
 date: "Oct 28 2024"
 draft: false
-tags: ["ethics", "digital-society", "technology-responsibility"]
+tags: ["ethics"]
 ---
 
 ## Care Ethics in the Digital Age
