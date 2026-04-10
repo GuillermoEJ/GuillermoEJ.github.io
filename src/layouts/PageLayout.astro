@@ -21,6 +21,7 @@ const { title, description } = Astro.props;
     <div class="noise"></div>
     <div class="overlay"></div>
     <div class="sphere-projection"></div>
+    <button class="crt-toggle animate" id="crt-toggle" title="Toggle CRT Effect">?</button>
     <div class="animated-background">
       <!-- 100 estrellas realistas con vía láctea -->
       <div class="star"></div>
@@ -180,10 +181,49 @@ const { title, description } = Astro.props;
       // Inicializar en carga
       let cleanup = initSphereTracking();
       
+      // Función para inicializar el toggle
+      function initCrtToggle() {
+        const crtToggle = document.querySelector('#crt-toggle');
+        const projection = document.querySelector('.sphere-projection');
+        
+        if (!crtToggle || !projection) return;
+        
+        // Animar el botón (agregar la clase show después de un pequeño delay)
+        setTimeout(() => {
+          crtToggle.classList.add('show');
+        }, 100);
+        
+        // Recuperar estado guardado y aplicar
+        const crtState = localStorage.getItem('crtEnabled') === 'true';
+        if (crtState) {
+          projection.classList.add('active');
+          crtToggle.classList.add('active');
+        } else {
+          projection.classList.remove('active');
+          crtToggle.classList.remove('active');
+        }
+        
+        // Manejar clicks en el botón (remover listeners antiguos primero)
+        const handleToggleClick = () => {
+          const isActive = projection.classList.toggle('active');
+          crtToggle.classList.toggle('active');
+          localStorage.setItem('crtEnabled', isActive);
+        };
+        
+        crtToggle.removeEventListener('click', handleToggleClick);
+        crtToggle.addEventListener('click', handleToggleClick);
+        
+        return handleToggleClick;
+      }
+      
+      // Inicializar toggle en carga
+      let toggleHandler = initCrtToggle();
+      
       // Reinicializar después de cambios de página (Astro View Transitions)
       document.addEventListener('astro:after-swap', () => {
         if (cleanup) cleanup();
         cleanup = initSphereTracking();
+        toggleHandler = initCrtToggle();
       });
     </script>
   </body>
