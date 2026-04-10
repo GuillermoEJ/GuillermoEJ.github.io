@@ -1,6 +1,6 @@
 ---
 title: "Algorithm Lab"
-description: "Educational repository with fundamental algorithms organized by design paradigms: sorting, divide and conquer, and backtracking."
+description: "Educational repository with fundamental algorithms organized by design paradigms."
 date: "Feb 2 2026"
 demoURL: ""
 repoURL: "https://github.com/GuillermoEJ/Algorithm-Lab"

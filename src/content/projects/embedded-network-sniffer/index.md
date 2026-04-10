@@ -1,6 +1,6 @@
 ---
 title: "Embedded Network Sniffer (ENS)"
-description: "Real-time network packet capture, analysis, and anomaly detection using FreeRTOS on microcontrollers with zero-copy buffer architecture."
+description: "Real-time network packet capture and anomaly detection using FreeRTOS."
 date: "March 1 2026"
 demoURL: ""
 repoURL: "https://github.com/GuillermoEJ/Embedded-Network-Sniffer"
