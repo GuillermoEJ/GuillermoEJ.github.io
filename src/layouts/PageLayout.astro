@@ -133,6 +133,7 @@ const { title, description } = Astro.props;
     </main>
     <Footer />
     <script>
+      // @ts-nocheck
       function initSphereTracking() {
         const projection = document.querySelector('.sphere-projection');
         if (!projection) return;
@@ -183,35 +184,35 @@ const { title, description } = Astro.props;
       
       // Función para inicializar el toggle
       function initCrtToggle() {
-        const crtToggle = document.querySelector('#sphere-effect');
+        const sphereToggle = document.querySelector('#sphere-effect');
         const projection = document.querySelector('.sphere-projection');
         
-        if (!crtToggle || !projection) return;
+        if (!sphereToggle || !projection) return;
         
         // Animar el botón (agregar la clase show después de un pequeño delay)
         setTimeout(() => {
-          crtToggle.classList.add('show');
+          sphereToggle.classList.add('show');
         }, 100);
         
         // Recuperar estado guardado y aplicar
-        const crtState = localStorage.getItem('crtEnabled') === 'true';
-        if (crtState) {
+        const sphereState = localStorage.getItem('sphereEnabled') === 'true';
+        if (sphereState) {
           projection.classList.add('active');
-          crtToggle.classList.add('active');
+          sphereToggle.classList.add('active');
         } else {
           projection.classList.remove('active');
-          crtToggle.classList.remove('active');
+          sphereToggle.classList.remove('active');
         }
         
         // Manejar clicks en el botón (remover listeners antiguos primero)
         const handleToggleClick = () => {
           const isActive = projection.classList.toggle('active');
-          crtToggle.classList.toggle('active');
-          localStorage.setItem('crtEnabled', isActive);
+          sphereToggle.classList.toggle('active');
+          localStorage.setItem('sphereEnabled', String(isActive));
         };
         
-        crtToggle.removeEventListener('click', handleToggleClick);
-        crtToggle.addEventListener('click', handleToggleClick);
+        sphereToggle.removeEventListener('click', handleToggleClick);
+        sphereToggle.addEventListener('click', handleToggleClick);
         
         return handleToggleClick;
       }

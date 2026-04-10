@@ -234,6 +234,7 @@ function toggleTheme(dark) {
     const crtEnabled = localStorage.getItem("crtEnabled");
     const overlay = document.querySelector(".overlay");
     if (overlay) {
+      // Por defecto desactivado
       if (crtEnabled === "true") {
         overlay.style.display = "";
         updateCRTIcon(true);
