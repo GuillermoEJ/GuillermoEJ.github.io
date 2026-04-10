@@ -21,7 +21,7 @@ const { title, description } = Astro.props;
     <div class="noise"></div>
     <div class="overlay"></div>
     <div class="sphere-projection"></div>
-    <button class="crt-toggle animate" id="crt-toggle" title="Toggle CRT Effect">?</button>
+    <button class="sphere-effect animate" id="sphere-effect" title="Toggle Light Effect">?</button>
     <div class="animated-background">
       <!-- 100 estrellas realistas con vía láctea -->
       <div class="star"></div>
@@ -183,7 +183,7 @@ const { title, description } = Astro.props;
       
       // Función para inicializar el toggle
       function initCrtToggle() {
-        const crtToggle = document.querySelector('#crt-toggle');
+        const crtToggle = document.querySelector('#sphere-effect');
         const projection = document.querySelector('.sphere-projection');
         
         if (!crtToggle || !projection) return;

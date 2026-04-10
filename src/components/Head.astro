@@ -189,15 +189,42 @@ function toggleTheme(dark) {
     }
   }
 
+  function updateCRTIcon(isActive) {
+    const button = document.getElementById("crt-toggle-button");
+    if (!button) return;
+    
+    const svg = button.querySelector("svg");
+    if (!svg) return;
+    
+    if (isActive) {
+      // Icono de ordenador antiguo - solo silueta
+      svg.innerHTML = `
+        <rect x="2" y="2" width="20" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="4" y="4" width="16" height="10" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M 7 16 L 6 22 L 18 22 L 17 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="10" y="16" width="4" height="3" fill="none" stroke="currentColor" stroke-width="1"/>
+      `;
+    } else {
+      // Icono de monitor moderno
+      svg.innerHTML = `
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      `;
+    }
+  }
+
   function toggleCRTEffect() {
     const overlay = document.querySelector(".overlay");
     if (overlay) {
       if (overlay.style.display === "none") {
         overlay.style.display = "";
         localStorage.setItem("crtEnabled", "true");
+        updateCRTIcon(true);
       } else {
         overlay.style.display = "none";
         localStorage.setItem("crtEnabled", "false");
+        updateCRTIcon(false);
       }
     }
   }
@@ -205,10 +232,14 @@ function toggleTheme(dark) {
   // Load CRT effect state on page load
   function loadCRTState() {
     const crtEnabled = localStorage.getItem("crtEnabled");
-    if (crtEnabled === "false") {
-      const overlay = document.querySelector(".overlay");
-      if (overlay) {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      if (crtEnabled === "true") {
+        overlay.style.display = "";
+        updateCRTIcon(true);
+      } else {
         overlay.style.display = "none";
+        updateCRTIcon(false);
       }
     }
   }
