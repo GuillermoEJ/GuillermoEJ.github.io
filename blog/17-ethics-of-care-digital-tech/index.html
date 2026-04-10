@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg"><link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)"><meta name="generator" content="Astro v5.18.1"><!-- Font preloads --><link rel="preload" href="/_astro/inter-latin-400-normal.C38fXH4l.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/inter-latin-600-normal.LgqL8muc.woff2" as="font" type="font/woff2" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://guillermoej.github.io/blog/17-ethics-of-care-digital-tech/"><!-- Primary Meta Tags --><title>Ethics of Care and Digital Technologies: Toward Responsible Innovation | Guillermo</title><meta name="title" content="Ethics of Care and Digital Technologies: Toward Responsible Innovation | Guillermo"><meta name="description" content="Ethics of care framework in the digital age."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://guillermoej.github.io/blog/17-ethics-of-care-digital-tech/"><meta property="og:title" content="Ethics of Care and Digital Technologies: Toward Responsible Innovation | Guillermo"><meta property="og:description" content="Ethics of care framework in the digital age."><meta property="og:image" content="https://guillermoej.github.io/nano.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://guillermoej.github.io/blog/17-ethics-of-care-digital-tech/"><meta property="twitter:title" content="Ethics of Care and Digital Technologies: Toward Responsible Innovation | Guillermo"><meta property="twitter:description" content="Ethics of care framework in the digital age."><meta property="twitter:image" content="https://guillermoej.github.io/nano.png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- RSS Link --><link rel="alternate" type="application/rss+xml" title="Guillermo" href="https://guillermoej.github.io/rss.xml"><script type="module">document.addEventListener("astro:before-swap",e=>[...e.newDocument.head.querySelectorAll('link[as="font"]')].forEach(o=>o.remove()));</script><script>
+  function init() {
+    preloadTheme();
+    onScroll();
+    animate();
+
+    const backToTop = document.getElementById("back-to-top");
+    backToTop?.addEventListener("click", (event) => scrollToTop(event));
+
+    const backToPrev = document.getElementById("back-to-prev");
+    backToPrev?.addEventListener("click", () => window.history.back());
+
+    const darkThemeButton = document.getElementById("dark-theme-button");
+    darkThemeButton?.addEventListener("click", () => {
+      localStorage.setItem("theme", "dark");
+      toggleTheme(true);
+    });
+
+    const crtToggleButton = document.getElementById("crt-toggle-button");
+    crtToggleButton?.addEventListener("click", () => {
+      toggleCRTEffect();
+    });
+
+    const tocToggleButton = document.getElementById("toc-toggle-button");
+    const tocList = document.getElementById("toc-list");
+    const tocIcon = document.getElementById("toc-icon");
+    
+    tocToggleButton?.addEventListener("click", () => {
+      if (tocList && tocIcon) {
+        if (tocList.classList.contains("hidden")) {
+          tocList.classList.remove("hidden");
+          tocIcon.style.transform = "rotate(180deg)";
+        } else {
+          tocList.classList.add("hidden");
+          tocIcon.style.transform = "rotate(0deg)";
+        }
+      }
+    });
+
+    // Alinear TableOfContents con BackToPrev
+    function alignTocWithBackToPrev() {
+      const backToPrevContainer = document.querySelector(".flex.items-center.justify-between.relative");
+      if (backToPrevContainer) {
+        const rect = backToPrevContainer.getBoundingClientRect();
+        const topOffset = window.scrollY + rect.top;
+        document.documentElement.style.setProperty("--back-to-prev-top", topOffset + "px");
+      }
+    }
+
+    alignTocWithBackToPrev();
+    window.addEventListener("resize", alignTocWithBackToPrev);
+    window.addEventListener("scroll", alignTocWithBackToPrev);
+
+    document.addEventListener("scroll", onScroll);
+  }
+
+  function animate() {
+    const animateElements = document.querySelectorAll(".animate");
+
+    animateElements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add("show");
+      }, index * 150);
+    });
+  }
+
+  function onScroll() {
+    if (window.scrollY > 0) {
+      document.documentElement.classList.add("scrolled");
+    } else {
+      document.documentElement.classList.remove("scrolled");
+    }
+  }
+
+  function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+function toggleTheme(dark) {
+    const css = document.createElement("style");
+
+    css.appendChild(
+      document.createTextNode(
+        `* {
+             -webkit-transition: none !important;
+             -moz-transition: none !important;
+             -o-transition: none !important;
+             -ms-transition: none !important;
+             transition: none !important;
+          }
+        `,
+      )
+    );
+
+    document.head.appendChild(css);
+
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+  window.getComputedStyle(css).opacity;
+    document.head.removeChild(css);
+  }
+
+  function preloadTheme() {
+    const userTheme = localStorage.theme;
+
+    if (userTheme === "light" || userTheme === "dark") {
+      toggleTheme(userTheme === "dark");
+    } else {
+      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+  }
+
+  function updateCRTIcon(isActive) {
+    const button = document.getElementById("crt-toggle-button");
+    if (!button) return;
+    
+    const svg = button.querySelector("svg");
+    if (!svg) return;
+    
+    if (isActive) {
+      // Icono de ordenador antiguo - solo silueta
+      svg.innerHTML = `
+        <rect x="2" y="2" width="20" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="4" y="4" width="16" height="10" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M 7 16 L 6 22 L 18 22 L 17 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="10" y="16" width="4" height="3" fill="none" stroke="currentColor" stroke-width="1"/>
+      `;
+    } else {
+      // Icono de monitor moderno
+      svg.innerHTML = `
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      `;
+    }
+  }
+
+  function toggleCRTEffect() {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      if (overlay.style.display === "none") {
+        overlay.style.display = "";
+        localStorage.setItem("crtEnabled", "true");
+      } else {
+        overlay.style.display = "none";
+        localStorage.setItem("crtEnabled", "false");
+      }
+    }
+  }
+
+  // Load CRT effect state on page load
+  function loadCRTState() {
+    const crtEnabled = localStorage.getItem("crtEnabled") === "true";
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      // Por defecto desactivado
+      if (crtEnabled) {
+        overlay.style.display = "";
+      } else {
+        overlay.style.display = "none";
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  document.addEventListener("astro:after-swap", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  preloadTheme();
+
+  function initVisitorCounter() {
+    const button = document.getElementById("i-was-here-button");
+    const countSpan = document.getElementById("visitor-count");
+    
+    if (!button || !countSpan) return;
+    
+    // Load visitor count from localStorage, default to 42
+    let visitorCount = parseInt(sessionStorage.getItem("visitorCount") || "42", 10);
+    const hasClickedInSession = sessionStorage.getItem("hasClickedInSession") === "true";
+    
+    updateCountDisplay(visitorCount);
+    
+    // Disable button if already clicked in this session
+    if (hasClickedInSession) {
+      button.disabled = true;
+      button.style.opacity = "0.5";
+    }
+    
+    const heartIcon = button.querySelector("svg");
+    
+    button.addEventListener("mouseenter", () => {
+      if (!hasClickedInSession && heartIcon) {
+        heartIcon.classList.add("heart-icon");
+      }
+    });
+    
+    button.addEventListener("mouseleave", () => {
+      if (heartIcon) {
+        heartIcon.classList.remove("heart-icon");
+      }
+    });
+    
+    button.addEventListener("click", () => {
+      if (!hasClickedInSession) {
+        visitorCount++;
+        sessionStorage.setItem("visitorCount", visitorCount.toString());
+        sessionStorage.setItem("hasClickedInSession", "true");
+        updateCountDisplay(visitorCount);
+        
+        // Disable button after first click
+        button.disabled = true;
+        button.style.opacity = "0.5";
+      }
+    });
+    
+    function updateCountDisplay(count) {
+      countSpan.textContent = `${count}`;
+    }
+  }
+
+</script><link rel="stylesheet" href="/_astro/_slug_.ByEVDnG6.css">
+<link rel="stylesheet" href="/_astro/_slug_.ahUN62tc.css"></head> <body> <div class="noise"></div> <div class="overlay"></div> <div class="sphere-projection"></div> <div class="animated-background"> <!-- 100 estrellas realistas con vía láctea --> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> </div> <header> <div class="mx-auto max-w-2xl px-5">  <div class="flex flex-wrap gap-y-2 justify-between items-center"> <a href="/" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out">  <div class="text-black dark:text-white">
+Home
+</div>  </a> <nav class="flex gap-3"> <a href="/work" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+work
+ </a> <span> / </span> <a href="/projects" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+projects
+ </a> <span> / </span> <a href="/blog" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+blog
+ </a> <span> / </span> <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 decoration-black/15 dark:decoration-white/30 hover:text-black dark:hover:text-white transition-colors duration-300">
+cv
+</a> </nav> </div>  </div> </header> <main>  <div class="mx-auto max-w-2xl px-5">  <div class="flex items-center justify-between relative"> <div class="animate"> <a href="/blog" class="relative group w-fit flex pl-7 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm"> 
+cd ..
+ </div> </a> </div> </div> <div class="space-y-1 my-10"> <div class="animate flex items-center gap-1.5"> <div class="font-base text-sm"> <time datetime="2024-10-28T00:00:00.000Z"> Oct 28, 2024 </time> </div>
+&bull;
+<div class="font-base text-sm"> 7 min read </div> </div> <div class="animate text-2xl font-semibold text-black dark:text-white"> Ethics of Care and Digital Technologies: Toward Responsible Innovation </div> </div> <div class="grid grid-cols-1 gap-12"> <article class="animate"> <h2 id="care-ethics-in-the-digital-age">Care Ethics in the Digital Age</h2>
+<p><a href="https://ifs.csic.es/es/personal/txetxu-ausin-diez">Txetxu Ausín’s</a> reflection on care ethics and digital technologies invites us thinking about topics we’ve addressed this course. From his perspective, care ethics focuses on relationships, vulnerability, and interdependence between people, relating it to privacy, data control, and artificial intelligence social impact. His vision urges us not only respecting individual autonomy but also protecting and nurturing relationships and well-being of people involved in its use, focusing protecting most vulnerable and creating digital environments fostering trust and cooperation.</p>
+<p>I’d like beginning this analysis with a term deeply captivating me. Ausín argues that as society we’ve become “socio-technical,” meaning we configure ourselves maintaining physical, cognitive, and emotional interaction with new digital technologies. This clearly connects to dangers and vulnerabilities we’ve studied about, from BigData companies’ abuse and resulting user privacy loss, through fighting biased artificial intelligence algorithms affecting racial minorities, to society digitalization’s health and environment commitment. Based on this anthropological argument, Ausín calls for care, morality, and ethical responsibility for technology development, aligned with course central idea. This way, “primum non nocere” or “first do no harm” becomes ethical claim he’ll defend throughout his manifesto.</p>
+<p>From this new perspective, we begin understanding that digitizing carefully isn’t simply creating environment where technologies don’t invade or harm people’s autonomy or well-being, but provide support in daily interactions, protect privacy, and respect dignity. Clear this application example is personal data management, since rather than seeing people as mere data sets exploitable, care approach urges digital platforms treating them as individuals with rights and respect expectations. Ausín invites imagining digitization acting as protective social fabric, not only preserving human relationships but enhancing them. According to course treatment, this could mean changing how we design social networks, favoring algorithms promoting authentic connections and avoiding encouraging toxic or polarizing dynamics. This way, digitization care seeks combating attention commodification and proposes instead digital interaction model respecting user time, mental health, and integrity.</p>
+<p>To achieve this, Ausín lists principles we should use as ethical compass for upcoming technology design, implementation, and use:</p>
+<h3 id="core-principles">Core Principles</h3>
+<p>Digital technologies must be safe, representing no threat to workers’ and users’ well-being. This means designing with parameters guaranteeing both mental health protection and physical integrity, avoiding excessive use, emotional manipulation, or negative self-esteem impact. Similarly, also protecting users exploited as algorithm training tools under terrible work conditions.</p>
+<p>They must also avoid bias in data collection and management, especially algorithm training. As society, we’re committed ensuring we’re aware bias tendency unfairly benefiting and harming groups in ethically inadmissible ways. We must avoid “algorithmic injustice” through ethical, conscious approach from data selection through AI model design, ensuring these fairly represent everyone, avoiding perpetuating inequalities and stigmas in decision-making.</p>
+<p>Crucially, they must avoid environmental harm and protect future generations. Ecological footprint of environment required digital technologies, especially large-scale AI and data processing infrastructures, poses ethical challenge affecting future generations. Minimizing environmental impact using renewable energy adopting sustainable, responsible practices is essential avoiding compromising future resources and well-being inheriting our planet.</p>
+<p>Furthermore, emerging artificial intelligences should try, at minimum, not generating new digital divide. Artificial intelligence shouldn’t worsen already present technological inequality. Guaranteeing equitable algorithm access and shared knowledge will prevent technology deepening social inequalities.</p>
+<p>Finally, more optimistically, digital technologies should prevent opacity and promote rights digital transparency. This digital environment transparency is our fundamental right that we must fight preserving. Only this way can we guarantee citizens understand how their data is used, how algorithms affecting them work, and what their digital rights are. Providing citizens facilities understanding and interpreting artificial intelligence systems and their claimed “black boxes” can maintain trust and respect relationships with technology.</p>
+<p>Similarly to modules developed throughout course, Ausín’s principles show us ethical practices in digital realm aren’t simple option but responsibility for all technology development and use involved. These duties especially impact most vulnerable individuals and groups, whether age, origin, work status, functional diversity, or gender reasons. This is how Ausín shows ethical care in digital area opens space rethinking how we understand personal and political relationships in technology context. Connecting with feminist thought, this approach breaks public-private dichotomy (norms and rights) and (emotions and responsibility), suggesting both areas deeply interconnect. This way, care and responsibility gain central role, since individual well-being and interpersonal connections increasingly depend safe, fair digital environment. Digital area protection doesn’t only address cybersecurity or hacking protection but also defending against corporate abuse and data exploitation. This way, care ethics reveals transparency and accountability as necessary guardians for our society. This involves large technology corporations and regulatory bodies, having social responsibility toward users who should be treated with respect and dignity, not only as consumers but as individuals with digital rights.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>We live in era when technology not only mediates our relationships and daily activities but influences decisions affecting social fabric, from privacy through equity. And precisely because digital is political, we can’t afford lowering heads or passively accepting those controlling technology’s decisions, often without transparency or ethics they should have. Ausín, with this text, begs us not falling into indifference, and I use this conclusion reaffirming that in our new “techno-society,” technology shouldn’t be exploitation and surveillance mechanism but key to social empowerment and freedom maximization.</p>
+<hr>
+<h2 id="an-open-letter-to-university-leaders">An Open Letter to University Leaders</h2>
+<p><strong>November 11, 2024</strong></p>
+<p>Dear Candidate for UPM Rectorship,</p>
+<p>I introduce myself: I’m a fourth-year student at the Technical School of Engineering and Computer Science Systems studying Software Engineering. I’d like addressing you discussing a topic I consider fundamental in educating young people entering my degree especially and any technology professions: ethics and social responsibility. While our curriculum includes specific Ethics and Legality courses, reality is these values shouldn’t limit themselves to these curriculum subjects. Just like technology permeates all our life areas, ethics should flow through every single subject, from fundamentals through advanced courses. This way, developing future software professionals’ responsibility sense would be central objective for our university.</p>
+<p>It’s true activities already exist like competitions, hackathons, and research projects reflecting technology legal and ethical dilemmas, but this education risks being seen as “extra” not essential. I believe instead confining ethics and digital responsibility to specific subject, we should cultivate these values as part culture traversing all subjects, flourishing throughout career.</p>
+<p>Imagine an Operating Systems project where, besides optimizing performance, we’d ask what would happen this system being used massively with vulnerable data. Or in Artificial Intelligence, where studying facial recognition algorithms we could deepen biases its training generates and consequences for public surveillance use. This way, ethics wouldn’t be box checking but constant in our education.</p>
+<p>Concrete proposal I’d like making you: in each technical subject, professors should incorporate module on projects’ social and ethical impact. This isn’t about stopping innovation but ensuring that innovation is well-directed and development makes us better people and professionals. For example, we could implement social impact evaluation at each project end or practice, where we reflect our creations’ potential use and misuse.</p>
+<p>I trust your favor, as our university rector, you have opportunity making history, making difference in era when world needs engineers with conscience more than ever. We know world doesn’t see us this way, but UPM can be university inspiring, guiding, and transforming not only technology but also society itself.</p>
+<p>Thank you for your time and commitment,</p>
+<p>Sincerely,</p>
+<p>Guillermo España Jiménez</p> </article> </div>  </div>  </main> <footer class="animate"> <div class="mx-auto max-w-2xl px-5">  <div class="relative"> <div class="absolute right-0 -top-20"> <button id="back-to-top" class="relative group w-fit flex pl-8 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current rotate-90"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm">
+!!
+</div> </button> </div> </div> <div class="flex justify-between items-center flex-wrap gap-4"> <div class="text-sm">
+&copy; 2026 Guillermo.
+</div> <div class="flex flex-wrap gap-1 items-center"> <button id="sphere-effect" title="Toggle Light Effect" class="group size-8 flex items-center justify-center rounded-full"> <img src="/telescopefinal.svg" alt="Telescope" class="group-hover:brightness-200 transition-all duration-300 ease-in-out"> </button> <button id="crt-toggle-button" aria-label="Toggle CRT effect" class="group size-8 flex items-center justify-center rounded-full"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"> <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect> <line x1="8" y1="21" x2="16" y2="21"></line> <line x1="12" y1="17" x2="12" y2="21"></line> </svg> </button> </div> </div>  </div> </footer> <script type="module">function d(){const e=document.querySelector(".sphere-projection");if(!e)return;let n=window.innerWidth/2,o=window.innerHeight/2;function t(){const r=n/window.innerWidth*100,u=o/window.innerHeight*100;e.style.background=`radial-gradient(circle at ${r}% ${u}%, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 30%, transparent 70%)`}const i=r=>{n=r.clientX,o=r.clientY,t()},s=()=>{t()},a=()=>{t()};return document.addEventListener("mousemove",i,!0),document.addEventListener("click",s,!0),window.addEventListener("resize",a),t(),()=>{document.removeEventListener("mousemove",i,!0),document.removeEventListener("click",s,!0),window.removeEventListener("resize",a)}}let c=d();function l(){const e=document.querySelector("#sphere-effect"),n=document.querySelector(".sphere-projection");if(!e||!n)return;localStorage.getItem("sphereEnabled")==="true"?(n.classList.add("active"),e.classList.add("active")):(n.classList.remove("active"),e.classList.remove("active"));const t=()=>{const i=n.classList.toggle("active");e.classList.toggle("active"),localStorage.setItem("sphereEnabled",String(i))};return e.removeEventListener("click",t),e.addEventListener("click",t),t}l();document.addEventListener("astro:after-swap",()=>{c&&c(),c=d(),l()});</script> </body> </html>

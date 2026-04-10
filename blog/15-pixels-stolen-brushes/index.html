@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg"><link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)"><meta name="generator" content="Astro v5.18.1"><!-- Font preloads --><link rel="preload" href="/_astro/inter-latin-400-normal.C38fXH4l.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/inter-latin-600-normal.LgqL8muc.woff2" as="font" type="font/woff2" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://guillermoej.github.io/blog/15-pixels-stolen-brushes/"><!-- Primary Meta Tags --><title>Pixels and Stolen Brushes: The Struggle for Creativity | Guillermo</title><meta name="title" content="Pixels and Stolen Brushes: The Struggle for Creativity | Guillermo"><meta name="description" content="How generative AI challenges intellectual property and the future of human creativity."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://guillermoej.github.io/blog/15-pixels-stolen-brushes/"><meta property="og:title" content="Pixels and Stolen Brushes: The Struggle for Creativity | Guillermo"><meta property="og:description" content="How generative AI challenges intellectual property and the future of human creativity."><meta property="og:image" content="https://guillermoej.github.io/nano.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://guillermoej.github.io/blog/15-pixels-stolen-brushes/"><meta property="twitter:title" content="Pixels and Stolen Brushes: The Struggle for Creativity | Guillermo"><meta property="twitter:description" content="How generative AI challenges intellectual property and the future of human creativity."><meta property="twitter:image" content="https://guillermoej.github.io/nano.png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- RSS Link --><link rel="alternate" type="application/rss+xml" title="Guillermo" href="https://guillermoej.github.io/rss.xml"><script type="module">document.addEventListener("astro:before-swap",e=>[...e.newDocument.head.querySelectorAll('link[as="font"]')].forEach(o=>o.remove()));</script><script>
+  function init() {
+    preloadTheme();
+    onScroll();
+    animate();
+
+    const backToTop = document.getElementById("back-to-top");
+    backToTop?.addEventListener("click", (event) => scrollToTop(event));
+
+    const backToPrev = document.getElementById("back-to-prev");
+    backToPrev?.addEventListener("click", () => window.history.back());
+
+    const darkThemeButton = document.getElementById("dark-theme-button");
+    darkThemeButton?.addEventListener("click", () => {
+      localStorage.setItem("theme", "dark");
+      toggleTheme(true);
+    });
+
+    const crtToggleButton = document.getElementById("crt-toggle-button");
+    crtToggleButton?.addEventListener("click", () => {
+      toggleCRTEffect();
+    });
+
+    const tocToggleButton = document.getElementById("toc-toggle-button");
+    const tocList = document.getElementById("toc-list");
+    const tocIcon = document.getElementById("toc-icon");
+    
+    tocToggleButton?.addEventListener("click", () => {
+      if (tocList && tocIcon) {
+        if (tocList.classList.contains("hidden")) {
+          tocList.classList.remove("hidden");
+          tocIcon.style.transform = "rotate(180deg)";
+        } else {
+          tocList.classList.add("hidden");
+          tocIcon.style.transform = "rotate(0deg)";
+        }
+      }
+    });
+
+    // Alinear TableOfContents con BackToPrev
+    function alignTocWithBackToPrev() {
+      const backToPrevContainer = document.querySelector(".flex.items-center.justify-between.relative");
+      if (backToPrevContainer) {
+        const rect = backToPrevContainer.getBoundingClientRect();
+        const topOffset = window.scrollY + rect.top;
+        document.documentElement.style.setProperty("--back-to-prev-top", topOffset + "px");
+      }
+    }
+
+    alignTocWithBackToPrev();
+    window.addEventListener("resize", alignTocWithBackToPrev);
+    window.addEventListener("scroll", alignTocWithBackToPrev);
+
+    document.addEventListener("scroll", onScroll);
+  }
+
+  function animate() {
+    const animateElements = document.querySelectorAll(".animate");
+
+    animateElements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add("show");
+      }, index * 150);
+    });
+  }
+
+  function onScroll() {
+    if (window.scrollY > 0) {
+      document.documentElement.classList.add("scrolled");
+    } else {
+      document.documentElement.classList.remove("scrolled");
+    }
+  }
+
+  function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+function toggleTheme(dark) {
+    const css = document.createElement("style");
+
+    css.appendChild(
+      document.createTextNode(
+        `* {
+             -webkit-transition: none !important;
+             -moz-transition: none !important;
+             -o-transition: none !important;
+             -ms-transition: none !important;
+             transition: none !important;
+          }
+        `,
+      )
+    );
+
+    document.head.appendChild(css);
+
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+  window.getComputedStyle(css).opacity;
+    document.head.removeChild(css);
+  }
+
+  function preloadTheme() {
+    const userTheme = localStorage.theme;
+
+    if (userTheme === "light" || userTheme === "dark") {
+      toggleTheme(userTheme === "dark");
+    } else {
+      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+  }
+
+  function updateCRTIcon(isActive) {
+    const button = document.getElementById("crt-toggle-button");
+    if (!button) return;
+    
+    const svg = button.querySelector("svg");
+    if (!svg) return;
+    
+    if (isActive) {
+      // Icono de ordenador antiguo - solo silueta
+      svg.innerHTML = `
+        <rect x="2" y="2" width="20" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="4" y="4" width="16" height="10" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M 7 16 L 6 22 L 18 22 L 17 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="10" y="16" width="4" height="3" fill="none" stroke="currentColor" stroke-width="1"/>
+      `;
+    } else {
+      // Icono de monitor moderno
+      svg.innerHTML = `
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      `;
+    }
+  }
+
+  function toggleCRTEffect() {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      if (overlay.style.display === "none") {
+        overlay.style.display = "";
+        localStorage.setItem("crtEnabled", "true");
+      } else {
+        overlay.style.display = "none";
+        localStorage.setItem("crtEnabled", "false");
+      }
+    }
+  }
+
+  // Load CRT effect state on page load
+  function loadCRTState() {
+    const crtEnabled = localStorage.getItem("crtEnabled") === "true";
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      // Por defecto desactivado
+      if (crtEnabled) {
+        overlay.style.display = "";
+      } else {
+        overlay.style.display = "none";
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  document.addEventListener("astro:after-swap", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  preloadTheme();
+
+  function initVisitorCounter() {
+    const button = document.getElementById("i-was-here-button");
+    const countSpan = document.getElementById("visitor-count");
+    
+    if (!button || !countSpan) return;
+    
+    // Load visitor count from localStorage, default to 42
+    let visitorCount = parseInt(sessionStorage.getItem("visitorCount") || "42", 10);
+    const hasClickedInSession = sessionStorage.getItem("hasClickedInSession") === "true";
+    
+    updateCountDisplay(visitorCount);
+    
+    // Disable button if already clicked in this session
+    if (hasClickedInSession) {
+      button.disabled = true;
+      button.style.opacity = "0.5";
+    }
+    
+    const heartIcon = button.querySelector("svg");
+    
+    button.addEventListener("mouseenter", () => {
+      if (!hasClickedInSession && heartIcon) {
+        heartIcon.classList.add("heart-icon");
+      }
+    });
+    
+    button.addEventListener("mouseleave", () => {
+      if (heartIcon) {
+        heartIcon.classList.remove("heart-icon");
+      }
+    });
+    
+    button.addEventListener("click", () => {
+      if (!hasClickedInSession) {
+        visitorCount++;
+        sessionStorage.setItem("visitorCount", visitorCount.toString());
+        sessionStorage.setItem("hasClickedInSession", "true");
+        updateCountDisplay(visitorCount);
+        
+        // Disable button after first click
+        button.disabled = true;
+        button.style.opacity = "0.5";
+      }
+    });
+    
+    function updateCountDisplay(count) {
+      countSpan.textContent = `${count}`;
+    }
+  }
+
+</script><link rel="stylesheet" href="/_astro/_slug_.ByEVDnG6.css">
+<link rel="stylesheet" href="/_astro/_slug_.ahUN62tc.css"></head> <body> <div class="noise"></div> <div class="overlay"></div> <div class="sphere-projection"></div> <div class="animated-background"> <!-- 100 estrellas realistas con vía láctea --> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> </div> <header> <div class="mx-auto max-w-2xl px-5">  <div class="flex flex-wrap gap-y-2 justify-between items-center"> <a href="/" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out">  <div class="text-black dark:text-white">
+Home
+</div>  </a> <nav class="flex gap-3"> <a href="/work" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+work
+ </a> <span> / </span> <a href="/projects" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+projects
+ </a> <span> / </span> <a href="/blog" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+blog
+ </a> <span> / </span> <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 decoration-black/15 dark:decoration-white/30 hover:text-black dark:hover:text-white transition-colors duration-300">
+cv
+</a> </nav> </div>  </div> </header> <main>  <div class="mx-auto max-w-2xl px-5">  <div class="flex items-center justify-between relative"> <div class="animate"> <a href="/blog" class="relative group w-fit flex pl-7 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm"> 
+cd ..
+ </div> </a> </div> </div> <div class="space-y-1 my-10"> <div class="animate flex items-center gap-1.5"> <div class="font-base text-sm"> <time datetime="2024-11-05T00:00:00.000Z"> Nov 5, 2024 </time> </div>
+&bull;
+<div class="font-base text-sm"> 7 min read </div> </div> <div class="animate text-2xl font-semibold text-black dark:text-white"> Pixels and Stolen Brushes: The Struggle for Creativity </div> </div> <div class="grid grid-cols-1 gap-12"> <article class="animate"> <h2 id="introduction">Introduction</h2>
+<p>In this digital era, artificial intelligence is challenging our traditional notions of creativity and originality. Generative AI, in particular, has captured both experts’ and the general public’s attention, revolutionizing how content is produced and consumed. Tools like ChatGPT, DALL-E, Stable Diffusion, and Midjourney have proven capable of generating text, images, and other formats in astonishingly realistic ways, pushing creativity to new heights (or perhaps new depths).</p>
+<p>ChatGPT, a language model developed by OpenAI, is capable of maintaining coherent conversations, writing essays, and creating textual content in diverse styles and genres. DALL-E and Stable Diffusion, meanwhile, are image generation models that create visual works from textual descriptions, transforming words into visual art. Midjourney also joins this trend, providing a platform where users can generate images with surprisingly aesthetic results, often exceeding creative expectations.</p>
+<p>However, behind this brilliant innovation facade, I want to expose a complex and problematic reality. Works generated by these AIs exist in a legal limbo where intellectual property and originality become fuzzy concepts. These tools feed on vast content volumes, much of which is copyright-protected. So, can products of an AI trained using others’ creations be considered original? The answer isn’t simple, and this is why I propose exploring how lack of clear regulation can affect creators and intellectual property’s future in the digital age, examining tensions between human creativity and AI’s generative capacities.</p>
+<h2 id="internets-inhabitants">Internet’s Inhabitants</h2>
+<h3 id="digital-ownership">Digital Ownership</h3>
+<p>Intellectual property is a set of legal rights protecting mind creations, including inventions, literary and artistic works, designs, symbols, names, and images used in commerce. Its main objective is fostering innovation and creativity by giving creators control over their works, allowing economic benefit and protecting interests against unau thorized copying or use; but as we’ll see, this is no longer true.</p>
+<p>To understand AI’s impact on intellectual property, we must first understand how these generative models are financed and trained. Models like ChatGPT, DALL-E, Stable Diffusion, and Midjourney aren’t just technical marvels; they represent significant economic investment. Companies developing them, like OpenAI and Stability AI, require considerable funds both for training these models on specialized hardware (like latest-generation GPUs) and for collecting and storing massive databases necessary for training. This funding comes mostly from venture capital and agreements with large tech companies seeking to monetize these models, whether through subscriptions, commercial licenses, or platform integrations.</p>
+<p>The problem emerges considering the material used training these models. For generative AI to produce original content, it must be exposed to enormous data quantities, mostly from the internet. This corpus includes texts, images, videos, and other content, in many cases protected by copyright. Although using these materials is fundamental for AI development, most are collected without creators’ consent, opening an ethical and legal dilemma about copyright-protected content exploitation.</p>
+<p>In fact, I consider this learning method more akin to plagiarism. Generative models analyze and absorb patterns from works that, while not directly reproducing, integrate into their responses and creations. This is how knowledge and styles accumulated from thousands of artists, writers, and other professionals become fuel for AI generating “new” works, while original creators rarely receive compensation or recognition.</p>
+<p>This non-consensual data use has left AI-generated works’ intellectual property in a true legal limbo. AI models don’t own the data they were trained with, but benefit from them generating content often presented as original. It makes me wonder who’s the author of an AI-generated work composed partly of fragments from hundreds or thousands of third parties’ works? And if AI is just a tool, should rights fall to the user or to the model’s owning company?</p>
+<h3 id="the-end-of-digital-culture">The End of Digital Culture</h3>
+<p>The generative models being trained partly on these same creators’ works, who rarely receive credit or compensation. An AI-generated illustration can replicate an artist’s unique style without acknowledging their influence. So how can a creator compete when their own style has become open resource the AI can instantly imitate? Furthermore, generative AI produces content quickly and economically, which can lead to art and content commodification. This means companies and consumers might choose AI-generated works instead of hiring human creators, affecting their income. Long-term, this replacement can discourage new creators, who face competition from a tool using their own artistic knowledge at no additional cost.</p>
+<p>The most evident concern is that creators depend on copyright for protecting and monetizing work. However, unauthorized work use in AI training erodes these rights, generating derivative content that, while apparently “new,” is based on protected works. This problem is far from having legal resolution, leaving creators unprotected and their works exploitation-risk. Artistic creation is itself a reflective and profound process involving time and evolution. An AI’s ability to instantly imitate and produce threatens this intimate relationship with the creative process. If the market begins valuing speed over depth, we risk discouraging creativity type driving culture and challenging conventional thinking.</p>
+<p>However, beyond injustice committed, a larger problem emerges from this debate. Generative AI is designed producing content based on already-existing patterns. This can lead to style standardization and genres, where majority tastes are amplified and unconventional styles are marginalized. In this context, unique and experimental artistic voices have increasingly limited space to flourish. If AI-generated content becomes the norm, we risk seeing less diversity in our cultural expressions. Human creativity stems from experience, culture, and individual emotions, while AI can only reflect everything it’s been exposed to’s average. This threatens taking us toward homogenized, impoverished culture, where authentic creativity is replaced by automated, derivative “creativity.” Long-term, using AI models for creating art and culture also affects our cultural heritage. A society’s cultural history is built from its creators’ works and achievements; if future generations find preponderance of AI-generated works, human cultural legacy can dilute, losing authenticity and context.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>I hope to have made evident how using copyright-protected works training these models directly affects creators, who see their rights violated by receiving neither compensation nor recognition for their work’s role in AI “creation.” This context highlights a contradiction where, while human creativity is protected by legal framework, AI-generated production operates in a gray zone exploiting others’ work without responding to same regulations. This legal lack of clarity affects not only current creators but can discourage original work creation in the future, to our cultural diversity detriment.</p>
+<p>Discussion about intellectual property in the AI era must be viewed as an action call for legislators, companies, and citizens. We need legal framework evolving at technology’s pace, establishing limits and protections that not only encourage innovation but also respect human creators’ effort and originality. We must advocate for balance combining ethics, creativity and technology to prevent art and culture becoming mere machine products.</p>
+<p>Ultimately, artistic and cultural creation isn’t just production function. It’s human experience expression, our identity and our world vision. If we allow AI defining creativity’s future without adequate regulation, we risk losing what makes us human. It’s our responsibility ensuring technology aligns with values and rights we’ve built as society, protecting creators and promoting culture reflecting authentic human diversity.</p> </article> </div>  </div>  </main> <footer class="animate"> <div class="mx-auto max-w-2xl px-5">  <div class="relative"> <div class="absolute right-0 -top-20"> <button id="back-to-top" class="relative group w-fit flex pl-8 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current rotate-90"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm">
+!!
+</div> </button> </div> </div> <div class="flex justify-between items-center flex-wrap gap-4"> <div class="text-sm">
+&copy; 2026 Guillermo.
+</div> <div class="flex flex-wrap gap-1 items-center"> <button id="sphere-effect" title="Toggle Light Effect" class="group size-8 flex items-center justify-center rounded-full"> <img src="/telescopefinal.svg" alt="Telescope" class="group-hover:brightness-200 transition-all duration-300 ease-in-out"> </button> <button id="crt-toggle-button" aria-label="Toggle CRT effect" class="group size-8 flex items-center justify-center rounded-full"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"> <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect> <line x1="8" y1="21" x2="16" y2="21"></line> <line x1="12" y1="17" x2="12" y2="21"></line> </svg> </button> </div> </div>  </div> </footer> <script type="module">function d(){const e=document.querySelector(".sphere-projection");if(!e)return;let n=window.innerWidth/2,o=window.innerHeight/2;function t(){const r=n/window.innerWidth*100,u=o/window.innerHeight*100;e.style.background=`radial-gradient(circle at ${r}% ${u}%, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 30%, transparent 70%)`}const i=r=>{n=r.clientX,o=r.clientY,t()},s=()=>{t()},a=()=>{t()};return document.addEventListener("mousemove",i,!0),document.addEventListener("click",s,!0),window.addEventListener("resize",a),t(),()=>{document.removeEventListener("mousemove",i,!0),document.removeEventListener("click",s,!0),window.removeEventListener("resize",a)}}let c=d();function l(){const e=document.querySelector("#sphere-effect"),n=document.querySelector(".sphere-projection");if(!e||!n)return;localStorage.getItem("sphereEnabled")==="true"?(n.classList.add("active"),e.classList.add("active")):(n.classList.remove("active"),e.classList.remove("active"));const t=()=>{const i=n.classList.toggle("active");e.classList.toggle("active"),localStorage.setItem("sphereEnabled",String(i))};return e.removeEventListener("click",t),e.addEventListener("click",t),t}l();document.addEventListener("astro:after-swap",()=>{c&&c(),c=d(),l()});</script> </body> </html>

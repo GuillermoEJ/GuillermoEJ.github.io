@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg"><link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)"><meta name="generator" content="Astro v5.18.1"><!-- Font preloads --><link rel="preload" href="/_astro/inter-latin-400-normal.C38fXH4l.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/inter-latin-600-normal.LgqL8muc.woff2" as="font" type="font/woff2" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://guillermoej.github.io/blog/12-conways-game-of-life/"><!-- Primary Meta Tags --><title>Conway&#39;s Game of Life: When Four Rules Create Infinite Worlds | Guillermo</title><meta name="title" content="Conway's Game of Life: When Four Rules Create Infinite Worlds | Guillermo"><meta name="description" content="Cellular automata and John Conway's Game of Life."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://guillermoej.github.io/blog/12-conways-game-of-life/"><meta property="og:title" content="Conway's Game of Life: When Four Rules Create Infinite Worlds | Guillermo"><meta property="og:description" content="Cellular automata and John Conway's Game of Life."><meta property="og:image" content="https://guillermoej.github.io/nano.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://guillermoej.github.io/blog/12-conways-game-of-life/"><meta property="twitter:title" content="Conway's Game of Life: When Four Rules Create Infinite Worlds | Guillermo"><meta property="twitter:description" content="Cellular automata and John Conway's Game of Life."><meta property="twitter:image" content="https://guillermoej.github.io/nano.png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- RSS Link --><link rel="alternate" type="application/rss+xml" title="Guillermo" href="https://guillermoej.github.io/rss.xml"><script type="module">document.addEventListener("astro:before-swap",e=>[...e.newDocument.head.querySelectorAll('link[as="font"]')].forEach(o=>o.remove()));</script><script>
+  function init() {
+    preloadTheme();
+    onScroll();
+    animate();
+
+    const backToTop = document.getElementById("back-to-top");
+    backToTop?.addEventListener("click", (event) => scrollToTop(event));
+
+    const backToPrev = document.getElementById("back-to-prev");
+    backToPrev?.addEventListener("click", () => window.history.back());
+
+    const darkThemeButton = document.getElementById("dark-theme-button");
+    darkThemeButton?.addEventListener("click", () => {
+      localStorage.setItem("theme", "dark");
+      toggleTheme(true);
+    });
+
+    const crtToggleButton = document.getElementById("crt-toggle-button");
+    crtToggleButton?.addEventListener("click", () => {
+      toggleCRTEffect();
+    });
+
+    const tocToggleButton = document.getElementById("toc-toggle-button");
+    const tocList = document.getElementById("toc-list");
+    const tocIcon = document.getElementById("toc-icon");
+    
+    tocToggleButton?.addEventListener("click", () => {
+      if (tocList && tocIcon) {
+        if (tocList.classList.contains("hidden")) {
+          tocList.classList.remove("hidden");
+          tocIcon.style.transform = "rotate(180deg)";
+        } else {
+          tocList.classList.add("hidden");
+          tocIcon.style.transform = "rotate(0deg)";
+        }
+      }
+    });
+
+    // Alinear TableOfContents con BackToPrev
+    function alignTocWithBackToPrev() {
+      const backToPrevContainer = document.querySelector(".flex.items-center.justify-between.relative");
+      if (backToPrevContainer) {
+        const rect = backToPrevContainer.getBoundingClientRect();
+        const topOffset = window.scrollY + rect.top;
+        document.documentElement.style.setProperty("--back-to-prev-top", topOffset + "px");
+      }
+    }
+
+    alignTocWithBackToPrev();
+    window.addEventListener("resize", alignTocWithBackToPrev);
+    window.addEventListener("scroll", alignTocWithBackToPrev);
+
+    document.addEventListener("scroll", onScroll);
+  }
+
+  function animate() {
+    const animateElements = document.querySelectorAll(".animate");
+
+    animateElements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add("show");
+      }, index * 150);
+    });
+  }
+
+  function onScroll() {
+    if (window.scrollY > 0) {
+      document.documentElement.classList.add("scrolled");
+    } else {
+      document.documentElement.classList.remove("scrolled");
+    }
+  }
+
+  function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+function toggleTheme(dark) {
+    const css = document.createElement("style");
+
+    css.appendChild(
+      document.createTextNode(
+        `* {
+             -webkit-transition: none !important;
+             -moz-transition: none !important;
+             -o-transition: none !important;
+             -ms-transition: none !important;
+             transition: none !important;
+          }
+        `,
+      )
+    );
+
+    document.head.appendChild(css);
+
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+  window.getComputedStyle(css).opacity;
+    document.head.removeChild(css);
+  }
+
+  function preloadTheme() {
+    const userTheme = localStorage.theme;
+
+    if (userTheme === "light" || userTheme === "dark") {
+      toggleTheme(userTheme === "dark");
+    } else {
+      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+  }
+
+  function updateCRTIcon(isActive) {
+    const button = document.getElementById("crt-toggle-button");
+    if (!button) return;
+    
+    const svg = button.querySelector("svg");
+    if (!svg) return;
+    
+    if (isActive) {
+      // Icono de ordenador antiguo - solo silueta
+      svg.innerHTML = `
+        <rect x="2" y="2" width="20" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="4" y="4" width="16" height="10" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M 7 16 L 6 22 L 18 22 L 17 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="10" y="16" width="4" height="3" fill="none" stroke="currentColor" stroke-width="1"/>
+      `;
+    } else {
+      // Icono de monitor moderno
+      svg.innerHTML = `
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      `;
+    }
+  }
+
+  function toggleCRTEffect() {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      if (overlay.style.display === "none") {
+        overlay.style.display = "";
+        localStorage.setItem("crtEnabled", "true");
+      } else {
+        overlay.style.display = "none";
+        localStorage.setItem("crtEnabled", "false");
+      }
+    }
+  }
+
+  // Load CRT effect state on page load
+  function loadCRTState() {
+    const crtEnabled = localStorage.getItem("crtEnabled") === "true";
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      // Por defecto desactivado
+      if (crtEnabled) {
+        overlay.style.display = "";
+      } else {
+        overlay.style.display = "none";
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  document.addEventListener("astro:after-swap", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  preloadTheme();
+
+  function initVisitorCounter() {
+    const button = document.getElementById("i-was-here-button");
+    const countSpan = document.getElementById("visitor-count");
+    
+    if (!button || !countSpan) return;
+    
+    // Load visitor count from localStorage, default to 42
+    let visitorCount = parseInt(sessionStorage.getItem("visitorCount") || "42", 10);
+    const hasClickedInSession = sessionStorage.getItem("hasClickedInSession") === "true";
+    
+    updateCountDisplay(visitorCount);
+    
+    // Disable button if already clicked in this session
+    if (hasClickedInSession) {
+      button.disabled = true;
+      button.style.opacity = "0.5";
+    }
+    
+    const heartIcon = button.querySelector("svg");
+    
+    button.addEventListener("mouseenter", () => {
+      if (!hasClickedInSession && heartIcon) {
+        heartIcon.classList.add("heart-icon");
+      }
+    });
+    
+    button.addEventListener("mouseleave", () => {
+      if (heartIcon) {
+        heartIcon.classList.remove("heart-icon");
+      }
+    });
+    
+    button.addEventListener("click", () => {
+      if (!hasClickedInSession) {
+        visitorCount++;
+        sessionStorage.setItem("visitorCount", visitorCount.toString());
+        sessionStorage.setItem("hasClickedInSession", "true");
+        updateCountDisplay(visitorCount);
+        
+        // Disable button after first click
+        button.disabled = true;
+        button.style.opacity = "0.5";
+      }
+    });
+    
+    function updateCountDisplay(count) {
+      countSpan.textContent = `${count}`;
+    }
+  }
+
+</script><link rel="stylesheet" href="/_astro/_slug_.ByEVDnG6.css">
+<link rel="stylesheet" href="/_astro/_slug_.ahUN62tc.css"></head> <body> <div class="noise"></div> <div class="overlay"></div> <div class="sphere-projection"></div> <div class="animated-background"> <!-- 100 estrellas realistas con vía láctea --> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> </div> <header> <div class="mx-auto max-w-2xl px-5">  <div class="flex flex-wrap gap-y-2 justify-between items-center"> <a href="/" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out">  <div class="text-black dark:text-white">
+Home
+</div>  </a> <nav class="flex gap-3"> <a href="/work" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+work
+ </a> <span> / </span> <a href="/projects" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+projects
+ </a> <span> / </span> <a href="/blog" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+blog
+ </a> <span> / </span> <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 decoration-black/15 dark:decoration-white/30 hover:text-black dark:hover:text-white transition-colors duration-300">
+cv
+</a> </nav> </div>  </div> </header> <main>  <div class="mx-auto max-w-2xl px-5">  <div class="flex items-center justify-between relative"> <div class="animate"> <a href="/blog" class="relative group w-fit flex pl-7 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm"> 
+cd ..
+ </div> </a> </div> </div> <div class="space-y-1 my-10"> <div class="animate flex items-center gap-1.5"> <div class="font-base text-sm"> <time datetime="2025-03-28T00:00:00.000Z"> Mar 28, 2025 </time> </div>
+&bull;
+<div class="font-base text-sm"> 9 min read </div> </div> <div class="animate text-2xl font-semibold text-black dark:text-white"> Conway&#39;s Game of Life: When Four Rules Create Infinite Worlds </div> </div> <div class="grid grid-cols-1 gap-12"> <article class="animate"> <h2 id="the-moment-everything-changed">The Moment Everything Changed</h2>
+<p>In 1970, mathematician John Horton Conway created something that seemed impossibly simple. Four rules. A grid. That’s all it takes. Yet this creation, the Game of Life, has captivated mathematicians, programmers, and philosophers for over five decades, revealing profound insights about computation, emergent complexity, and perhaps even the nature of existence itself.</p>
+<p>When I first encountered the Game of Life, I didn’t immediately grasp its significance. It seemed like an interesting toy, a curiosity for mathematicians and nerds. But then I ran a simulation with a random initial configuration. I watched the screen. Chaos resolved into order. Order dissolved into motion. Still patterns emerged alongside oscillating patterns alongside patterns that moved across the grid like creatures. From four simple rules, the entire universe of behavior unfolded before my eyes.</p>
+<p>That moment changed how I think about complexity. It forced me to confront a fundamental question: if mere rules, with no intentional design, can create such richness, what does that say about the world we inhabit? What does it say about life itself?</p>
+<h2 id="understanding-the-architecture">Understanding the Architecture</h2>
+<p>A cellular automaton is a discrete computational model consisting of a grid of cells, each in one of a finite number of states. The entire system evolves over discrete time steps according to a fixed set of rules that depend on the state of neighboring cells. It sounds abstract, but the concrete implementation reveals its elegance.</p>
+<p>Imagine an infinite checkerboard. Each square is either alive (black) or dead (white). At each step in time, we look at every cell and its eight neighbors. Based on how many neighbors are alive, we determine whether the cell will be alive in the next generation. The rules are:</p>
+<p>One, if a dead cell has exactly three living neighbors, it becomes alive. Birth from the surrounding community. Two, if a living cell has two or three living neighbors, it survives. It has just enough company to maintain its existence. Three, if a living cell has fewer than two neighbors, it dies from loneliness. Four, if a living cell has more than three neighbors, it perishes from overpopulation.</p>
+<p>That’s it. Those four rules. Yet from these simple local decisions, inexplicable global patterns emerge.</p>
+<h2 id="how-emergence-manifests">How Emergence Manifests</h2>
+<p>When you run the Game of Life, you encounter several categories of patterns, each revealing something about how complexity can be organized.</p>
+<p>Still lifes are the simplest, patterns that never change once formed. A block is just a 2×2 square of living cells, perfectly stable. A beehive is slightly more complex, a hexagonal arrangement. What strikes me about these stable patterns is their inevitability. Given the rules, they’re the only way certain configurations can exist without change. It’s as if the rules naturally sculpt the possibility space, and these patterns are the result.</p>
+<p>Oscillators fascinate me more. They’re patterns that cycle repeatedly through a sequence of states. A blinker is almost absurdly simple, two variations of a three cell line that oscillates horizontally and vertically. Period two, meaning it repeats every two generations. Yet even in this simplicity, there’s a kind of life. The pattern breathes, fluctuates, exists in time.</p>
+<p>But the most remarkable patterns are spaceships, configurations that translate themselves across the grid. The glider is legendary in Game of Life circles, a five cell pattern that moves diagonally. Watch it for a few dozen generations and you see no decay, no collapse. It’s a stable structure somehow moving through space, carrying information and form. Lightweight spaceships move horizontally. Middleweight spaceships are larger and faster. Watching these traverse the grid, you feel you’re observing something that resembles life.</p>
+<p>Then there are the mind-bending meta-patterns. Guns are structures that periodically emit spaceships. Puffers are spaceships that leave trails as they move. Rakes emit periodic objects as they travel. These patterns are so complex that they emerge from the interaction of simpler patterns, from the collision and cooperation of gliders and other structures.</p>
+<h2 id="the-profound-discovery-computational-universality">The Profound Discovery: Computational Universality</h2>
+<p>Here’s where the Game of Life transforms from interesting curiosity to philosophical bombshell. The Game of Life is Turing complete. This was proven by demonstrating that you could construct logical gates within the game, memory structures, essentially the components of a universal computer. In theory, any algorithm that can run on a computer, any calculation that can be performed, any computation that can be imagined, can be implemented in the Game of Life.</p>
+<p>Stop and think about that. The game consists of dead cells and living cells, simple rules about birth, survival, and death. Yet these rules are sufficient to simulate any possible computation. This suggests something profound about the universe. If computation is fundamental, and the Game of Life can express any computation, then perhaps the Game of Life is not just a model of something. Perhaps it’s a fundamental example of how complex systems can work.</p>
+<h2 id="the-mystery-at-the-heart-of-emergence">The Mystery at the Heart of Emergence</h2>
+<p>What captivates me most about the Game of Life is emergence, the principle that you cannot always predict the long-term behavior of a system just by understanding its rules. Some initial configurations lead to everything dying out, extinction within a few generations. Others lead to stable configurations, patterns that persist forever. Others lead to infinite growth or chaotic behavior that seems almost random.</p>
+<p>But here’s what’s remarkable. These different outcomes don’t violate the rules. The rules are deterministic. Given a starting configuration and the rules, the future is completely determined. Yet we can’t figure out most futures without actually running the simulation step by step. We can’t skip ahead. We can’t calculate a shortcut.</p>
+<p>This is deeply unsettling and deeply beautiful. It means that complexity isn’t something hidden or mysterious. It emerges naturally from simple rules. It’s a reminder that just because something is reducible to simple principles doesn’t mean it’s predictable or easily understandable. Simplicity doesn’t breed simplicity. It breeds infinite, inexplicable diversity.</p>
+<h2 id="what-it-reveals-about-life-and-philosophy">What It Reveals About Life and Philosophy</h2>
+<p>The Game of Life inspired the field of Artificial Life (ALife), which studies systems exhibiting properties typical of biological life. Adaptation, self-organization, evolution, learning. If the Game of Life can exhibit these properties despite having no intentional design toward them, what does that tell us about biological life itself? Perhaps life isn’t something magical or fundamentally different. Perhaps it’s a natural outcome of organizing matter according to certain rules.</p>
+<p>This thought both humbles and frightens me. If life emerges naturally, then the boundary between living and non-living becomes blurrier. A sufficiently complex system of simple rules might be considered alive. The Game of Life doesn’t reproduce, doesn’t metabolize, yet something about it feels alive when you watch patterns moving and interacting.</p>
+<p>I also think about variation and adaptation. Creatures in the biological world adapt through genetic mutation and natural selection. The Game of Life demonstrates that similar processes can lead to complexity in any system where there’s heredity (patterns that persist), variation (mutations in initial configurations), and selection (certain patterns survive better than others). This suggests optimization and adaptation are universal principles, not exclusive to biology.</p>
+<h2 id="where-theory-meets-reality">Where Theory Meets Reality</h2>
+<p>While the Game of Life seems purely theoretical, its principles have practical applications. In cryptography, cellular automata can generate pseudo-random sequences for encryption. In image processing, cellular automata can recognize patterns and reduce noise. Their principles apply to modeling biological systems, from tissue growth to disease spread. They model traffic flow in traffic engineering. Epidemic modelers use similar cellular automaton principles to understand disease spread through populations.</p>
+<p>In procedural generation for games, cellular automata generate caves, landscapes, and terrain with surprising realism. You specify simple rules governing cell states, let them iterate, and suddenly you have naturally-looking caverns carved by virtual erosion and deposition.</p>
+<h2 id="the-beauty-of-simplicity">The Beauty of Simplicity</h2>
+<p>What makes the Game of Life so special is that it embodies a deep philosophical principle, one that science keeps rediscovering. Simplicity can generate infinite complexity. You need only four rules to create a system that never repeats, that can compute anything computable, that exhibits emergent behavior surprising even to experts who have studied it for decades.</p>
+<p>Over fifty years later, researchers still discover new patterns in the Game of Life. Gardeners, people who systematically search for new patterns, regularly find spaceships, guns, and puffers never seen before. New discoveries are still being made in a system that has been fully specified and understood for half a century. There are no unknown physics, no hidden variables. Yet the system continues surprising us.</p>
+<p>This speaks to something profound about knowledge and understanding. Complete specification doesn’t equal complete understanding. Knowing the rules doesn’t mean knowing what the rules will produce. We can understand every detail and still be amazed by the consequences.</p>
+<h2 id="what-this-means-for-our-understanding">What This Means for Our Understanding</h2>
+<p>Conway’s Game of Life is a window into understanding how complexity arises from simplicity, how local interactions generate global behavior, how the universe itself might be fundamentally computational. Whether you’re interested in mathematics, artificial life, physics, or philosophy, the Game of Life offers endless fascination and discovery.</p>
+<p>For me, it serves as constant reminder that the world is stranger and more wonderful than our first intuitions suggest. That apparent order can hide stunning richness. That simplicity doesn’t preclude wonder. That a mathematician sitting down with simple rules can inadvertently create universes of complexity.</p>
+<p>When I feel overwhelmed by the complexity of the world, when I despair that understanding is impossible, I think about the Game of Life. If an infinite universe of patterns can emerge from four rules and a grid, then perhaps our own universe isn’t as beyond comprehension as it seems. Perhaps what we call chaos is just order operating at scales we haven’t learned to see yet. Perhaps what we call mystery is just complexity we haven’t yet simplified enough to understand.</p>
+<p>The Game of Life teaches humility. It teaches that the deepest insights emerge from the simplest principles. And it quietly suggests that reality itself might operate on similar principles of beautiful, terrifying simplicity.</p> </article> </div>  </div>  </main> <footer class="animate"> <div class="mx-auto max-w-2xl px-5">  <div class="relative"> <div class="absolute right-0 -top-20"> <button id="back-to-top" class="relative group w-fit flex pl-8 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current rotate-90"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm">
+!!
+</div> </button> </div> </div> <div class="flex justify-between items-center flex-wrap gap-4"> <div class="text-sm">
+&copy; 2026 Guillermo.
+</div> <div class="flex flex-wrap gap-1 items-center"> <button id="sphere-effect" title="Toggle Light Effect" class="group size-8 flex items-center justify-center rounded-full"> <img src="/telescopefinal.svg" alt="Telescope" class="group-hover:brightness-200 transition-all duration-300 ease-in-out"> </button> <button id="crt-toggle-button" aria-label="Toggle CRT effect" class="group size-8 flex items-center justify-center rounded-full"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"> <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect> <line x1="8" y1="21" x2="16" y2="21"></line> <line x1="12" y1="17" x2="12" y2="21"></line> </svg> </button> </div> </div>  </div> </footer> <script type="module">function d(){const e=document.querySelector(".sphere-projection");if(!e)return;let n=window.innerWidth/2,o=window.innerHeight/2;function t(){const r=n/window.innerWidth*100,u=o/window.innerHeight*100;e.style.background=`radial-gradient(circle at ${r}% ${u}%, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 30%, transparent 70%)`}const i=r=>{n=r.clientX,o=r.clientY,t()},s=()=>{t()},a=()=>{t()};return document.addEventListener("mousemove",i,!0),document.addEventListener("click",s,!0),window.addEventListener("resize",a),t(),()=>{document.removeEventListener("mousemove",i,!0),document.removeEventListener("click",s,!0),window.removeEventListener("resize",a)}}let c=d();function l(){const e=document.querySelector("#sphere-effect"),n=document.querySelector(".sphere-projection");if(!e||!n)return;localStorage.getItem("sphereEnabled")==="true"?(n.classList.add("active"),e.classList.add("active")):(n.classList.remove("active"),e.classList.remove("active"));const t=()=>{const i=n.classList.toggle("active");e.classList.toggle("active"),localStorage.setItem("sphereEnabled",String(i))};return e.removeEventListener("click",t),e.addEventListener("click",t),t}l();document.addEventListener("astro:after-swap",()=>{c&&c(),c=d(),l()});</script> </body> </html>

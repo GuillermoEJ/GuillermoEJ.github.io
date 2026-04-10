@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg"><link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)"><meta name="generator" content="Astro v5.18.1"><!-- Font preloads --><link rel="preload" href="/_astro/inter-latin-400-normal.C38fXH4l.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/inter-latin-600-normal.LgqL8muc.woff2" as="font" type="font/woff2" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://guillermoej.github.io/blog/18-leadership-course/"><!-- Primary Meta Tags --><title>The Art of Leadership: To know thyself is the beginning of wisdom  | Guillermo</title><meta name="title" content="The Art of Leadership: To know thyself is the beginning of wisdom  | Guillermo"><meta name="description" content="Leadership Development course @ UPM."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://guillermoej.github.io/blog/18-leadership-course/"><meta property="og:title" content="The Art of Leadership: To know thyself is the beginning of wisdom  | Guillermo"><meta property="og:description" content="Leadership Development course @ UPM."><meta property="og:image" content="https://guillermoej.github.io/nano.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://guillermoej.github.io/blog/18-leadership-course/"><meta property="twitter:title" content="The Art of Leadership: To know thyself is the beginning of wisdom  | Guillermo"><meta property="twitter:description" content="Leadership Development course @ UPM."><meta property="twitter:image" content="https://guillermoej.github.io/nano.png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- RSS Link --><link rel="alternate" type="application/rss+xml" title="Guillermo" href="https://guillermoej.github.io/rss.xml"><script type="module">document.addEventListener("astro:before-swap",e=>[...e.newDocument.head.querySelectorAll('link[as="font"]')].forEach(o=>o.remove()));</script><script>
+  function init() {
+    preloadTheme();
+    onScroll();
+    animate();
+
+    const backToTop = document.getElementById("back-to-top");
+    backToTop?.addEventListener("click", (event) => scrollToTop(event));
+
+    const backToPrev = document.getElementById("back-to-prev");
+    backToPrev?.addEventListener("click", () => window.history.back());
+
+    const darkThemeButton = document.getElementById("dark-theme-button");
+    darkThemeButton?.addEventListener("click", () => {
+      localStorage.setItem("theme", "dark");
+      toggleTheme(true);
+    });
+
+    const crtToggleButton = document.getElementById("crt-toggle-button");
+    crtToggleButton?.addEventListener("click", () => {
+      toggleCRTEffect();
+    });
+
+    const tocToggleButton = document.getElementById("toc-toggle-button");
+    const tocList = document.getElementById("toc-list");
+    const tocIcon = document.getElementById("toc-icon");
+    
+    tocToggleButton?.addEventListener("click", () => {
+      if (tocList && tocIcon) {
+        if (tocList.classList.contains("hidden")) {
+          tocList.classList.remove("hidden");
+          tocIcon.style.transform = "rotate(180deg)";
+        } else {
+          tocList.classList.add("hidden");
+          tocIcon.style.transform = "rotate(0deg)";
+        }
+      }
+    });
+
+    // Alinear TableOfContents con BackToPrev
+    function alignTocWithBackToPrev() {
+      const backToPrevContainer = document.querySelector(".flex.items-center.justify-between.relative");
+      if (backToPrevContainer) {
+        const rect = backToPrevContainer.getBoundingClientRect();
+        const topOffset = window.scrollY + rect.top;
+        document.documentElement.style.setProperty("--back-to-prev-top", topOffset + "px");
+      }
+    }
+
+    alignTocWithBackToPrev();
+    window.addEventListener("resize", alignTocWithBackToPrev);
+    window.addEventListener("scroll", alignTocWithBackToPrev);
+
+    document.addEventListener("scroll", onScroll);
+  }
+
+  function animate() {
+    const animateElements = document.querySelectorAll(".animate");
+
+    animateElements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add("show");
+      }, index * 150);
+    });
+  }
+
+  function onScroll() {
+    if (window.scrollY > 0) {
+      document.documentElement.classList.add("scrolled");
+    } else {
+      document.documentElement.classList.remove("scrolled");
+    }
+  }
+
+  function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+function toggleTheme(dark) {
+    const css = document.createElement("style");
+
+    css.appendChild(
+      document.createTextNode(
+        `* {
+             -webkit-transition: none !important;
+             -moz-transition: none !important;
+             -o-transition: none !important;
+             -ms-transition: none !important;
+             transition: none !important;
+          }
+        `,
+      )
+    );
+
+    document.head.appendChild(css);
+
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+  window.getComputedStyle(css).opacity;
+    document.head.removeChild(css);
+  }
+
+  function preloadTheme() {
+    const userTheme = localStorage.theme;
+
+    if (userTheme === "light" || userTheme === "dark") {
+      toggleTheme(userTheme === "dark");
+    } else {
+      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+  }
+
+  function updateCRTIcon(isActive) {
+    const button = document.getElementById("crt-toggle-button");
+    if (!button) return;
+    
+    const svg = button.querySelector("svg");
+    if (!svg) return;
+    
+    if (isActive) {
+      // Icono de ordenador antiguo - solo silueta
+      svg.innerHTML = `
+        <rect x="2" y="2" width="20" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="4" y="4" width="16" height="10" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M 7 16 L 6 22 L 18 22 L 17 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="10" y="16" width="4" height="3" fill="none" stroke="currentColor" stroke-width="1"/>
+      `;
+    } else {
+      // Icono de monitor moderno
+      svg.innerHTML = `
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      `;
+    }
+  }
+
+  function toggleCRTEffect() {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      if (overlay.style.display === "none") {
+        overlay.style.display = "";
+        localStorage.setItem("crtEnabled", "true");
+      } else {
+        overlay.style.display = "none";
+        localStorage.setItem("crtEnabled", "false");
+      }
+    }
+  }
+
+  // Load CRT effect state on page load
+  function loadCRTState() {
+    const crtEnabled = localStorage.getItem("crtEnabled") === "true";
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      // Por defecto desactivado
+      if (crtEnabled) {
+        overlay.style.display = "";
+      } else {
+        overlay.style.display = "none";
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  document.addEventListener("astro:after-swap", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  preloadTheme();
+
+  function initVisitorCounter() {
+    const button = document.getElementById("i-was-here-button");
+    const countSpan = document.getElementById("visitor-count");
+    
+    if (!button || !countSpan) return;
+    
+    // Load visitor count from localStorage, default to 42
+    let visitorCount = parseInt(sessionStorage.getItem("visitorCount") || "42", 10);
+    const hasClickedInSession = sessionStorage.getItem("hasClickedInSession") === "true";
+    
+    updateCountDisplay(visitorCount);
+    
+    // Disable button if already clicked in this session
+    if (hasClickedInSession) {
+      button.disabled = true;
+      button.style.opacity = "0.5";
+    }
+    
+    const heartIcon = button.querySelector("svg");
+    
+    button.addEventListener("mouseenter", () => {
+      if (!hasClickedInSession && heartIcon) {
+        heartIcon.classList.add("heart-icon");
+      }
+    });
+    
+    button.addEventListener("mouseleave", () => {
+      if (heartIcon) {
+        heartIcon.classList.remove("heart-icon");
+      }
+    });
+    
+    button.addEventListener("click", () => {
+      if (!hasClickedInSession) {
+        visitorCount++;
+        sessionStorage.setItem("visitorCount", visitorCount.toString());
+        sessionStorage.setItem("hasClickedInSession", "true");
+        updateCountDisplay(visitorCount);
+        
+        // Disable button after first click
+        button.disabled = true;
+        button.style.opacity = "0.5";
+      }
+    });
+    
+    function updateCountDisplay(count) {
+      countSpan.textContent = `${count}`;
+    }
+  }
+
+</script><link rel="stylesheet" href="/_astro/_slug_.ByEVDnG6.css">
+<link rel="stylesheet" href="/_astro/_slug_.ahUN62tc.css"></head> <body> <div class="noise"></div> <div class="overlay"></div> <div class="sphere-projection"></div> <div class="animated-background"> <!-- 100 estrellas realistas con vía láctea --> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> </div> <header> <div class="mx-auto max-w-2xl px-5">  <div class="flex flex-wrap gap-y-2 justify-between items-center"> <a href="/" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out">  <div class="text-black dark:text-white">
+Home
+</div>  </a> <nav class="flex gap-3"> <a href="/work" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+work
+ </a> <span> / </span> <a href="/projects" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+projects
+ </a> <span> / </span> <a href="/blog" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+blog
+ </a> <span> / </span> <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 decoration-black/15 dark:decoration-white/30 hover:text-black dark:hover:text-white transition-colors duration-300">
+cv
+</a> </nav> </div>  </div> </header> <main>  <div class="mx-auto max-w-2xl px-5">  <div class="flex items-center justify-between relative"> <div class="animate"> <a href="/blog" class="relative group w-fit flex pl-7 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm"> 
+cd ..
+ </div> </a> </div> </div> <div class="space-y-1 my-10"> <div class="animate flex items-center gap-1.5"> <div class="font-base text-sm"> <time datetime="2024-05-15T00:00:00.000Z"> May 15, 2024 </time> </div>
+&bull;
+<div class="font-base text-sm"> 17 min read </div> </div> <div class="animate text-2xl font-semibold text-black dark:text-white"> The Art of Leadership: To know thyself is the beginning of wisdom  </div> </div> <div class="grid grid-cols-1 gap-12"> <article class="animate"> <p><strong>Acknowledgment</strong>: I’m deeply grateful to the <a href="https://clytupm.es/">UPM Leadership and Technology Center</a> for this transformative course. The insights, frameworks, and human connections forged through this program have fundamentally changed how I understand leadership and my role in building better teams and organizations.</p>
+<hr>
+<p>Leadership is far more complex than most people realize. It’s not simply about holding a title or having authority over others. True leadership is a continuous practice of influence, vulnerability, and purposeful action. Throughout this exploration, I’ve come to understand that leadership first requires understanding yourself, then understanding others, and finally, mastering the delicate art of bringing them together toward a common vision.</p>
+<h2 id="introduction-what-leadership-really-means">Introduction: What Leadership Really Means</h2>
+<p>The most powerful leadership principle I’ve learned is deceptively simple: words convince, but actions drag people along. Think about the leaders who’ve influenced you most. Did they inspire you through eloquent speeches alone, or through consistently demonstrating their values, showing up when things got difficult, and proving through their actions that they meant what they said?</p>
+<p>This is the essence of leadership by example. When people see you arriving first, staying late, admitting mistakes, and solving problems rather than complaining about them, they understand that your commitment is genuine. Moral authority, what the Romans called <em>auctoritas</em>, cannot be granted by a title. It must be earned through consistency, integrity, and genuine service to others.</p>
+<p>Leadership is also deeply situational. There’s no one-size-fits-all approach. I’ve realized that the best leaders are chameleons in the noblest sense, they adapt their style to the context while maintaining unwavering core values. When facing difficulties, they don’t cry out in despair; they influence both their team’s attitudes and their own, searching for solutions that move everyone forward. This quality, the ability to navigate volatility, uncertainty, complexity, and ambiguity (what we call VICA environments), is what separates ordinary managers from transformational leaders.</p>
+<h2 id="day-1-the-foundation-understanding-motivation-and-authority">Day 1: The Foundation, Understanding Motivation and Authority</h2>
+<h3 id="the-two-types-of-authority">The Two Types of Authority</h3>
+<p>I once was confused about the difference between power and authority. Now I understand this distinction is crucial. <strong>Potestas</strong> is the formal position given to you from above, your title, your formal authority. But <strong>auctoritas</strong>, real authority, is granted by your team. It’s the respect they give you because they’ve seen your character, your competence, and your commitment to their well-being.</p>
+<p>Every leader has potestas. Few ever achieve true auctoritas. The path to auctoritas requires understanding the fundamental framework of human motivation and needs.</p>
+<h3 id="the-hierarchy-of-human-needs-in-organizations">The Hierarchy of Human Needs in Organizations</h3>
+<p>When I began studying leadership, I realized that beneath every complaint, every resistance to change, every motivation problem, lies an unmet need. The psychologist Maslow outlined this hierarchy perfectly: biological needs, security, belonging, recognition, and self-actualization. But in the workplace, this becomes more nuanced.</p>
+<p>People work for much more than a paycheck. Yes, they need security, knowing their job is stable and they can provide for themselves and their families. But they also desperately crave belonging. They want to feel part of something meaningful, to contribute to goals larger than themselves. Recognition matters profoundly; we all want our efforts acknowledged. And above all, many people seek growth, the opportunity to develop their capabilities and move toward becoming their best selves.</p>
+<h3 id="motivating-different-team-members">Motivating Different Team Members</h3>
+<p>As I studied team dynamics, I noticed something interesting: not everyone in a team is motivated by the same things. I came to identify four archetypal team members, each requiring a different approach.</p>
+<p><strong>Destroyers</strong> lack both interest and capacity, they’re neither motivated nor able. These are often hiring mistakes.</p>
+<p><strong>Hostages</strong> lack interest but can’t leave, perhaps they’re financially dependent or fear change. They require compassion and often careful conversations about their future.</p>
+<p><strong>Mercenaries</strong> are interested, but only in money and personal gain. They’re transactional, useful for specific projects, but they won’t build a strong culture.</p>
+<p><strong>Apostles</strong> are the ones you’re searching for: genuinely committed and capable. They’ll move mountains not for extra pay, but because they believe in the mission.</p>
+<p>The equation I learned captures this beautifully: <strong>Motivation = Emotion × Reason</strong>, or alternatively, <strong>(Knowledge + Skill) × Attitude</strong>. To motivate people effectively, you must address all these dimensions. Recognize their individual capability, give them meaningful challenges, facilitate their growth, grant them autonomy, and help them see how their work contributes to something larger than themselves.</p>
+<h2 id="day-2-the-psychology-of-high-performing-teams">Day 2: The Psychology of High-Performing Teams</h2>
+<h3 id="the-trust-foundation">The Trust Foundation</h3>
+<p>I’ve come to believe that trust is the cornerstone upon which everything else in a team rests. But what is trust, really? It’s not simply liking someone or agreeing with them. Trust is the safety that allows people to be vulnerable, to ask stupid questions, to disagree respectfully, to admit mistakes without fearing political consequences. In trustworthy teams, people share information freely, engage in healthy disagreement, and commit to collective decisions even when their initial preference wasn’t chosen.</p>
+<p>The irony is that the leader must model this vulnerability first. The leader is, paradoxically, the most vulnerable person in the room. They must be willing to admit what they don’t know, to ask for input genuinely, and to change their mind when presented with better ideas. Only when team members see this vulnerability do they feel safe being vulnerable themselves.</p>
+<h3 id="understanding-the-five-dysfunctions">Understanding the Five Dysfunctions</h3>
+<p>Patrick Lencioni’s framework for team dysfunction has become increasingly meaningful to me. I’ve realized that most team problems follow a predictable cascade:</p>
+<p><strong>Absence of Trust</strong> sits at the foundation. Without safety, team members hide their true thoughts. They perform diplomatic masks for one another, rather than engaging authentically.</p>
+<p><strong>Fear of Conflict</strong> builds on this lack of trust. Rather than surfacing disagreements and working through them, teams create artificial harmony. Everyone nods, agrees publicly, then complains privately. As someone who values healthy organization, I find this heartbreaking because it destroys decision making quality.</p>
+<p><strong>Lack of Commitment</strong> follows naturally. When people haven’t genuinely voiced their concerns and haven’t been heard, they can’t truly commit. There’s ambiguity about what was actually decided and why.</p>
+<p><strong>Avoidance of Accountability</strong> emerges next. If people don’t feel committed, they won’t hold themselves or others accountable. Standards drop, mediocrity becomes acceptable.</p>
+<p>Finally, <strong>Lack of Attention to Results</strong> crowns the dysfunction. Instead of focusing on team success, people focus on protecting their status and ego, creating internal competition rather than collaborative problem-solving.</p>
+<p>The brilliant insight is that fixing the top of this pyramid without fixing the foundation is impossible. You can’t mandate accountability without commitment. You can’t achieve commitment without healthy conflict. And you can’t have healthy conflict without trust. So the leader’s job is to build that trust foundation first, deliberately and consistently.</p>
+<h3 id="the-leaders-unique-role">The Leader’s Unique Role</h3>
+<p>I’ve come to understand that the leader is essentially the trust architect. They pilot the group’s decision-making processes, foster equal information sharing, and surface conflicts that would otherwise fester beneath surface politeness. They ask the difficult questions: Are team members genuinely comfortable voicing disagreement? Do people share their opinions freely, or are certain voices silenced? Does the team have a shared sense of identity and purpose?</p>
+<p>Teams thrive when these conditions exist. Before this course, I would have said this was “soft” leadership, nice-to-have but not essential. Now I understand it’s the very foundation that determines whether a team succeeds or fails, regardless of resources or talent.</p>
+<h3 id="building-the-ideal-team-player">Building the Ideal Team Player</h3>
+<p>Through this exploration, I’ve discovered what makes someone an ideal team member. It requires three distinct qualities, and interestingly, all three are necessary. Missing even one creates dangerous imbalances.</p>
+<p><strong>Humility</strong> is the foundation, recognizing that you’re not the smartest person in the room and that your ideas might be wrong. This prevents ego from poisoning relationships.</p>
+<p><strong>Hunger</strong>, genuine drive to excel, can’t be forced by a manager. It must come from within. People with this quality are self-motivated, constantly seeking improvement, never satisfied with mediocrity.</p>
+<p><strong>Empathy</strong> is the connector, genuinely caring about others, understanding their struggles, and valuing their perspectives. Without this, talent and motivation become destructive.</p>
+<p>People are often strong in one or two of these areas but weak in the third. This creates predictable dysfunction. The self-aware leader recognizes these patterns in themselves and their team, then acts deliberately to develop all three.</p>
+<h2 id="day-3-self-mastery-and-strategic-career-development">Day 3: Self-Mastery and Strategic Career Development</h2>
+<h3 id="the-power-of-self-image">The Power of Self-Image</h3>
+<p>One of the most profound realizations during this course came when I learned about the difference between conscious and unconscious beliefs. Only about 5% of our beliefs are consciously held. The other 95% operate below our awareness, silently limiting what we think is possible. I spent years accepting constraints I had unconsciously internalized about what I could achieve, never realizing they weren’t facts, they were merely deeply embedded stories I believed about myself.</p>
+<p>To change any result, you must first change your thinking. This sounds simple until you try it. When fear arises, fear of rejection, failure, or inadequacy, the most powerful tool is to list those fears explicitly and then methodically invert them. What’s the worst that could happen? Often, when you examine it rationally, the worst case isn’t nearly as catastrophic as your fear suggested. Even more often, you realize that not trying guarantees the negative outcome you feared.</p>
+<p>Self-image work became for me a gateway to understanding that professional success isn’t primarily about what you know or how smart you are. It’s about the stories you tell yourself about what’s possible, and the courage to test whether those stories are true.</p>
+<h3 id="the-hidden-job-market-your-true-career-path">The Hidden Job Market: Your True Career Path</h3>
+<p>I believe 70-80% of meaningful job opportunities never appear on job boards. They’re filled through relationships, word-of-mouth, and network effects. This is the hidden job market, and understanding how to navigate it changed my perspective on career strategy entirely.</p>
+<p>The hidden job market operates on a simple principle: companies would much rather hire someone recommended by a trusted insider than risk hiring a stranger based on a resumé. This creates an opportunity for strategic relationship-building that’s both more human and more effective than traditional job applications.</p>
+<p><strong>Step One: Define Your Target</strong></p>
+<p>Rather than passively scrolling job listings, take active control of your career path. Choose your target sector, are you drawn to tech startups’ energy or large corporations’ stability? Identify 10-15 specific companies where you’d actually want to work. Create a matrix evaluating them by values alignment, growth opportunities, and your network strength in each organization. Rank them strategically. This intentional approach transforms your job search from random to systematic.</p>
+<p><strong>Step Two: Map the Key Contacts</strong></p>
+<p>In each target organization, there are three types of valuable contacts:</p>
+<p><strong>The Promoter</strong> actively advocates for you. They want you to succeed and will put their credibility on the line recommending you.</p>
+<p><strong>The Provider</strong> gives information, introductions, and opportunities. They’re generous but perhaps less personally invested.</p>
+<p><strong>The Informant</strong> explains how the organization actually works, the unwritten rules, culture, and where you might fit best.</p>
+<p>All three are valuable. Your goal is finding at least one of each in your target companies.</p>
+<p><strong>Step Three: The Strategic Conversation</strong></p>
+<p>Most people approach informational interviews wrong. They either act like desperate candidates begging for jobs, or they attempt to sell themselves awkwardly. Instead, approach it as genuine curiosity about someone else’s work and expertise.</p>
+<p>Before the meeting, research sector trends. What major changes are reshaping this industry? How do these trends impact business models? What skills will matter increasingly? What projects are currently capturing everyone’s attention? This groundwork demonstrates respect for their time and expertise.</p>
+<p>During the conversation, thank them genuinely, introduce yourself briefly and authentically, then ask thoughtful questions about their work and experience. Listen actively. Ask for advice, not “Do you have a job for me?” but “How would you recommend someone like me prepare for this sector?” and “Where do the interesting people in this field congregate?”</p>
+<p>Most importantly, offer value. Share relevant contacts, university resources, or interesting articles. This shifts the dynamic from transaction to genuine relationship-building. People love helping people who help them.</p>
+<p>Close the conversation by recapping what you learned, establishing clear next steps for staying in touch, and then actually follow up within 24 hours. Include them in relevant LinkedIn activity. Build the relationship over time.</p>
+<h3 id="the-elevator-pitch-your-professional-identity">The Elevator Pitch: Your Professional Identity</h3>
+<p>Every time you meet someone new, you have about one minute to create an impression. An effective elevator pitch isn’t about selling; it’s about being memorable and generating curiosity for deeper conversation.</p>
+<p>I’ve learned to describe myself through frames like “digital humanist,” “exponential builder,” or “architect of possibilities.” The specific words matter because they should reflect both who you are and the value you bring. The pitch should be brief enough to deliver in 60 seconds, surprising enough to be memorable, and genuine enough that you believe it yourself.</p>
+<p>Your pitch should answer: Why would someone want to have coffee with you? It’s not “I’m looking for a job.” It’s “I’m fascinated by how organizations are rebuilding around human connection in the digital age, and I’d love your perspective on emerging trends.”</p>
+<h3 id="leveraging-ai-for-strategic-development">Leveraging AI for Strategic Development</h3>
+<p>I’ve discovered that AI tools like ChatGPT can be surprisingly effective career coaches if you provide them proper context. Share your complete background, your aspirations, your strengths and growth areas. Ask it to probe deeper with personalized questions about your career direction. Request it identify the roles you’re naturally suited for, the companies where you’d thrive, and the exact steps to get there. Have it prepare CVs emphasizing different strengths for different industries. Role-play interviews where it challenges you like a rigorous hiring manager.</p>
+<p>This isn’t replacing human mentorship, but it’s an accessible way to test ideas, refine your thinking, and gain confidence before real conversations.</p>
+<h3 id="public-presence-and-linkedin-strategy">Public Presence and LinkedIn Strategy</h3>
+<p>Your professional identity increasingly lives on LinkedIn. This isn’t vanity, it’s how people discover you, how your work becomes visible, how opportunities find you. Write thoughtfully about your interests and learning. Share projects you’re proud of. Engage genuinely with others’ posts. Your LinkedIn presence should be an extension of your authentic self, not a marketing brochure.</p>
+<p>I once saw LinkedIn as an obligation. Now I see it as a conversation with my professional community. That shift changed everything.</p>
+<h2 id="day-4-the-art-of-negotiation-and-conflict-resolution">Day 4: The Art of Negotiation and Conflict Resolution</h2>
+<h3 id="learning-retention-and-engagement">Learning Retention and Engagement</h3>
+<p>I’ve noticed something crucial about how people learn and internalize ideas. When information is passively delivered, lectures, presentations, articles, people retain about 70% of what they hear and see. But when they participate actively, when they do things, when they wrestle with ideas and each other, retention climbs to 90%. This is why leadership development requires more than reading books. It demands practice, conversation, and application.</p>
+<p>This principle extends to negotiation and conflict resolution. You can understand the theory, but truly mastering these skills requires doing them, failing, reflecting, and improving.</p>
+<h3 id="understanding-negotiation">Understanding Negotiation</h3>
+<p>For most of my career, I viewed negotiation as something you do across a table, a win-lose encounter where you’re trying to extract maximum value. This view poisoned every negotiation I entered. I approached with suspicion, hiding my true interests, trying to outwit the other party.</p>
+<p>Through this course, I’ve come to understand negotiation completely differently. The primary mission in any negotiation is reaching the best possible agreement for both parties in the shortest timeframe possible. This sounds counterintuitive, but it’s brilliant. When both sides feel they’re getting fair treatment, the agreement holds. When one side feels exploited, resentment festers.</p>
+<p>The key insight is about the pyramid. Imagine a pyramid where purely win-lose extractive negotiations sit at the base. As you climb, you reach agreements where there’s more mutual benefit. At the peak sits true value creation, where both parties leave significantly better off than when they started.</p>
+<p>Your goal as a negotiator is getting both sides to the top of that pyramid together. This requires:</p>
+<p><strong>First</strong>, understanding what the other party actually needs, not just what they’re asking for. Often these differ. Someone demanding a 20% raise might actually need to feel valued and competent. A customer demanding price cuts might actually need reliability, partnership.</p>
+<p><strong>Second</strong>, being clear about your own genuine interests while not revealing your absolute bottom line. There’s a difference between interests and positions. Your position might be “I need $60,000.” Your interests might be stability, professional development opportunities, and a career path. When you share interests rather than bare demands, you create room for creative problem solving.</p>
+<p><strong>Third</strong>, rejecting artificial either or thinking. In most negotiations, there are multiple variables: salary, benefits, flexibility, job scope, timeline, training, career progression. A skilled negotiator creates value by trading variables that matter less to them for variables that matter more to the other party.</p>
+<p><strong>Finally</strong>, documenting everything clearly and following up. The best negotiation fails if both parties leave with different understandings of what was agreed.</p>
+<h3 id="conflict-as-opportunity">Conflict as Opportunity</h3>
+<p>I used to view conflict as failure, an indicator that everyone hadn’t properly aligned. Now I understand absence of conflict as far more dangerous. Teams without conflict either have complete agreement on everything (unlikely) or have stopped being honest with each other (more probable).</p>
+<p>Healthy conflict means people trust each other enough to disagree. They surface different perspectives, challenge assumptions, and ultimately make better decisions because they’ve considered things from multiple angles. The question isn’t whether conflict will happen, it’s whether you’ll address it directly or let it poison the organization.</p>
+<p>The leader’s role is creating conditions where disagreement feels safe. This means:</p>
+<ul>
+<li>Establishing clear norms for how conflict is handled professionally</li>
+<li>Modeling the behavior yourself, disagreeing with people while respecting them deeply</li>
+<li>Immediately and firmly preventing personal attacks or characterizations</li>
+<li>Focusing discussions on the problem, not the person</li>
+<li>Rewarding people who respectfully raise difficult issues</li>
+</ul>
+<p>I’ve watched teams paralyzed by unspoken disagreements, where people smile in meetings then complain bitterly in hallways. I’ve also watched teams where conflict is embraced, where people argue passionately about ideas then immediately support whatever decision was made. The second team always outperforms the first.</p>
+<p>Understanding these dynamics has changed how I approach my role as a leader. My responsibility isn’t preventing conflict. It’s channeling conflict toward better decisions and stronger relationships.</p>
+<h3 id="bringing-it-all-together">Bringing It All Together</h3>
+<p>Perhaps the most important lesson from this complete course is that leadership is about seeing people clearly, understanding their needs, their fears, their aspirations, and creating conditions where they can do their best work. It’s about building trust through vulnerability, fostering healthy conflict through psychological safety, and negotiating outcomes where everyone wins.</p>
+<p>These aren’t soft skills to develop after you’ve handled the “real” work. This <em>is</em> the real work. The technical aspects of your job matter far less than the human systems and relationships you build to accomplish it.</p> </article> </div>  </div>  </main> <footer class="animate"> <div class="mx-auto max-w-2xl px-5">  <div class="relative"> <div class="absolute right-0 -top-20"> <button id="back-to-top" class="relative group w-fit flex pl-8 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current rotate-90"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm">
+!!
+</div> </button> </div> </div> <div class="flex justify-between items-center flex-wrap gap-4"> <div class="text-sm">
+&copy; 2026 Guillermo.
+</div> <div class="flex flex-wrap gap-1 items-center"> <button id="sphere-effect" title="Toggle Light Effect" class="group size-8 flex items-center justify-center rounded-full"> <img src="/telescopefinal.svg" alt="Telescope" class="group-hover:brightness-200 transition-all duration-300 ease-in-out"> </button> <button id="crt-toggle-button" aria-label="Toggle CRT effect" class="group size-8 flex items-center justify-center rounded-full"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"> <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect> <line x1="8" y1="21" x2="16" y2="21"></line> <line x1="12" y1="17" x2="12" y2="21"></line> </svg> </button> </div> </div>  </div> </footer> <script type="module">function d(){const e=document.querySelector(".sphere-projection");if(!e)return;let n=window.innerWidth/2,o=window.innerHeight/2;function t(){const r=n/window.innerWidth*100,u=o/window.innerHeight*100;e.style.background=`radial-gradient(circle at ${r}% ${u}%, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 30%, transparent 70%)`}const i=r=>{n=r.clientX,o=r.clientY,t()},s=()=>{t()},a=()=>{t()};return document.addEventListener("mousemove",i,!0),document.addEventListener("click",s,!0),window.addEventListener("resize",a),t(),()=>{document.removeEventListener("mousemove",i,!0),document.removeEventListener("click",s,!0),window.removeEventListener("resize",a)}}let c=d();function l(){const e=document.querySelector("#sphere-effect"),n=document.querySelector(".sphere-projection");if(!e||!n)return;localStorage.getItem("sphereEnabled")==="true"?(n.classList.add("active"),e.classList.add("active")):(n.classList.remove("active"),e.classList.remove("active"));const t=()=>{const i=n.classList.toggle("active");e.classList.toggle("active"),localStorage.setItem("sphereEnabled",String(i))};return e.removeEventListener("click",t),e.addEventListener("click",t),t}l();document.addEventListener("astro:after-swap",()=>{c&&c(),c=d(),l()});</script> </body> </html>

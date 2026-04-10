@@ -1,0 +1,309 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg"><link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)"><meta name="generator" content="Astro v5.18.1"><!-- Font preloads --><link rel="preload" href="/_astro/inter-latin-400-normal.C38fXH4l.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/inter-latin-600-normal.LgqL8muc.woff2" as="font" type="font/woff2" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://guillermoej.github.io/blog/19-object-oriented-programming/"><!-- Primary Meta Tags --><title>Object-Oriented Programming: Thinking About Systems | Guillermo</title><meta name="title" content="Object-Oriented Programming: Thinking About Systems | Guillermo"><meta name="description" content="How object-oriented design  changed the way I program."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://guillermoej.github.io/blog/19-object-oriented-programming/"><meta property="og:title" content="Object-Oriented Programming: Thinking About Systems | Guillermo"><meta property="og:description" content="How object-oriented design  changed the way I program."><meta property="og:image" content="https://guillermoej.github.io/nano.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://guillermoej.github.io/blog/19-object-oriented-programming/"><meta property="twitter:title" content="Object-Oriented Programming: Thinking About Systems | Guillermo"><meta property="twitter:description" content="How object-oriented design  changed the way I program."><meta property="twitter:image" content="https://guillermoej.github.io/nano.png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- RSS Link --><link rel="alternate" type="application/rss+xml" title="Guillermo" href="https://guillermoej.github.io/rss.xml"><script type="module">document.addEventListener("astro:before-swap",e=>[...e.newDocument.head.querySelectorAll('link[as="font"]')].forEach(o=>o.remove()));</script><script>
+  function init() {
+    preloadTheme();
+    onScroll();
+    animate();
+
+    const backToTop = document.getElementById("back-to-top");
+    backToTop?.addEventListener("click", (event) => scrollToTop(event));
+
+    const backToPrev = document.getElementById("back-to-prev");
+    backToPrev?.addEventListener("click", () => window.history.back());
+
+    const darkThemeButton = document.getElementById("dark-theme-button");
+    darkThemeButton?.addEventListener("click", () => {
+      localStorage.setItem("theme", "dark");
+      toggleTheme(true);
+    });
+
+    const crtToggleButton = document.getElementById("crt-toggle-button");
+    crtToggleButton?.addEventListener("click", () => {
+      toggleCRTEffect();
+    });
+
+    const tocToggleButton = document.getElementById("toc-toggle-button");
+    const tocList = document.getElementById("toc-list");
+    const tocIcon = document.getElementById("toc-icon");
+    
+    tocToggleButton?.addEventListener("click", () => {
+      if (tocList && tocIcon) {
+        if (tocList.classList.contains("hidden")) {
+          tocList.classList.remove("hidden");
+          tocIcon.style.transform = "rotate(180deg)";
+        } else {
+          tocList.classList.add("hidden");
+          tocIcon.style.transform = "rotate(0deg)";
+        }
+      }
+    });
+
+    // Alinear TableOfContents con BackToPrev
+    function alignTocWithBackToPrev() {
+      const backToPrevContainer = document.querySelector(".flex.items-center.justify-between.relative");
+      if (backToPrevContainer) {
+        const rect = backToPrevContainer.getBoundingClientRect();
+        const topOffset = window.scrollY + rect.top;
+        document.documentElement.style.setProperty("--back-to-prev-top", topOffset + "px");
+      }
+    }
+
+    alignTocWithBackToPrev();
+    window.addEventListener("resize", alignTocWithBackToPrev);
+    window.addEventListener("scroll", alignTocWithBackToPrev);
+
+    document.addEventListener("scroll", onScroll);
+  }
+
+  function animate() {
+    const animateElements = document.querySelectorAll(".animate");
+
+    animateElements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add("show");
+      }, index * 150);
+    });
+  }
+
+  function onScroll() {
+    if (window.scrollY > 0) {
+      document.documentElement.classList.add("scrolled");
+    } else {
+      document.documentElement.classList.remove("scrolled");
+    }
+  }
+
+  function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+function toggleTheme(dark) {
+    const css = document.createElement("style");
+
+    css.appendChild(
+      document.createTextNode(
+        `* {
+             -webkit-transition: none !important;
+             -moz-transition: none !important;
+             -o-transition: none !important;
+             -ms-transition: none !important;
+             transition: none !important;
+          }
+        `,
+      )
+    );
+
+    document.head.appendChild(css);
+
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+  window.getComputedStyle(css).opacity;
+    document.head.removeChild(css);
+  }
+
+  function preloadTheme() {
+    const userTheme = localStorage.theme;
+
+    if (userTheme === "light" || userTheme === "dark") {
+      toggleTheme(userTheme === "dark");
+    } else {
+      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+  }
+
+  function updateCRTIcon(isActive) {
+    const button = document.getElementById("crt-toggle-button");
+    if (!button) return;
+    
+    const svg = button.querySelector("svg");
+    if (!svg) return;
+    
+    if (isActive) {
+      // Icono de ordenador antiguo - solo silueta
+      svg.innerHTML = `
+        <rect x="2" y="2" width="20" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="4" y="4" width="16" height="10" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M 7 16 L 6 22 L 18 22 L 17 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="10" y="16" width="4" height="3" fill="none" stroke="currentColor" stroke-width="1"/>
+      `;
+    } else {
+      // Icono de monitor moderno
+      svg.innerHTML = `
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      `;
+    }
+  }
+
+  function toggleCRTEffect() {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      if (overlay.style.display === "none") {
+        overlay.style.display = "";
+        localStorage.setItem("crtEnabled", "true");
+      } else {
+        overlay.style.display = "none";
+        localStorage.setItem("crtEnabled", "false");
+      }
+    }
+  }
+
+  // Load CRT effect state on page load
+  function loadCRTState() {
+    const crtEnabled = localStorage.getItem("crtEnabled") === "true";
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      // Por defecto desactivado
+      if (crtEnabled) {
+        overlay.style.display = "";
+      } else {
+        overlay.style.display = "none";
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  document.addEventListener("astro:after-swap", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  preloadTheme();
+
+  function initVisitorCounter() {
+    const button = document.getElementById("i-was-here-button");
+    const countSpan = document.getElementById("visitor-count");
+    
+    if (!button || !countSpan) return;
+    
+    // Load visitor count from localStorage, default to 42
+    let visitorCount = parseInt(sessionStorage.getItem("visitorCount") || "42", 10);
+    const hasClickedInSession = sessionStorage.getItem("hasClickedInSession") === "true";
+    
+    updateCountDisplay(visitorCount);
+    
+    // Disable button if already clicked in this session
+    if (hasClickedInSession) {
+      button.disabled = true;
+      button.style.opacity = "0.5";
+    }
+    
+    const heartIcon = button.querySelector("svg");
+    
+    button.addEventListener("mouseenter", () => {
+      if (!hasClickedInSession && heartIcon) {
+        heartIcon.classList.add("heart-icon");
+      }
+    });
+    
+    button.addEventListener("mouseleave", () => {
+      if (heartIcon) {
+        heartIcon.classList.remove("heart-icon");
+      }
+    });
+    
+    button.addEventListener("click", () => {
+      if (!hasClickedInSession) {
+        visitorCount++;
+        sessionStorage.setItem("visitorCount", visitorCount.toString());
+        sessionStorage.setItem("hasClickedInSession", "true");
+        updateCountDisplay(visitorCount);
+        
+        // Disable button after first click
+        button.disabled = true;
+        button.style.opacity = "0.5";
+      }
+    });
+    
+    function updateCountDisplay(count) {
+      countSpan.textContent = `${count}`;
+    }
+  }
+
+</script><link rel="stylesheet" href="/_astro/_slug_.ByEVDnG6.css">
+<link rel="stylesheet" href="/_astro/_slug_.ahUN62tc.css"></head> <body> <div class="noise"></div> <div class="overlay"></div> <div class="sphere-projection"></div> <div class="animated-background"> <!-- 100 estrellas realistas con vía láctea --> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> </div> <header> <div class="mx-auto max-w-2xl px-5">  <div class="flex flex-wrap gap-y-2 justify-between items-center"> <a href="/" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out">  <div class="text-black dark:text-white">
+Home
+</div>  </a> <nav class="flex gap-3"> <a href="/work" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+work
+ </a> <span> / </span> <a href="/projects" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+projects
+ </a> <span> / </span> <a href="/blog" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+blog
+ </a> <span> / </span> <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 decoration-black/15 dark:decoration-white/30 hover:text-black dark:hover:text-white transition-colors duration-300">
+cv
+</a> </nav> </div>  </div> </header> <main>  <div class="mx-auto max-w-2xl px-5">  <div class="flex items-center justify-between relative"> <div class="animate"> <a href="/blog" class="relative group w-fit flex pl-7 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm"> 
+cd ..
+ </div> </a> </div> </div> <div class="space-y-1 my-10"> <div class="animate flex items-center gap-1.5"> <div class="font-base text-sm"> <time datetime="2023-05-20T00:00:00.000Z"> May 20, 2023 </time> </div>
+&bull;
+<div class="font-base text-sm"> 14 min read </div> </div> <div class="animate text-2xl font-semibold text-black dark:text-white"> Object-Oriented Programming: Thinking About Systems </div> </div> <div class="grid grid-cols-1 gap-12"> <article class="animate"> <h2 id="a-crisis-of-complexity">A Crisis of Complexity</h2>
+<p>There was a moment in computing history when everything nearly broke. In the 1960s and 1970s, as software projects grew larger and more ambitious, something became clear: the traditional ways of programming weren’t scaling. Projects went wildly over budget. Code became unmaintainable. Systems that worked in the lab fell apart in production. The software industry faced what people called the “Software Crisis,” and for a while, it seemed genuinely uncertain whether we could ever build truly complex systems reliably.</p>
+<p>Looking back, I realize that crisis was fundamentally a crisis of thinking. We had developed techniques for organizing small programs, procedural programming, structured programming, but these techniques didn’t translate well to large systems. It’s like trying to organize a city using the principles you’d use to organize a small house. The techniques break down at scale.</p>
+<p>Object-oriented programming emerged not as just another set of syntax rules or language features. It represented a fundamental shift in how we thought about problems. Instead of thinking in terms of functions operating on data, we started thinking in terms of objects, discrete entities with their own behavior and internal state. It was a paradigm shift as significant as the move from assembly language to high-level languages.</p>
+<h2 id="the-paradigm-shift">The Paradigm Shift</h2>
+<p>When I first learned programming, I thought in verbs. How do I calculate this? How do I transform that data? The programs I wrote were sequences of instructions, procedures that operated on data stored separately. This worked for simple programs, but something always felt off about the organization. There was too much cognitive separation between related pieces of information and the operations that worked on that information.</p>
+<p>Object-oriented programming flipped this perspective. Instead of asking “what do I do?”, we started asking “what are the entities in my system?” A better question. When you model a banking system, instead of having separate functions for “calculate balance” and separate data structures for “customer accounts,” you have Account objects that know how to calculate their own balance. The balance calculation belongs to the Account, not to some external function.</p>
+<p>This shift reflects something profound about how humans naturally think. We don’t think in pure abstractions. We think about things, about entities, about actors in a system. An Account is a noun. A Customer is a noun. A Transaction is a noun. Programming in nouns feels natural because it maps more directly to how we conceptualize the world.</p>
+<p>More importantly, this shift acknowledged a deep truth about complexity: when you organize code around entities rather than around procedures, you can intuitively understand larger systems. The relationships between parts become clearer. The responsibilities of each component become more localized.</p>
+<h2 id="the-foundations-abstraction-encapsulation-and-modularization">The Foundations: Abstraction, Encapsulation, and Modularization</h2>
+<p>As I studied OOP more deeply, several core principles emerged as fundamental. These weren’t arbitrary rules. They were solutions to real problems that every programmer faces when trying to build systems.</p>
+<p><strong>Abstraction</strong> is the art of hiding unnecessary complexity. When I define a BankAccount class, I don’t expose every detail of how balances are calculated or how transactions are recorded. Instead, I expose simple operations: deposit, withdraw, check balance. The complexity of how those operations work internally is hidden. This is powerful because it allows me to change the implementation later without affecting code that uses the BankAccount. I’m free to optimize, to change how data is stored, to refactor, as long as the external behavior remains the same.</p>
+<p>The principle of abstraction applies recursively. When I use a BankAccount in my code, I don’t think about strings and numbers and calculations. I think about an Account, a high-level concept. This layering of abstraction is what lets programmers manage systems thousands of times more complex than what was possible with earlier paradigms. Without abstraction, we’d drown in details.</p>
+<p><strong>Encapsulation</strong> is the enforcement mechanism for abstraction. It says, “Some things are internal to this object. They’re private. You can’t touch them directly.” When I declare a variable as private, I’m not just following a rule. I’m making a promise to future programmers (including myself) that this implementation detail can change. Someone might worry that changing an internal variable will break their code, but if it’s properly encapsulated, they know it won’t.</p>
+<p>I used to see encapsulation as tedious. “Why do I need private? My code is small, and I’ll remember how everything works.” Then I came back to code I wrote two years earlier and realized that I had no idea why I set up the internal structure the way I did. Encapsulation would have saved me hours of relearning my own code.</p>
+<p><strong>Modularization</strong> is the organization principle. It says that a system should be composed of cohesive modules, each with clear responsibilities, with minimal dependencies between them. A well-modularized system is easier to understand because each module tells a focused story. It’s easier to test because you can test modules independently. It’s easier to modify because changes in one module are less likely to ripple through the entire system.</p>
+<p>What struck me about modularity is that it’s not unique to OOP. But OOP makes modularity natural. Classes provide natural module boundaries. The principle of single responsibility, one class, one reason to change, gives you guidance for where to draw those boundaries.</p>
+<h2 id="from-theory-to-implementation">From Theory to Implementation</h2>
+<p>As I learned the specific mechanics of OOP in Java, I realized that the language itself was teaching me a way of thinking.</p>
+<p><strong>Classes and objects</strong> are the basic units. A class is a blueprint, a template describing what objects of that type should know and be able to do. An object is an instance of that class, a specific incarnation with its own internal state. When I create a new BankAccount object, it carries its own balance, its own transaction history. The class provides the structure; the object provides the individuality.</p>
+<p><strong>Constructors</strong> are how objects begin their existence. They’re not arbitrary functions. They’re the moment when an object takes its first breath, when it initializes its internal state to a valid starting point. A well-designed constructor ensures that every object begins its life in a coherent state. I can’t have an Account with a balance field that’s never been initialized.</p>
+<p><strong>Methods</strong> are the behaviors that objects can perform. They’re functions, but they’re functions that belong to an object, that operate on that object’s state. When I call <code>account.withdraw(100)</code>, I’m not calling some external function. I’m sending a message to the account. I’m asking it to perform an action on itself. This framing changed how I think about programming. It shifted from imperative (“do this to that”) to communicative (“ask this object to do something”).</p>
+<p><strong>Attributes</strong> are the state that objects carry. But the key insight is that attributes should be private. The internal implementation of an object is its own business. If I need to access an attribute, I should do so through a method. This allows the object to enforce constraints on its own data. If I want to set a customer’s age, the object can check that the age is valid. If I’m changing how age is stored internally (maybe from an integer to a date of birth later), I can do so without breaking code that uses my class.</p>
+<p><strong>Static members</strong> are different. They belong to the class itself, not to instances. When I declare something as static, I’m saying “this is shared across all instances” or “this is a utility function associated with this class.” I learned to use static members sparingly. In my experience, overuse of static members happens when the design is confused about what a class really represents.</p>
+<h2 id="the-physics-of-good-design">The Physics of Good Design</h2>
+<p>After learning the mechanics, I started studying the principles that separate well-designed code from code that works but feels wrong. These principles emerged repeatedly in discussions about design.</p>
+<p><strong>Cohesion</strong> means that the pieces within a module belong together. They share a common purpose. When I look at a low-cohesion module, it feels random. It’s doing several unrelated things. A high-cohesion module tells a focused story. The single responsibility principle is really about cohesion. One class, one reason to change, means every part of that class serves the same purpose.</p>
+<p><strong>Coupling</strong> is the degree to which one module depends on the internals of another. Low coupling means modules are independent. They interact through interfaces, through contracts, but not through direct dependence on each other’s internal details. This is often in tension with cohesion. Sometimes to achieve high cohesion, you create tight coupling. The art is finding balance.</p>
+<p><strong>Code that explains itself</strong> is worth its weight in gold. When I’m reading code and I instantly understand what’s happening because variable names are clear, because method names describe what they do, because the structure mirrors the problem domain, that’s the result of deliberate design. Comments should explain why, not what. If you need comments to explain what the code does, the code isn’t clear enough.</p>
+<p><strong>DRY (Don’t Repeat Yourself)</strong> and <strong>YAGNI (You Aren’t Gonna Need It)</strong> are principles about removing waste. DRY says if you’re writing the same logic twice, you’ve missed an opportunity to create a reusable component. YAGNI says don’t add functionality because you think you might need it someday. Build only what you need today. This prevents code bloat and keeps systems focused.</p>
+<h2 id="the-higher-level-patterns-inheritance-and-polymorphism">The Higher-Level Patterns: Inheritance and Polymorphism</h2>
+<p>As I worked with OOP, I discovered that certain patterns of organization appeared repeatedly. Two mechanisms became particularly important: inheritance and polymorphism.</p>
+<p><strong>Inheritance</strong> lets you create hierarchies of classes. A SavingsAccount is a special kind of Account. It inherits all the basic Account functionality but adds specific behavior for savings accounts. This seems straightforward but contains subtle complexity.</p>
+<p>The power of inheritance is that you can substitute a SavingsAccount anywhere an Account is expected. Code written to work with generic Accounts works with savings accounts, checking accounts, investment accounts, as long as they all inherit from Account. This is incredibly practical.</p>
+<p>But inheritance can also become a trap. When used poorly, inheritance hierarchies become rigid and confusing. You end up with deep hierarchies where at the bottom, classes are compromises, trying to suit purposes they were never really designed for. I learned that composition is often a better alternative. Instead of “A Manager is a Person with additional responsibilities,” I sometimes design it as “A Manager has a Person, and the Person delegates certain responsibilities to the Manager.”</p>
+<p><strong>Polymorphism</strong> is the flexibility to treat objects of different types interchangeably through a common interface. When I pass an Account to a method, I don’t need to know its specific type. It could be a SavingsAccount or a CheckingAccount. As long as it responds to the Account interface, it works. This is powerful because it lets me write methods once and apply them to entire hierarchies of related types.</p>
+<p>What I love about polymorphism is that it mirrors how the real world works. When you hand an object to someone, they might not know its exact type, but they know what interface it presents, and they interact with it through that interface. Software that uses polymorphism feels natural for that reason.</p>
+<h2 id="the-design-contracts-promises-and-obligations">The Design Contracts: Promises and Obligations</h2>
+<p>One principle that transformed how I think about code is “Design by Contract.” The idea is that each class or method makes explicit promises about what it will do. If you give it inputs satisfying certain conditions (preconditions), it promises to return a result satisfying certain properties (postconditions). While the object exists, certain conditions are always true about its state (invariants).</p>
+<p>When I started thinking in these terms, my code became more predictable. I stopped writing defensive code that tried to handle every possible misuse. Instead, I specified clearly what I expected from callers and what they could expect from me. This clarity prevents bugs before they happen.</p>
+<p>For example, if I have a method <code>calculateInterest(double rate)</code>, I can specify: “rate must be between 0 and 1” (precondition). “The return value is the calculated interest” (postcondition). “After calling this method, the account’s balance is unchanged” (invariant). These specifications, whether formal or informal, prevent entire categories of bugs.</p>
+<h2 id="where-oop-excels-and-where-it-struggles">Where OOP Excels and Where It Struggles</h2>
+<p>I want to be honest about OOP’s limitations. Object-oriented programming is powerful for modeling systems with many related entities that need to cooperate. Graphical user interfaces, business applications, game engines, these are domains where OOP shines.</p>
+<p>But OOP isn’t universal. Some problems are naturally functional in character. Data transformation pipelines, mathematical computations, these sometimes feel awkward when forced into an object-oriented model. And OOP can encourage over-engineering. Developers sometimes create elaborate hierarchies and design patterns for simple problems that could be solved more directly.</p>
+<p>There’s also the learning curve. OOP forces you to think about things, abstractions, hierarchies, responsibilities, before you code. This is good for large systems but sometimes feels like friction for small scripts or simple algorithms.</p>
+<h2 id="what-oop-taught-me-about-thinking">What OOP Taught Me About Thinking</h2>
+<p>Working extensively with object-oriented programming changed how I think about problems in general, not just programming. When I face a complex system, an organization, an ecosystem, a social structure, I find myself asking OOP questions. What are the natural entities? What are their responsibilities? How do they interact? What contracts govern those interactions?</p>
+<p>This isn’t because OOP is inherently superior. Rather, OOP forced me to become conscious of how I organize complexity. I learned that when you face a complicated problem, the first step is usually not to solve it. The first step is to understand its structure. What are the entities? What are the relationships? Once you’ve understood the structure, the solution often becomes obvious.</p>
+<p>I also learned that design is about managing constraints and making tradeoffs. Perfect abstraction is impossible. Perfect modularity is impossible. Every design decision involves compromising on something. Good design is recognizing which compromises matter and making conscious choices about them rather than stumbling into them.</p>
+<p>Object-oriented programming taught me that thoughtful organization, clear interfaces, and careful separation of concerns are not just technical requirements. They’re expressions of respect for the future, respect for whoever will need to understand this code, enhance it, or debug it. That future person might be me, reacquainted with code I wrote years ago. It might be a colleague joining the team. It might be someone I’ll never meet. Either way, clear design is an act of solidarity with them.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Object-oriented programming is one of the most influential ideas in computer science. It emerged from a crisis, the realization that traditional techniques couldn’t scale to the complexity of modern software. Instead of giving up, the field invented a new way of thinking. We started modeling software after real-world entities. We emphasized hiding complexity, organizing into modules, and creating clear interfaces.</p>
+<p>What strikes me now is that these weren’t arbitrary choices. They emerged from deep insights about human cognition and system organization. We think in terms of entities. We manage complexity through abstraction. We organize large systems into coherent modules. OOP codified these insights into concrete practices.</p>
+<p>Today, variants of object-oriented design appear even in languages that aren’t strictly object-oriented. The principles have proven robust. More importantly, OOP taught our field valuable lessons about how to think about complexity. Those lessons transcend any particular language or technique.</p>
+<p>When I look at the complexity software projects tackle today, I’m sometimes amazed. Systems with millions of lines of code, used by billions of people, coordinating activities across the planet. These wouldn’t be imaginable without the conceptual breakthroughs that OOP represents. We learned how to organize complexity. We learned how to build systems large enough and durable enough to evolve over decades.</p>
+<p>That’s the real legacy of object-oriented programming. Not the syntax, not the specific language features, but the fundamental shift in how we think about solving problems. It taught us that great software isn’t built. It’s designed. And good design comes from understanding your domain, respecting your future self and your collaborators, and having the courage to refactor when your understanding deepens. That’s a lesson that extends far beyond programming.</p> </article> </div>  </div>  </main> <footer class="animate"> <div class="mx-auto max-w-2xl px-5">  <div class="relative"> <div class="absolute right-0 -top-20"> <button id="back-to-top" class="relative group w-fit flex pl-8 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current rotate-90"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm">
+!!
+</div> </button> </div> </div> <div class="flex justify-between items-center flex-wrap gap-4"> <div class="text-sm">
+&copy; 2026 Guillermo.
+</div> <div class="flex flex-wrap gap-1 items-center"> <button id="sphere-effect" title="Toggle Light Effect" class="group size-8 flex items-center justify-center rounded-full"> <img src="/telescopefinal.svg" alt="Telescope" class="group-hover:brightness-200 transition-all duration-300 ease-in-out"> </button> <button id="crt-toggle-button" aria-label="Toggle CRT effect" class="group size-8 flex items-center justify-center rounded-full"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"> <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect> <line x1="8" y1="21" x2="16" y2="21"></line> <line x1="12" y1="17" x2="12" y2="21"></line> </svg> </button> </div> </div>  </div> </footer> <script type="module">function d(){const e=document.querySelector(".sphere-projection");if(!e)return;let n=window.innerWidth/2,o=window.innerHeight/2;function t(){const r=n/window.innerWidth*100,u=o/window.innerHeight*100;e.style.background=`radial-gradient(circle at ${r}% ${u}%, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 30%, transparent 70%)`}const i=r=>{n=r.clientX,o=r.clientY,t()},s=()=>{t()},a=()=>{t()};return document.addEventListener("mousemove",i,!0),document.addEventListener("click",s,!0),window.addEventListener("resize",a),t(),()=>{document.removeEventListener("mousemove",i,!0),document.removeEventListener("click",s,!0),window.removeEventListener("resize",a)}}let c=d();function l(){const e=document.querySelector("#sphere-effect"),n=document.querySelector(".sphere-projection");if(!e||!n)return;localStorage.getItem("sphereEnabled")==="true"?(n.classList.add("active"),e.classList.add("active")):(n.classList.remove("active"),e.classList.remove("active"));const t=()=>{const i=n.classList.toggle("active");e.classList.toggle("active"),localStorage.setItem("sphereEnabled",String(i))};return e.removeEventListener("click",t),e.addEventListener("click",t),t}l();document.addEventListener("astro:after-swap",()=>{c&&c(),c=d(),l()});</script> </body> </html>

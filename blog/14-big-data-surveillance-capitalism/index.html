@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg"><link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)"><link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)"><meta name="generator" content="Astro v5.18.1"><!-- Font preloads --><link rel="preload" href="/_astro/inter-latin-400-normal.C38fXH4l.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/inter-latin-600-normal.LgqL8muc.woff2" as="font" type="font/woff2" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://guillermoej.github.io/blog/14-big-data-surveillance-capitalism/"><!-- Primary Meta Tags --><title>Mr. Big Data Wants To Know About You: The Death of Privacy | Guillermo</title><meta name="title" content="Mr. Big Data Wants To Know About You: The Death of Privacy | Guillermo"><meta name="description" content="Surveillance capitalism and data exploitation in the digital age."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://guillermoej.github.io/blog/14-big-data-surveillance-capitalism/"><meta property="og:title" content="Mr. Big Data Wants To Know About You: The Death of Privacy | Guillermo"><meta property="og:description" content="Surveillance capitalism and data exploitation in the digital age."><meta property="og:image" content="https://guillermoej.github.io/nano.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://guillermoej.github.io/blog/14-big-data-surveillance-capitalism/"><meta property="twitter:title" content="Mr. Big Data Wants To Know About You: The Death of Privacy | Guillermo"><meta property="twitter:description" content="Surveillance capitalism and data exploitation in the digital age."><meta property="twitter:image" content="https://guillermoej.github.io/nano.png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- RSS Link --><link rel="alternate" type="application/rss+xml" title="Guillermo" href="https://guillermoej.github.io/rss.xml"><script type="module">document.addEventListener("astro:before-swap",e=>[...e.newDocument.head.querySelectorAll('link[as="font"]')].forEach(o=>o.remove()));</script><script>
+  function init() {
+    preloadTheme();
+    onScroll();
+    animate();
+
+    const backToTop = document.getElementById("back-to-top");
+    backToTop?.addEventListener("click", (event) => scrollToTop(event));
+
+    const backToPrev = document.getElementById("back-to-prev");
+    backToPrev?.addEventListener("click", () => window.history.back());
+
+    const darkThemeButton = document.getElementById("dark-theme-button");
+    darkThemeButton?.addEventListener("click", () => {
+      localStorage.setItem("theme", "dark");
+      toggleTheme(true);
+    });
+
+    const crtToggleButton = document.getElementById("crt-toggle-button");
+    crtToggleButton?.addEventListener("click", () => {
+      toggleCRTEffect();
+    });
+
+    const tocToggleButton = document.getElementById("toc-toggle-button");
+    const tocList = document.getElementById("toc-list");
+    const tocIcon = document.getElementById("toc-icon");
+    
+    tocToggleButton?.addEventListener("click", () => {
+      if (tocList && tocIcon) {
+        if (tocList.classList.contains("hidden")) {
+          tocList.classList.remove("hidden");
+          tocIcon.style.transform = "rotate(180deg)";
+        } else {
+          tocList.classList.add("hidden");
+          tocIcon.style.transform = "rotate(0deg)";
+        }
+      }
+    });
+
+    // Alinear TableOfContents con BackToPrev
+    function alignTocWithBackToPrev() {
+      const backToPrevContainer = document.querySelector(".flex.items-center.justify-between.relative");
+      if (backToPrevContainer) {
+        const rect = backToPrevContainer.getBoundingClientRect();
+        const topOffset = window.scrollY + rect.top;
+        document.documentElement.style.setProperty("--back-to-prev-top", topOffset + "px");
+      }
+    }
+
+    alignTocWithBackToPrev();
+    window.addEventListener("resize", alignTocWithBackToPrev);
+    window.addEventListener("scroll", alignTocWithBackToPrev);
+
+    document.addEventListener("scroll", onScroll);
+  }
+
+  function animate() {
+    const animateElements = document.querySelectorAll(".animate");
+
+    animateElements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add("show");
+      }, index * 150);
+    });
+  }
+
+  function onScroll() {
+    if (window.scrollY > 0) {
+      document.documentElement.classList.add("scrolled");
+    } else {
+      document.documentElement.classList.remove("scrolled");
+    }
+  }
+
+  function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+function toggleTheme(dark) {
+    const css = document.createElement("style");
+
+    css.appendChild(
+      document.createTextNode(
+        `* {
+             -webkit-transition: none !important;
+             -moz-transition: none !important;
+             -o-transition: none !important;
+             -ms-transition: none !important;
+             transition: none !important;
+          }
+        `,
+      )
+    );
+
+    document.head.appendChild(css);
+
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+  window.getComputedStyle(css).opacity;
+    document.head.removeChild(css);
+  }
+
+  function preloadTheme() {
+    const userTheme = localStorage.theme;
+
+    if (userTheme === "light" || userTheme === "dark") {
+      toggleTheme(userTheme === "dark");
+    } else {
+      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+  }
+
+  function updateCRTIcon(isActive) {
+    const button = document.getElementById("crt-toggle-button");
+    if (!button) return;
+    
+    const svg = button.querySelector("svg");
+    if (!svg) return;
+    
+    if (isActive) {
+      // Icono de ordenador antiguo - solo silueta
+      svg.innerHTML = `
+        <rect x="2" y="2" width="20" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="4" y="4" width="16" height="10" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M 7 16 L 6 22 L 18 22 L 17 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="10" y="16" width="4" height="3" fill="none" stroke="currentColor" stroke-width="1"/>
+      `;
+    } else {
+      // Icono de monitor moderno
+      svg.innerHTML = `
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      `;
+    }
+  }
+
+  function toggleCRTEffect() {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      if (overlay.style.display === "none") {
+        overlay.style.display = "";
+        localStorage.setItem("crtEnabled", "true");
+      } else {
+        overlay.style.display = "none";
+        localStorage.setItem("crtEnabled", "false");
+      }
+    }
+  }
+
+  // Load CRT effect state on page load
+  function loadCRTState() {
+    const crtEnabled = localStorage.getItem("crtEnabled") === "true";
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      // Por defecto desactivado
+      if (crtEnabled) {
+        overlay.style.display = "";
+      } else {
+        overlay.style.display = "none";
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  document.addEventListener("astro:after-swap", () => {
+    init();
+    loadCRTState();
+    initVisitorCounter();
+  });
+  preloadTheme();
+
+  function initVisitorCounter() {
+    const button = document.getElementById("i-was-here-button");
+    const countSpan = document.getElementById("visitor-count");
+    
+    if (!button || !countSpan) return;
+    
+    // Load visitor count from localStorage, default to 42
+    let visitorCount = parseInt(sessionStorage.getItem("visitorCount") || "42", 10);
+    const hasClickedInSession = sessionStorage.getItem("hasClickedInSession") === "true";
+    
+    updateCountDisplay(visitorCount);
+    
+    // Disable button if already clicked in this session
+    if (hasClickedInSession) {
+      button.disabled = true;
+      button.style.opacity = "0.5";
+    }
+    
+    const heartIcon = button.querySelector("svg");
+    
+    button.addEventListener("mouseenter", () => {
+      if (!hasClickedInSession && heartIcon) {
+        heartIcon.classList.add("heart-icon");
+      }
+    });
+    
+    button.addEventListener("mouseleave", () => {
+      if (heartIcon) {
+        heartIcon.classList.remove("heart-icon");
+      }
+    });
+    
+    button.addEventListener("click", () => {
+      if (!hasClickedInSession) {
+        visitorCount++;
+        sessionStorage.setItem("visitorCount", visitorCount.toString());
+        sessionStorage.setItem("hasClickedInSession", "true");
+        updateCountDisplay(visitorCount);
+        
+        // Disable button after first click
+        button.disabled = true;
+        button.style.opacity = "0.5";
+      }
+    });
+    
+    function updateCountDisplay(count) {
+      countSpan.textContent = `${count}`;
+    }
+  }
+
+</script><link rel="stylesheet" href="/_astro/_slug_.ByEVDnG6.css">
+<link rel="stylesheet" href="/_astro/_slug_.ahUN62tc.css"></head> <body> <div class="noise"></div> <div class="overlay"></div> <div class="sphere-projection"></div> <div class="animated-background"> <!-- 100 estrellas realistas con vía láctea --> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> </div> <header> <div class="mx-auto max-w-2xl px-5">  <div class="flex flex-wrap gap-y-2 justify-between items-center"> <a href="/" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out">  <div class="text-black dark:text-white">
+Home
+</div>  </a> <nav class="flex gap-3"> <a href="/work" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+work
+ </a> <span> / </span> <a href="/projects" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+projects
+ </a> <span> / </span> <a href="/blog" target="_self" class="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"> 
+blog
+ </a> <span> / </span> <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 decoration-black/15 dark:decoration-white/30 hover:text-black dark:hover:text-white transition-colors duration-300">
+cv
+</a> </nav> </div>  </div> </header> <main>  <div class="mx-auto max-w-2xl px-5">  <div class="flex items-center justify-between relative"> <div class="animate"> <a href="/blog" class="relative group w-fit flex pl-7 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm"> 
+cd ..
+ </div> </a> </div> </div> <div class="space-y-1 my-10"> <div class="animate flex items-center gap-1.5"> <div class="font-base text-sm"> <time datetime="2024-11-10T00:00:00.000Z"> Nov 10, 2024 </time> </div>
+&bull;
+<div class="font-base text-sm"> 9 min read </div> </div> <div class="animate text-2xl font-semibold text-black dark:text-white"> Mr. Big Data Wants To Know About You: The Death of Privacy </div> </div> <div class="grid grid-cols-1 gap-12"> <article class="animate"> <h2 id="introduction">Introduction</h2>
+<p>In the digital era, Big Data is one of the pillars supporting modern society’s functioning. From optimizing urban services to predicting epidemics and personalizing our online experiences, large data volumes enable companies and governments to find patterns and make predictions that once seemed like science fiction. This ability to collect and analyze massive information has generated “predictive power” that could transform entire sectors, from healthcare to transportation.</p>
+<p>However, this revolution brings serious privacy challenges. Although many datasets are handled with the promise of being “anonymized,” numerous cases show where anonymization breaks down, allowing individual reidentification relatively easily. For example, in the 2006 AOL case, an apparently anonymous search database turned out to be a perfect map for identifying specific users. This demonstrated that simply removing names or addresses isn’t enough: searches, navigation patterns, and locations reveal personal information when analyzed together.</p>
+<p>This leads to an evident question: are we really anonymized online? Reality shows that even the most sophisticated protection techniques can be insufficient. In a world where every click, purchase, and movement can be recorded and analyzed, true privacy seems to have become utopia. We face the challenge of protecting data effectively in an environment where information flows without restrictions, and the possibility of data being exploited seems inevitable.</p>
+<h2 id="who-is-mr-big-data">Who is Mr. Big Data?</h2>
+<h3 id="surveillance-capitalism">Surveillance Capitalism</h3>
+<p>The concept of “surveillance capitalism” refers to how technology companies use their users’ personal data not only to improve services but also to generate enormous economic revenue. Shoshana Zuboff, in her book <em>The Age of Surveillance Capitalism</em>, describes how companies like Google and Facebook have established a business model where massive data collection is the basis for their profits. This data, collected through every click, search, or online interaction, allows companies to build detailed profiles of users’ tastes, interests, and behaviors.</p>
+<p>For companies, the logic behind this model is simple: the more they know about a person, the more money they’ll generate in the future. Thus, these companies don’t just sell advertising spaces; they sell behavior predictions, allowing advertisers to target users with unprecedented precision. This personalization approach enables highly effective ad generation and significantly increases conversion rates, making surveillance capitalism one of the most profitable models in today’s digital economy.</p>
+<p>An iconic example of surveillance and data monetization model influence is the Cambridge Analytica case. The British political consulting firm illegally accessed approximately 87 million Facebook users’ data in 2016. Cambridge Analytica used this data to build psychological profiles of users, targeting them with highly segmented ads during critical political campaigns like the 2016 Brexit referendum in the UK and 2016 presidential elections in the US. In both cases, specifically designed messages were spread to influence public opinion, exploiting individual voters’ fears and prejudices. This type of data-based manipulation raises disturbing questions about surveillance capitalism’s impact on democracy and individual freedom.</p>
+<p>Cambridge Analytica’s operation revealed digital platforms’ vulnerability and how easily these companies can collect and manipulate personal data without users’ knowledge or consent. The case also exposed weaknesses in data protection regulations, which until then were insufficient to prevent such invasive practices. Since then, many countries have begun strengthening regulations around personal data protection, and cases like this are frequently cited to justify the need for greater surveillance capitalism regulation and its societal impact.</p>
+<h3 id="were-being-sold">We’re Being Sold</h3>
+<p>First, I must acknowledge that governments and some companies have begun implementing data protection measures. In Europe, for example, the General Data Protection Regulation (GDPR) introduced regulations requiring companies to obtain explicit user consent before collecting data. This regulation also grants citizens the “right to be forgotten,” allowing them to request personal information deletion. In theory, these mechanisms should guarantee greater user privacy, limiting surveillance practices’ scope and allowing some control over data.</p>
+<p>Certain technology companies have also begun taking measures to protect user information, at least superficially. Some, like Apple, have implemented advanced privacy systems promising to minimize data collection. Apple, for example, promotes its “App Tracking Transparency” as a measure to give users control over what apps can track their activities.</p>
+<p>However, these measures are merely superficial. The “right to be forgotten” is useless if data is sold and resold to third parties without transparency, making it difficult to track where data ends up. Furthermore, many companies design interfaces and policies so that users, while theoretically having control over information, don’t really understand privacy options’ scope. Thanks to complex terms and conditions, alongside deceptive interfaces, we unknowingly accept ceding our data without understanding the real impact.</p>
+<p>Moreover, data breaches and violations continue affecting millions yearly. From the famous Equifax data breach in 2017 to social media data theft cases, these violations demonstrate that even with stricter regulations, companies still fail protecting user privacy. Data security is often seen as an unnecessary expense rather than a priority, with companies taking protective measures only after serious incidents or under regulatory pressure. In summary, while privacy policies create protection illusions, real control over our information remains minimal. It’s evident these measures are mostly insufficient to contain large corporations’ power and how they exploit our data.</p>
+<h3 id="big-datas-future">Big Data’s Future</h3>
+<p>Looking forward, I believe we’re moving toward either a world of greater corporate surveillance and control, or beginning to see transformation empowering users through new regulations and alternative technologies. Facing growing criticism and data abuse scandals, governments and organizations have begun considering stricter reforms. Some proposals seek to impose clearer limits on how companies can collect and use our data. In the European Union, GDPR was just the beginning, and new regulations are being considered demanding greater transparency, broader user rights, and significant sanctions for non-compliance. This trend could become a powerful standard if expanded globally, marking a power shift toward citizens.</p>
+<p>Beyond regulation, alternative technologies are emerging that can give users greater data control. Decentralized, open-source platforms not depending on single providers or storing information in large centralized servers offer safer, more transparent models. These technologies, built on blockchain networks and other decentralized systems, ensure data isn’t concentrated in few hands but owned by users themselves. In an ideal world, these platforms would offer services comparable to tech giants but without data monopoly risks. Open-source projects are also gaining popularity, where users can audit, improve, and adapt technology to their needs, significantly reducing tech giants’ opacity and power.</p>
+<p>However, these tools will only be truly effective if society plays an active role in monitoring and limiting data monopolies’ power. As users, we must question digital service “free” real cost and demand ethical alternatives respecting our rights. This change won’t occur through corporate goodwill alone; it’s society’s, digital rights organizations’, and governments’ responsibility to promote and support technologies and companies respecting privacy. This will involve vigilance over major tech companies and active rejection of invasive privacy-compromising practices.</p>
+<p>Because of all this, I truly believe Big Data’s future depends not only on policies and technologies but also on society’s willingness to challenge monopolies and build a fairer, safer digital economy for all.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>In a world where every movement, decision, and search is recorded, companies and governments have become custodians of unprecedented information about us. However, what right do corporations have to handle our lives’ details? And to what extent are governments equipped to safeguard our rights in this new digital world? Rather than data protectors, these entities seem to have adopted an exploitation position, benefiting from our information while offering security and privacy illusions.</p>
+<p>Tech companies, with surveillance-based business models, function more as omniscient observers than service providers. Their profits depend on how well they anticipate and manipulate our desires. This dependency relationship not only creates an unbalanced economy where our data has value we’re never compensated for, but also lays groundwork for gradual freedom loss. Privacy is autonomy’s foundation, and without it, our decisions, preferences, and interests end up shaped by algorithms and behavior predictions. This brings another major question front. If companies know us better than we know ourselves, what remains of our free will? In this surveillance capitalism era, our own identity has become an exploitable resource, and we’re more watched than ever, often without knowing or truly consenting.</p>
+<p>Governments, which should be their citizens’ rights guardians, are trapped in a dilemma. On one hand, they attempt regulating data abuse, but on the other, they themselves use this data for state control and security. In this ambiguity, it’s easy to question whether they truly seek protecting us or whether they ultimately also have interest in maintaining this surveillance system. In attempting to provide security, they risk following the same path as tech monopolies, prioritizing massive data collection over citizen freedom. Additionally, governments have proven slow in regulating a sector advancing at breakneck speed. Each new regulation seems insufficient and unable to keep pace with technology, creating feelings of helplessness and skepticism among users.</p>
+<p>To finish, responsibility for protecting privacy rests on both sides, but so far, neither has demonstrated the ethical commitment necessary to assume this role with integrity. If companies and governments want to truly act as data guardians, they must recognize privacy’s human and philosophical dimension. It’s not just about legal protection but respecting individuals’ autonomy and dignity. While we continue valuing efficiency and economic benefit above these principles, we’re condemned to live in a surveillance society, one where privacy is considered a luxury, not a fundamental right. Perhaps it’s time to reconsider our collective priorities and demand change that finally returns us control over our own digital existence.</p> </article> </div>  </div>  </main> <footer class="animate"> <div class="mx-auto max-w-2xl px-5">  <div class="relative"> <div class="absolute right-0 -top-20"> <button id="back-to-top" class="relative group w-fit flex pl-8 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current rotate-90"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></line> <polyline points="12 5 5 12 12 19" class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></polyline> </svg> <div class="text-sm">
+!!
+</div> </button> </div> </div> <div class="flex justify-between items-center flex-wrap gap-4"> <div class="text-sm">
+&copy; 2026 Guillermo.
+</div> <div class="flex flex-wrap gap-1 items-center"> <button id="sphere-effect" title="Toggle Light Effect" class="group size-8 flex items-center justify-center rounded-full"> <img src="/telescopefinal.svg" alt="Telescope" class="group-hover:brightness-200 transition-all duration-300 ease-in-out"> </button> <button id="crt-toggle-button" aria-label="Toggle CRT effect" class="group size-8 flex items-center justify-center rounded-full"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"> <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect> <line x1="8" y1="21" x2="16" y2="21"></line> <line x1="12" y1="17" x2="12" y2="21"></line> </svg> </button> </div> </div>  </div> </footer> <script type="module">function d(){const e=document.querySelector(".sphere-projection");if(!e)return;let n=window.innerWidth/2,o=window.innerHeight/2;function t(){const r=n/window.innerWidth*100,u=o/window.innerHeight*100;e.style.background=`radial-gradient(circle at ${r}% ${u}%, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 30%, transparent 70%)`}const i=r=>{n=r.clientX,o=r.clientY,t()},s=()=>{t()},a=()=>{t()};return document.addEventListener("mousemove",i,!0),document.addEventListener("click",s,!0),window.addEventListener("resize",a),t(),()=>{document.removeEventListener("mousemove",i,!0),document.removeEventListener("click",s,!0),window.removeEventListener("resize",a)}}let c=d();function l(){const e=document.querySelector("#sphere-effect"),n=document.querySelector(".sphere-projection");if(!e||!n)return;localStorage.getItem("sphereEnabled")==="true"?(n.classList.add("active"),e.classList.add("active")):(n.classList.remove("active"),e.classList.remove("active"));const t=()=>{const i=n.classList.toggle("active");e.classList.toggle("active"),localStorage.setItem("sphereEnabled",String(i))};return e.removeEventListener("click",t),e.addEventListener("click",t),t}l();document.addEventListener("astro:after-swap",()=>{c&&c(),c=d(),l()});</script> </body> </html>
