@@ -181,44 +181,46 @@ const { title, description } = Astro.props;
       // Inicializar en carga
       let cleanup = initSphereTracking();
       
-      // Función para inicializar el toggle
-      function initCrtToggle() {
-        const sphereToggle = document.querySelector('#sphere-effect');
-        const projection = document.querySelector('.sphere-projection');
+      // Función para inicializar el toggle de estrellas
+      function initStarToggle() {
+        const starToggle = document.querySelector('#sphere-effect');
+        const animatedBackground = document.querySelector('.animated-background');
         
-        if (!sphereToggle || !projection) return;
+        if (!starToggle || !animatedBackground) return;
         
-        // Recuperar estado guardado y aplicar
-        const sphereState = localStorage.getItem('sphereEnabled') === 'true';
-        if (sphereState) {
-          projection.classList.add('active');
-          sphereToggle.classList.add('active');
-        } else {
-          projection.classList.remove('active');
-          sphereToggle.classList.remove('active');
+        // Recuperar estado guardado (por defecto visibles = true)
+        const starsVisible = localStorage.getItem('starsVisible') !== 'false';
+        if (!starsVisible) {
+          animatedBackground.style.display = 'none';
         }
         
-        // Manejar clicks en el botón (remover listeners antiguos primero)
+        // Manejar clicks en el botón
         const handleToggleClick = () => {
-          const isActive = projection.classList.toggle('active');
-          sphereToggle.classList.toggle('active');
-          localStorage.setItem('sphereEnabled', String(isActive));
+          const isVisible = animatedBackground.style.display !== 'none';
+          animatedBackground.style.display = isVisible ? 'none' : '';
+          localStorage.setItem('starsVisible', String(!isVisible));
+          starToggle.classList.toggle('active');
         };
         
-        sphereToggle.removeEventListener('click', handleToggleClick);
-        sphereToggle.addEventListener('click', handleToggleClick);
+        // Si las estrellas están visibles, añadir clase active al botón
+        if (starsVisible) {
+          starToggle.classList.add('active');
+        }
+        
+        starToggle.removeEventListener('click', handleToggleClick);
+        starToggle.addEventListener('click', handleToggleClick);
         
         return handleToggleClick;
       }
       
       // Inicializar toggle en carga
-      let toggleHandler = initCrtToggle();
+      let toggleHandler = initStarToggle();
       
       // Reinicializar después de cambios de página (Astro View Transitions)
       document.addEventListener('astro:after-swap', () => {
         if (cleanup) cleanup();
         cleanup = initSphereTracking();
-        toggleHandler = initCrtToggle();
+        toggleHandler = initStarToggle();
       });
     </script>
   </body>
