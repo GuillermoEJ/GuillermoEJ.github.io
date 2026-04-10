@@ -259,11 +259,17 @@ function toggleTheme(dark) {
     
     if (!button || !countSpan) return;
     
-    // Load visitor count from localStorage, default to 42 (simulated global counter)
-    let visitorCount = parseInt(localStorage.getItem("visitorCount") || "42", 10);
-    const hasClickedInSession = localStorage.getItem("hasClickedInSession") === "true";
+    const hasClickedInSession = sessionStorage.getItem("hasClickedInSession") === "true";
     
-    updateCountDisplay(visitorCount);
+    // Fetch current counter from Vercel KV
+    fetch("/api/increment-visitor")
+      .then(r => r.json())
+      .then(data => {
+        updateCountDisplay(data.count || 42);
+      })
+      .catch(() => {
+        updateCountDisplay(42);
+      });
     
     // Disable button if already clicked in this session
     if (hasClickedInSession) {
@@ -285,16 +291,20 @@ function toggleTheme(dark) {
       }
     });
     
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
       if (!hasClickedInSession) {
-        visitorCount++;
-        localStorage.setItem("visitorCount", visitorCount.toString());
-        localStorage.setItem("hasClickedInSession", "true");
-        updateCountDisplay(visitorCount);
-        
-        // Disable button after first click
-        button.disabled = true;
-        button.style.opacity = "0.5";
+        try {
+          const response = await fetch("/api/increment-visitor", { method: "POST" });
+          const data = await response.json();
+          updateCountDisplay(data.count || 42);
+          sessionStorage.setItem("hasClickedInSession", "true");
+          
+          // Disable button after first click
+          button.disabled = true;
+          button.style.opacity = "0.5";
+        } catch (error) {
+          console.error("Failed to increment counter:", error);
+        }
       }
     });
     
