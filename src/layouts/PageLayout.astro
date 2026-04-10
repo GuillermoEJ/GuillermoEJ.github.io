@@ -21,7 +21,6 @@ const { title, description } = Astro.props;
     <div class="noise"></div>
     <div class="overlay"></div>
     <div class="sphere-projection"></div>
-    <button class="sphere-effect animate" id="sphere-effect" title="Toggle Light Effect">?</button>
     <div class="animated-background">
       <!-- 100 estrellas realistas con vía láctea -->
       <div class="star"></div>
@@ -188,11 +187,6 @@ const { title, description } = Astro.props;
         const projection = document.querySelector('.sphere-projection');
         
         if (!sphereToggle || !projection) return;
-        
-        // Animar el botón (agregar la clase show después de un pequeño delay)
-        setTimeout(() => {
-          sphereToggle.classList.add('show');
-        }, 100);
         
         // Recuperar estado guardado y aplicar
         const sphereState = localStorage.getItem('sphereEnabled') === 'true';

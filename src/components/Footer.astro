@@ -19,6 +19,17 @@ const currentYear = new Date().getFullYear();
       </div>
       <div class="flex flex-wrap gap-1 items-center">
         <button
+          id="sphere-effect"
+          title="Toggle Light Effect"
+          class="group size-8 flex items-center justify-center rounded-full"
+        >
+          <img 
+            src="/telescopefinal.svg" 
+            alt="Telescope" 
+            class="group-hover:brightness-200 transition-all duration-300 ease-in-out"
+          />
+        </button>
+        <button
           id="crt-toggle-button"
           aria-label="Toggle CRT effect"
           class="group size-8 flex items-center justify-center rounded-full"

@@ -231,11 +231,11 @@ function toggleTheme(dark) {
 
   // Load CRT effect state on page load
   function loadCRTState() {
-    const crtEnabled = localStorage.getItem("crtEnabled");
+    const crtEnabled = localStorage.getItem("crtEnabled") === "true";
     const overlay = document.querySelector(".overlay");
     if (overlay) {
       // Por defecto desactivado
-      if (crtEnabled === "true") {
+      if (crtEnabled) {
         overlay.style.display = "";
         updateCRTIcon(true);
       } else {
