@@ -1,5 +1,5 @@
 ---
-title: "The Art of Leadership: To know thyself is the beginning of wisdom "
+title: "The Art of Leadership"
 description: "Leadership Development course @ UPM."
 date: "May 15 2024"
 draft: false

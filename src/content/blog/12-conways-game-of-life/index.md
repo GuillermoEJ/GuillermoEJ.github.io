@@ -1,5 +1,5 @@
 ---
-title: "Conway's Game of Life: When Four Rules Create Infinite Worlds"
+title: "Conway's Game of Life"
 description: "Cellular automata and John Conway's Game of Life."
 date: "Mar 28 2025"
 draft: false

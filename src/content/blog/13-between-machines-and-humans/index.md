@@ -1,5 +1,5 @@
 ---
-title: "Between Machines and Humans: The Transformative Impact of AI"
+title: "Between Machines and Humans"
 description: "How artificial intelligence is reshaping society."
 date: "Nov 15 2024"
 draft: false

@@ -1,5 +1,5 @@
 ---
-title: "Ethics of Care and Digital Technologies: Toward Responsible Innovation"
+title: "Ethics of Care and Digital Technologies"
 description: "Ethics of care framework in the digital age."
 date: "Oct 28 2024"
 draft: false

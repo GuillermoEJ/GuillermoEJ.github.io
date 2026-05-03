@@ -1,5 +1,5 @@
 ---
-title: "Beyond Efficiency: AI in Planning and Building Inclusive, Sustainable Cities"
+title: "AI in Planning and Building Inclusive, Sustainable Cities"
 description: "AI's role in urban planning."
 date: "Nov 01 2024"
 draft: false

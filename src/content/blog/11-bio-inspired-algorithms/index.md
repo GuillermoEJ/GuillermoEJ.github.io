@@ -1,5 +1,5 @@
 ---
-title: "Bio-Inspired Algorithms: When Nature Teaches Us How to Think"
+title: "Bio-Inspired Algorithms"
 description: "Maybe nature has already solved many of our hardest problems."
 date: "Jan 28 2025"
 draft: false

@@ -1,5 +1,5 @@
 ---
-title: "Mr. Big Data Wants To Know About You: The Death of Privacy"
+title: "Mr. Big Data Wants To Know About You"
 description: "Surveillance capitalism and data exploitation in the digital age."
 date: "Nov 10 2024"
 draft: false

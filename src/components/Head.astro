@@ -260,29 +260,15 @@ function toggleTheme(dark) {
     if (!button || !countSpan) return;
     
     const hasClickedInSession = sessionStorage.getItem("hasClickedInSession") === "true";
-    const SUPABASE_URL = "https://okaoizmmxsxymjqsnxha.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_j9DzBRp8qa55YP7xW2OY_g_nT24ndO3";
+    let count = 99;
     
-    // Cargar contador actual via REST API
-    fetch(`${SUPABASE_URL}/rest/v1/visitor_counter?id=eq.1&select=count`, {
-      headers: {
-        "apikey": SUPABASE_KEY,
-      },
-    })
-      .then(res => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          updateCountDisplay(data[0].count);
-        } else {
-          updateCountDisplay(1);
-        }
-      })
-      .catch(() => updateCountDisplay(1));
+    updateCountDisplay(count);
     
     // Disable button if already clicked in this session
     if (hasClickedInSession) {
       button.disabled = true;
       button.style.opacity = "0.5";
+      updateCountDisplay(100);
     }
     
     const heartIcon = button.querySelector("svg");
@@ -299,47 +285,18 @@ function toggleTheme(dark) {
       }
     });
     
-    button.addEventListener("click", async () => {
+    button.addEventListener("click", () => {
       if (!hasClickedInSession) {
-        try {
-          const SUPABASE_URL = "https://okaoizmmxsxymjqsnxha.supabase.co";
-          const SUPABASE_KEY = "sb_publishable_j9DzBRp8qa55YP7xW2OY_g_nT24ndO3";
-          
-          // Obtener valor actual
-          const res = await fetch(`${SUPABASE_URL}/rest/v1/visitor_counter?id=eq.1&select=count`, {
-            headers: {
-              "apikey": SUPABASE_KEY,
-            },
-          });
-          const data = await res.json();
-          
-          if (data && data.length > 0) {
-            const newCount = data[0].count + 1;
-            
-            // Actualizar en Supabase
-            await fetch(`${SUPABASE_URL}/rest/v1/visitor_counter?id=eq.1`, {
-              method: "PATCH",
-              headers: {
-                "apikey": SUPABASE_KEY,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ count: newCount }),
-            });
-            
-            updateCountDisplay(newCount);
-          }
-          
-          sessionStorage.setItem("hasClickedInSession", "true");
-          button.disabled = true;
-          button.style.opacity = "0.5";
-        } catch (error) {
-          console.error("Error:", error);
-        }
+        count = 100;
+        updateCountDisplay(count);
+        sessionStorage.setItem("hasClickedInSession", "true");
+        button.disabled = true;
+        button.style.opacity = "0.5";
       }
     });
     
-    function updateCountDisplay(count) {
-      countSpan.textContent = `${count}`;
+    function updateCountDisplay(num) {
+      countSpan.textContent = `${num}`;
     }
   }
 

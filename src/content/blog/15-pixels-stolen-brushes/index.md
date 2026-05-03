@@ -1,5 +1,5 @@
 ---
-title: "Pixels and Stolen Brushes: The Struggle for Creativity"
+title: "Pixels and Stolen Brushes"
 description: "How generative AI challenges intellectual property and the future of human creativity."
 date: "Nov 05 2024"
 draft: false
